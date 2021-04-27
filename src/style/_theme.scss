@@ -1,0 +1,97 @@
+@import "typo";
+@import "media";
+@import "mixins";
+
+// Nombre d'or
+$phi: 1.618;
+
+// espacement de base
+$space: 1rem;
+$spacemin: $space / $phi;
+$spacemin2: $space / $phi / $phi;
+$space2: $space * $phi;
+$space3: $space * $phi * $phi;
+$space4: $space * $phi * $phi * $phi;
+$space5: $space * $phi * $phi * $phi * $phi;
+
+// relative 100% - Nombre d'or
+$percent: 100%;
+$percent1: 61.8%;
+$percent2: 38.1%;
+$percent3: 23.6%;
+$percent4: 14.6%;
+
+// border radius Apparelo
+$br1: 10px;
+$br2: 6px;
+$br3: 5px;
+
+// mobile quick call bar
+$quickcall-bar-height: 80px;
+
+// hauteur du header
+$headerHeight: 80px;
+
+/* Nuancier des couleurs APPARELO */
+$primary: #fada36;
+$p-dark: #edc600;
+$p-span: #ffc804;
+$p-light: #f9e890;
+
+$black-normal: #202020;
+$black-dark: #0c0c0c;
+$black-light: #777777;
+$black-transparent: #202020bf; // 0.75
+
+// Nuances de gris
+$black: #000000;
+$black-shadow: #00000040; // transparency 0.25
+$darker-grey: #4d4d4d;
+$dark-grey: #7d7d7d;
+$grey: #c5c5c5;
+$light-grey: #d9d9d9;
+$lighter-grey: #eaeaea;
+
+$transparent: #ffffff00; // 0.00
+
+$white: #ffffff;
+
+/* Couleurs des notifications du thème */
+$success: #03a01d;
+$warning: #ceac04;
+$error: #b72204;
+$info: #031da0;
+
+// Glasseffect
+@mixin glass {
+	background: rgba(255, 255, 255, 0.8);
+	border: 1px solid white;
+	// -webkit-backdrop-filter: blur(5px);
+	// -moz-backdrop-filter: blur(5px);
+	// backdrop-filter: blur(5px);
+	border-radius: $br1;
+}
+
+// Transparence pour Hexa
+/*
+ * 95% — F2
+ * 90% — E6
+ * 85% — D9
+ * 80% — CC
+ * 75% — BF
+ * 70% — B3
+ * 65% — A6
+ * 60% — 99
+ * 55% — 8C
+ * 50% — 80
+ * 45% — 73
+ * 40% — 66
+ * 35% — 59
+ * 30% — 4D
+ * 25% — 40
+ * 20% — 33
+ * 15% — 26
+ * 10% — 1A
+ * 5% — 0D
+ * 0% — 00
+ * */

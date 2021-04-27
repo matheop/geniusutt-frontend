@@ -1,0 +1,10 @@
+{
+	"git.ignoreLimitWarning": true,
+	"editor.detectIndentation": false,
+	"workbench.colorCustomizations": {
+		"activityBar.background": "#2847C3",
+		"activityBar.inactiveForeground": "#F8F8F8",
+		"activityBar.foreground": "#FAD107",
+        "activityBar.activeBorder": "#FAD107"
+	}
+}
