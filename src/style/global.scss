@@ -32,3 +32,91 @@ body {
 .global-container {
 	@include container-width;
 }
+
+/* -----------------
+	BUTTONS & LINKS
+----------------- */
+
+button {
+	position: relative;
+	padding: $sp-200 $sp-300;
+	@include body1;
+	cursor: pointer;
+
+	// LINK
+	&.link {
+		@include link($white);
+	}
+
+	// BLUE BTN
+	&.fill-blue {
+		@include btn($prim-500, $white, $br-500);
+
+		&:hover,
+		&.focus,
+		&.active {
+			@include btn($prim-700, $white, $br-500);
+		}
+	}
+	&.outline-blue {
+		@include btn(transparent, $prim-500, $br-500, $prim-500);
+
+		&:hover,
+		&.focus,
+		&.active {
+			@include btn($prim-500, $white, $br-500);
+		}
+	}
+
+	// YELLOW BTN
+	&.fill-yellow {
+		@include btn($sec-500, $white, $br-500);
+
+		&:hover,
+		&.focus,
+		&.active {
+			@include btn($sec-700, $white, $br-500);
+		}
+	}
+	&.outline-yellow {
+		@include btn(transparent, $sec-500, $br-500, $sec-500);
+
+		&:hover,
+		&.focus,
+		&.active {
+			@include btn($sec-500, $white, $br-500);
+		}
+	}
+}
+
+a {
+	position: relative;
+	color: $white;
+
+	&.header-link {
+		&:after {
+			content: "";
+			width: 50%;
+			height: 1px;
+			position: absolute;
+			left: 0;
+			transform: translateX(50%);
+			bottom: -0.5rem;
+			border-bottom: 2px solid $prim-500;
+			opacity: 0;
+			@include transition(opacity 0.4s);
+		}
+		&:hover {
+			&:after {
+				opacity: 1;
+				@include transition(opacity 0.4s);
+			}
+		}
+	}
+
+	&.yellow-link {
+		&:hover {
+			color: $sec-500;
+		}
+	}
+}

@@ -69,7 +69,7 @@
 }
 
 // Button (fill or outline)
-@mixin btn($bgcolor, $txt, $rad: 100rem, $bordercolor: $bgcolor) {
+@mixin btn($bgcolor, $txt, $rad: $br-500, $bordercolor: $bgcolor) {
 	border-radius: $rad;
 	background: $bgcolor;
 	border: 1px solid $bordercolor;
