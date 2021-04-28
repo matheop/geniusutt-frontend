@@ -2,15 +2,6 @@
 	GENERAL
 ----------------- */
 
-/* ---- Fonction min max ---- */
-@function max($numbers...) {
-	@return m#{a}x(#{$numbers});
-}
-
-@function min($numbers...) {
-	@return m#{i}n(#{$numbers});
-}
-
 /* ---- MARGIN && PADDING ---- */
 @mixin mx($ml, $mr: false) {
 	margin-left: $ml;
@@ -67,8 +58,7 @@
 
 /* ---- BOUTONS ---- */
 
-// Bouton contenant
-//un icon (svg...)
+// Button w/ icon
 @mixin icon-btn($width, $ml: 0, $mr: 0) {
 	@include flex-y;
 	i {
@@ -78,7 +68,7 @@
 	}
 }
 
-// Bouton (plein ou juste border)
+// Button (fill or outline)
 @mixin btn($bgcolor, $txt, $rad: 100rem, $bordercolor: $bgcolor) {
 	border-radius: $rad;
 	background: $bgcolor;
@@ -87,8 +77,8 @@
 	transition: all 0.3s;
 } // border arrondie si radius > btn width {}
 
-/* ---- Liens ---- */
-@mixin link-alike($color: $white) {
+/* ---- link ---- */
+@mixin link($color: $white) {
 	text-decoration: none;
 	border: none;
 	background-color: transparent;
@@ -108,51 +98,69 @@
 	UI KIT
 ----------------- */
 
-/* <section> du projet */
-//grid origin
+/* ---- Global sizing ---- */
+@mixin container-width {
+	@include px($sp-400);
+	max-width: 100vw;
+
+	@include tablet {
+		@include px($sp-500);
+	}
+
+	@include desktop {
+		@include flex;
+		max-width: 80vw;
+		margin: auto;
+	}
+
+	@include screen-xl {
+		max-width: $screen-md;
+		@include mx(auto);
+	}
+}
+
 @mixin grid-12 {
 	display: grid;
 	grid-template-columns: repeat(12, 1fr);
-	grid-gap: $space;
-}
-//maxsize
-@mixin max-width {
-	max-width: 76.4vw;
-
-	@include screen-md {
-		max-width: 100vw;
-		padding: $space;
-	}
-	@include phone {
-		max-width: 100vw;
-		padding: $space2;
-	}
+	grid-gap: $sp-400;
 }
 
-/* ---- Shadows ---- */
-@mixin ds {
-	-webkit-box-shadow: 0px 0.25rem 0.25rem 0px rgba(0, 0, 0, 0.25);
-	-moz-box-shadow: 0px 0.25rem 0.25rem 0px rgba(0, 0, 0, 0.25);
-	box-shadow: 0px 0.25rem 0.25rem 0px rgba(0, 0, 0, 0.25);
+/* ---- Spacing ---- */
+@mixin pdy-container {
+	@include py($spacing-700);
 }
 
-@mixin is {
-	-webkit-box-shadow: inset 0.25rem 0.25rem 0.5rem
-		rgba(0, 0, 0, 0.08);
-	-moz-box-shadow: inset 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.08);
-	box-shadow: inset 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.08);
+/* ---- Box-shadows ---- */
+@mixin ds-700 {
+	@include box-shadow(0px 0px 16px 4px, rgba(18, 18, 18, 0.1));
+}
+@mixin ds-500 {
+	@include box-shadow(0px 0px 10px 2px, rgba(18, 18, 18, 0.1));
+}
+@mixin ds-300 {
+	@include box-shadow(0px 0px 6px 2px, rgba(18, 18, 18, 0.1));
 }
 
 /* ---- Border-radius ---- */
-@mixin br1 {
-	border-radius: $br1;
+@mixin circle {
+	border-radius: $circle;
 }
-@mixin br2 {
-	border-radius: $br2;
+@mixin br-900 {
+	border-radius: $br-900;
 }
-@mixin br3 {
-	border-radius: $br3;
+@mixin br-700 {
+	border-radius: $br-700;
 }
+@mixin br-500 {
+	border-radius: $br-500;
+}
+@mixin br-300 {
+	border-radius: $br-300;
+}
+
+/* -----------------
+	Cross-plateform
+----------------- */
 
 /* ---- Transitions ----*/
 @mixin transition($str) {
@@ -160,4 +168,10 @@
 	-moz-transition: #{$str};
 	-ms-transition: #{$str};
 	transition: #{$str};
+}
+
+@mixin box-shadow($px, $color) {
+	-webkit-box-shadow: $px, $color;
+	-moz-box-shadow: $px, $color;
+	box-shadow: $px, $color;
 }

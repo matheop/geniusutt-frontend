@@ -39,15 +39,15 @@ module.exports = {
 			},
 			resolve: {
 				alias: {
-					$components: resolve(
-						__dirname,
-						"./src/components"
-					),
 					$uikit: resolve(
 						__dirname,
 						"./src/components/uikit"
 					),
 					$svg: resolve(__dirname, "./src/components/svg"),
+					$components: resolve(
+						__dirname,
+						"./src/components"
+					),
 					$stores: resolve(__dirname, "./src/stores"),
 					$helpers: resolve(__dirname, "./src/helpers"),
 				},

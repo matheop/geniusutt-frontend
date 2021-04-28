@@ -27,11 +27,11 @@
 				".svelte/dev/runtime/app/*",
 				".svelte/build/runtime/app/*"
 			],
-			"$components/*": ["src/components/*"],
 			"$uikit/*": ["src/components/uikit/*"],
 			"$svg/*": ["src/components/svg/*"],
+			"$components/*": ["src/components/*"],
 			"$stores/*": ["src/stores/*"],
-			"$helpers/*": ["src/helper/*s"]
+			"$helpers/*": ["src/helpers/*"]
 		}
 	},
 	"include": [

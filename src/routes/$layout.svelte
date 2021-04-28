@@ -1,17 +1,11 @@
 <script>
-	const name: string = "WORLD";
+	import "../style/global.scss";
+	import Footer from "$uikit/Footer.svelte";
+	import Header from "$uikit/Header.svelte";
 </script>
 
-<container>
-	<h1>Hello, {name}!</h1>
-</container>
+<Header />
 
-<style lang="scss">
-	container {
-		@include grid-12;
-		h1 {
-			text-align: center;
-			grid-column: 1/13;
-		}
-	}
-</style>
+<slot />
+
+<Footer />
