@@ -132,13 +132,13 @@
 
 /* ---- Box-shadows ---- */
 @mixin ds-700 {
-	@include box-shadow(0px 0px 16px 4px, rgba(18, 18, 18, 0.1));
+	@include box-shadow(0px 0px 16px 4px rgba(18, 18, 18, 0.1));
 }
 @mixin ds-500 {
-	@include box-shadow(0px 0px 10px 2px, rgba(18, 18, 18, 0.1));
+	@include box-shadow(0px 0px 10px 2px rgba(18, 18, 18, 0.1));
 }
 @mixin ds-300 {
-	@include box-shadow(0px 0px 6px 2px, rgba(18, 18, 18, 0.05));
+	@include box-shadow(0px 0px 6px 2px rgba(18, 18, 18, 0.05));
 }
 
 /* ---- Border-radius ---- */
@@ -174,8 +174,8 @@
 	transition: #{$str};
 }
 
-@mixin box-shadow($px, $color) {
-	-webkit-box-shadow: $px $color;
-	-moz-box-shadow: $px $color;
-	box-shadow: $px $color;
+@mixin box-shadow($str) {
+	-webkit-box-shadow: $str;
+	-moz-box-shadow: $str;
+	box-shadow: $str;
 }

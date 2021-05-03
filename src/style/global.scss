@@ -43,7 +43,9 @@ body {
 
 input,
 textarea,
-select {
+.text-message,
+select,
+.select-container {
 	position: relative;
 	width: 100%;
 	padding: $sp-200 $sp-300;

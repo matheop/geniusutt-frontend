@@ -1,6 +1,7 @@
 <script>
 	import Input from "$uikit/Input.svelte";
 	import TextArea from "$uikit/TextArea.svelte";
+	import TextMessage from "$uikit/TextMessage.svelte";
 
 	const name: string = "WORLD";
 </script>
@@ -35,6 +36,8 @@
 			autocomplete="email" />
 		<hr />
 		<TextArea />
+		<hr />
+		<TextMessage />
 	</div>
 </section>
 
