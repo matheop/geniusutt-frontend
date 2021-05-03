@@ -51,7 +51,7 @@
 			bottom: 0;
 
 			&.warning {
-				color: $error;
+				color: $danger-500;
 			}
 		}
 	}

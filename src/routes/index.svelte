@@ -1,4 +1,5 @@
 <script>
+	import { modal } from "$stores/modal";
 	import Input from "$uikit/Input.svelte";
 	import Select from "$uikit/Select.svelte";
 	import TextArea from "$uikit/TextArea.svelte";
@@ -7,6 +8,20 @@
 	const name: string = "WORLD";
 
 	const selectArray = ["test", "test"];
+
+	const showModal = () => {
+		console.log("in");
+		modal.show({
+			title: "Attention !",
+			desc:
+				"Vous êtes sur le point de supprimer un utilisateur.<br />Êtes-vous sûr de vouloir continuer ?",
+			btn1: "Confirmer",
+			btn2: "Annuler",
+			action_btn1: () => modal.remove(),
+			action_btn2: () => modal.remove(),
+			displayCrossBtn: true,
+		});
+	};
 </script>
 
 <main class="global-container">
@@ -48,6 +63,13 @@
 		<TextMessage />
 
 		<hr />
+	</div>
+
+	<div>
+		<h2>MODAL</h2>
+
+		<button class="outline-blue" on:click={showModal}
+			>Show Modal</button>
 	</div>
 </section>
 

@@ -97,7 +97,7 @@
 			bottom: $sp-100;
 
 			&.warning {
-				color: $error;
+				color: $danger-500;
 			}
 		}
 	}

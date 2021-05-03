@@ -37,6 +37,10 @@ body {
 	@include container-width;
 }
 
+p {
+	@include body1-light;
+}
+
 /* -----------------
 	INPUTS & FORM RELATED
 ----------------- */
@@ -65,7 +69,7 @@ select,
 		@include transition(0.3s box-shadow ease);
 	}
 	&.error {
-		@include border($error);
+		@include border($danger-500);
 		@include transition(0.3s border ease);
 	}
 	&.valid {
@@ -75,7 +79,7 @@ select,
 
 	.input-error {
 		position: absolute;
-		color: $error;
+		color: $danger-500;
 		margin-top: $sp-100;
 		padding-right: $sp-300;
 		@include body2;
@@ -138,6 +142,26 @@ button {
 		&.focus,
 		&.active {
 			@include btn($sec-500, $white, $br-500);
+		}
+	}
+
+	// RED BTN
+	&.fill-danger {
+		@include btn($danger-500, $white, $br-500);
+
+		&:hover,
+		&.focus,
+		&.active {
+			@include btn($danger-700, $white, $br-500);
+		}
+	}
+	&.outline-danger {
+		@include btn(transparent, $danger-500, $br-500, $danger-500);
+
+		&:hover,
+		&.focus,
+		&.active {
+			@include btn($danger-500, $white, $br-500);
 		}
 	}
 }
