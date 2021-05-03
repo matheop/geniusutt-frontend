@@ -1,9 +1,12 @@
 <script>
 	import Input from "$uikit/Input.svelte";
+	import Select from "$uikit/Select.svelte";
 	import TextArea from "$uikit/TextArea.svelte";
 	import TextMessage from "$uikit/TextMessage.svelte";
 
 	const name: string = "WORLD";
+
+	const selectArray = ["test", "test"];
 </script>
 
 <main class="global-container">
@@ -34,10 +37,17 @@
 			placeholder="placeholder"
 			type="email"
 			autocomplete="email" />
+
+		<hr />
+		<Select placeholder="Test" values={selectArray} />
+
 		<hr />
 		<TextArea />
+
 		<hr />
 		<TextMessage />
+
+		<hr />
 	</div>
 </section>
 

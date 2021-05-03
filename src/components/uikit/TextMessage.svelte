@@ -6,7 +6,6 @@
 	let isFocused: boolean = false;
 	const onFocus = () => (isFocused = true);
 	const onBlur = () => (isFocused = false);
-	$: console.log("isFocused:", isFocused);
 
 	/* Components */
 	import ErrorMessage from "$uikit/helpers/ErrorMessage.svelte";

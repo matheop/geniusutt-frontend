@@ -45,11 +45,12 @@ input,
 textarea,
 .text-message,
 select,
-.select-container {
+.select-input {
 	position: relative;
 	width: 100%;
 	padding: $sp-200 $sp-300;
 	color: $black;
+	background-color: $white;
 	@include caption-light;
 	@include br-300;
 	@include ds-300;

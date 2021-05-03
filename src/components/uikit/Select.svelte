@@ -5,7 +5,9 @@
 
 	/* Helpers */
 	import { clickOutside } from "$helpers/clickOutside";
-	import Arrow from "svg/icons/Arrow.svelte";
+	/* Components */
+	import Triangle from "$svg/Triangle.svelte";
+	import ErrorMessage from "$uikit/helpers/ErrorMessage.svelte";
 
 	const dispatch = createEventDispatcher();
 
@@ -16,8 +18,6 @@
 	export let placeholder: string;
 	export let selectedValue: string;
 
-	export let datacy: string;
-
 	//validation
 	export let errors: string[] = [];
 	export let isFormChecked: boolean = false;
@@ -25,7 +25,7 @@
 
 	let optionsAreDisplayed: boolean = false;
 	let beenClickedOnce: boolean = false;
-	let placeholderDisplayed: boolean = placeholder != null;
+	let placeholderDisplayed: boolean = placeholder !== null;
 
 	// feed by values i/o items
 	if (values) {
@@ -91,20 +91,18 @@
 	<div
 		on:click={selectIsClicked}
 		class="select-input"
-		data-cy={datacy}
 		class:placeholderDisplayed
 		class:error={errors.length && displayError}
 		class:valid={!errors.length && selectedValue}>
 		{selectedValue ? selectedValue : placeholder}
 		<i>
-			<Arrow direction={optionsAreDisplayed ? "up" : "down"} />
+			<Triangle
+				direction={optionsAreDisplayed ? "up" : "down"} />
 		</i>
 	</div>
-	<!-- {#if errors.length && displayError}
-		<p class="input-error" transition:slide={{ duration: 500 }}>
-			{errors[0]}
-		</p>
-	{/if} -->
+	{#if errors.length && displayError}
+		<ErrorMessage error={errors[0]} />
+	{/if}
 	{#if optionsAreDisplayed}
 		<div class="select-options" transition:slide>
 			{#each items as item, id}
@@ -120,16 +118,12 @@
 	.select-container {
 		position: relative;
 		cursor: pointer;
+		width: 100%;
 		.select-input {
-			position: relative;
 			display: flex;
 			align-items: center;
-
-			&.error {
-				border: solid 0.5px $error;
-			}
 			&.placeholderDisplayed {
-				color: $grey-300;
+				color: $grey-500;
 			}
 			i {
 				display: flex;
@@ -151,10 +145,15 @@
 			overflow: hidden;
 			overflow-y: scroll;
 			max-height: 12rem;
+			background-color: $white;
+			@include br-300;
+			@include ds-300;
+			@include border($white);
+			width: 100%;
 			.option {
-				padding: 0.5rem 1rem;
+				padding: $sp-200 $sp-300;
 				&:hover {
-					background-color: $prim-500;
+					background-color: rgba($sec-300, 0.5);
 				}
 			}
 		}
