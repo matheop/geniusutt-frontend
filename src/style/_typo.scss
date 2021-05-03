@@ -143,3 +143,21 @@ $scale: 1.25;
 	font-family: "Poppins Bold";
 	@include body2;
 }
+
+@mixin caption {
+	font-family: "Poppins Medium";
+	line-height: 125%;
+	@include fs1;
+}
+@mixin caption-light {
+	font-family: "Poppins Light" !important;
+	@include caption;
+}
+@mixin caption-sb {
+	font-family: "Poppins SemiBold";
+	@include caption;
+}
+@mixin caption-bold {
+	font-family: "Poppins Bold";
+	@include caption;
+}
