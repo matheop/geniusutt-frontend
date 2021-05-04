@@ -188,6 +188,15 @@ a {
 	position: relative;
 	color: $white;
 
+	&:hover {
+		text-decoration: underline;
+	}
+
+	&.header-link,
+	&.yellow-link {
+		text-decoration: none;
+	}
+
 	&.header-link {
 		&:after {
 			content: "";

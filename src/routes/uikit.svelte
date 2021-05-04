@@ -85,7 +85,7 @@
 
 	section {
 		width: 100%;
-		background-color: $grey-300;
+		background-color: $grey-500;
 
 		div {
 			margin: 2rem 0;
