@@ -119,10 +119,10 @@
 	}
 }
 
-@mixin grid-12 {
+@mixin grid-12($gap: $sp-400) {
 	display: grid;
 	grid-template-columns: repeat(12, 1fr);
-	grid-gap: $sp-400;
+	grid-gap: $gap;
 }
 
 /* ---- Spacing ---- */
@@ -131,6 +131,9 @@
 }
 
 /* ---- Box-shadows ---- */
+@mixin shadow($str) {
+	@include box-shadow($str);
+}
 @mixin ds-700 {
 	@include box-shadow(0px 0px 16px 4px rgba(18, 18, 18, 0.1));
 }
@@ -139,6 +142,9 @@
 }
 @mixin ds-300 {
 	@include box-shadow(0px 0px 6px 2px rgba(18, 18, 18, 0.05));
+}
+@mixin is($color: $prim-500) {
+	@include box-shadow(inset 0px 6px 0px $color);
 }
 
 /* ---- Border-radius ---- */
