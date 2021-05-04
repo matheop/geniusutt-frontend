@@ -8,7 +8,7 @@
 
 <div class="card">
 	<div class="img">
-		<img src={img} alt={title} />
+		<img class="cover" src={img} alt={title} />
 	</div>
 	<h4>
 		{title}
@@ -24,6 +24,12 @@
 		width: 17rem;
 		min-height: 21rem;
 		color: $white;
+		@include transition($transition);
+
+		&:hover {
+			transform: scale(1.02);
+			@include transition($transition);
+		}
 
 		& > * {
 			margin: 0 auto 1rem;
@@ -39,16 +45,11 @@
 			overflow: hidden;
 			width: 10rem;
 			height: 10rem;
-
-			img {
-				width: 100%;
-				height: 100%;
-				object-fit: cover;
-			}
 		}
 
 		a {
 			display: block;
+			@include body2-sb;
 			color: $sec-500;
 		}
 	}

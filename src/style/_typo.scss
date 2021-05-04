@@ -107,7 +107,29 @@ $scale: 1.25;
 	font-family: "Poppins Bold";
 }
 
-// body
+// SUBTITLES
+@mixin caption {
+	font-family: "Poppins Medium";
+	line-height: 125%;
+	@include fs1;
+}
+@mixin caption-light {
+	font-family: "Poppins Light";
+	line-height: 125%;
+	@include fs1;
+}
+@mixin caption-sb {
+	font-family: "Poppins SemiBold";
+	line-height: 125%;
+	@include fs1;
+}
+@mixin caption-bold {
+	font-family: "Poppins Bold";
+	line-height: 125%;
+	@include fs1;
+}
+
+// BODIES
 @mixin body1 {
 	font-family: "Poppins Medium";
 	line-height: 170%;
@@ -130,11 +152,6 @@ $scale: 1.25;
 }
 
 @mixin body2 {
-	font-weight: 300;
-	line-height: 130%;
-	@include fs0;
-}
-@mixin body2-light {
 	font-family: "Poppins Light";
 	line-height: 130%;
 	@include fs0;
@@ -143,30 +160,4 @@ $scale: 1.25;
 	font-family: "Poppins SemiBold";
 	line-height: 130%;
 	@include fs0;
-}
-@mixin body2-bold {
-	font-family: "Poppins Bold";
-	line-height: 130%;
-	@include fs0;
-}
-
-@mixin caption {
-	font-family: "Poppins Medium";
-	line-height: 125%;
-	@include fs1;
-}
-@mixin caption-light {
-	font-family: "Poppins Light";
-	line-height: 125%;
-	@include fs1;
-}
-@mixin caption-sb {
-	font-family: "Poppins SemiBold";
-	line-height: 125%;
-	@include fs1;
-}
-@mixin caption-bold {
-	font-family: "Poppins Bold";
-	line-height: 125%;
-	@include fs1;
 }

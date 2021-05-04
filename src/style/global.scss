@@ -55,8 +55,20 @@ h4 {
 	@include t4-sb;
 }
 
+h5 {
+	@include caption;
+
+	&.light {
+		@include caption-light;
+	}
+}
+
 p {
 	@include body1-light;
+}
+
+h6 {
+	@include body2-sb;
 }
 
 /* -----------------
@@ -199,14 +211,7 @@ a {
 
 	&.header-link {
 		&:after {
-			content: "";
-			width: 50%;
-			height: 1px;
-			position: absolute;
-			left: 0;
-			transform: translateX(50%);
-			bottom: -0.5rem;
-			border-bottom: 2px solid $prim-500;
+			@include underlining;
 			opacity: 0;
 			@include transition(opacity 0.4s);
 		}
@@ -223,4 +228,14 @@ a {
 			color: $sec-500;
 		}
 	}
+}
+
+/* -----------------
+	IMAGES & RELATED
+----------------- */
+
+img.cover {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }

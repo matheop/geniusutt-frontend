@@ -94,6 +94,18 @@
 	}
 }
 
+/* underlining */
+@mixin underlining($color: $prim-500) {
+	content: "";
+	width: 50%;
+	height: 1px;
+	position: absolute;
+	left: 0;
+	transform: translateX(50%);
+	bottom: -0.5rem;
+	border-bottom: 2px solid $color;
+}
+
 /* -----------------
 	UI KIT
 ----------------- */
@@ -184,4 +196,9 @@
 	-webkit-box-shadow: $str;
 	-moz-box-shadow: $str;
 	box-shadow: $str;
+}
+
+@mixin backface-visibility($value: hidden) {
+	-webkit-backface-visibility: $value; /* Safari */
+	backface-visibility: $value;
 }

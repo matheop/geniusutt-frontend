@@ -1,10 +1,18 @@
 <script>
 	import MetricBox from "$components/homepage/MetricBox.svelte";
 	import ObjectiveCard from "$components/homepage/ObjectiveCard.svelte";
+	import ProfileCard from "$components/homepage/ProfileCard.svelte";
 	import University from "$svg/University.svelte";
 </script>
 
 <main class="global-container">
+	<ProfileCard
+		img="/img/paul-julien.jpeg"
+		name="Paul Julien"
+		position="Président - Genius UTT"
+		desc="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley."
+		linkedin="https://www.linkedin.com/in/paul-julien0704/" />
+
 	<MetricBox
 		metric={16}
 		label={"Écoles & Universités"}
@@ -13,6 +21,7 @@
 	</MetricBox>
 
 	<ObjectiveCard
+		link="uikit"
 		img="/img/helping-hand.jpeg"
 		title="Aider 🤝"
 		desc="Les étudiants à développer leur projet en les accompagnant tout le long de leur formation." />
