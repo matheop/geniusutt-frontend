@@ -1,5 +1,6 @@
 <script>
 	import { modal } from "$stores/modal";
+	import { onDestroy } from "svelte";
 
 	/* Svelte */
 	import { fade, fly } from "svelte/transition";
@@ -12,20 +13,27 @@
 	export let action_btn1: () => {};
 	export let action_btn2: () => {};
 	export let action_3: () => {} = action_btn1;
-
 	export let displayCrossBtn: boolean = false;
 
+	document.body.classList.add("no-scroll");
+
+	onDestroy(() => {
+		document.body.classList.remove("no-scroll");
+	});
+
 	const checkTargetId = (e) => {
-		if (e.target.id === "modalBlur") {
+		if (e.target.id === "modal-blur") {
 			modal.remove();
 			action_3();
 		}
 	};
 </script>
 
+<svelte:body />
+
 <div
 	transition:fade={{ duration: 400 }}
-	id="modalBlur"
+	id="modal-blur"
 	on:click={(e) => checkTargetId(e)}>
 	<div
 		in:fly={{ delay: 250, y: 200, duration: 400 }}
@@ -48,14 +56,14 @@
 </div>
 
 <style lang="scss">
-	#modalBlur {
+	#modal-blur {
 		position: fixed;
 		top: 0;
 		left: 0;
 		width: 100vw;
 		height: 100vh;
 		z-index: 99999;
-		background-color: rgba($black, 0.3);
+		background-color: rgba($prim-900, 0.6);
 		@include flex;
 
 		#modal {

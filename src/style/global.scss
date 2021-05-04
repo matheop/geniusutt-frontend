@@ -27,6 +27,11 @@
 body {
 	font-family: "Poppins Light", sans-serif;
 	min-height: -webkit-fill-available;
+
+	&.no-scroll {
+		height: 100vh;
+		overflow-y: hidden;
+	}
 }
 
 /* -----------------

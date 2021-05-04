@@ -10,7 +10,6 @@
 	const selectArray = ["test", "test"];
 
 	const showModal = () => {
-		console.log("in");
 		modal.show({
 			title: "Attention !",
 			desc:
