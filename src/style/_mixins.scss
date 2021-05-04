@@ -131,6 +131,7 @@
 	}
 }
 
+/* ---- Grids ---- */
 @mixin grid-12($gap: $sp-400) {
 	display: grid;
 	grid-template-columns: repeat(12, 1fr);

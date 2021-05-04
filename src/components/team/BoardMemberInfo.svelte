@@ -1,0 +1,70 @@
+<script>
+	import { isPhone } from "$stores/media";
+
+	export let name: string;
+	export let position: string;
+	export let img: string;
+	export let desc: string;
+	export let imgSide: "left" | "right" = "left";
+</script>
+
+<div class="info-box">
+	<h2 style="text-align: {imgSide}">{name} – {position}</h2>
+	<hr />
+	<div
+		class="flex-content"
+		style="flex-direction: {imgSide === 'right' && !$isPhone
+			? 'row-reverse'
+			: ''}">
+		<div class="img-cover {imgSide}">
+			<img class="cover" src={img} alt={name} />
+		</div>
+		<p>{@html desc}</p>
+	</div>
+</div>
+
+<style lang="scss">
+	.info-box {
+		width: 100%;
+		height: 100%;
+		color: $white;
+		background-color: $prim-900;
+
+		h2 {
+			@include phone {
+				@include t4;
+				text-align: center !important;
+			}
+		}
+
+		hr {
+			border: 1px solid $white;
+			margin: $sp-200 0;
+		}
+
+		.flex-content {
+			@include flex-y;
+			text-align: justify;
+			flex-direction: column;
+
+			.img-cover {
+				min-width: 11rem;
+				width: 11rem;
+				height: 11rem;
+
+				@include phone {
+					margin-bottom: $sp-200;
+				}
+
+				@include min-tablet {
+					&.left {
+						margin-right: $sp-300;
+					}
+					&.right {
+						margin-left: $sp-300;
+					}
+				}
+			}
+		}
+	}
+</style>

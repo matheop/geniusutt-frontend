@@ -13,7 +13,7 @@
 	<h4>
 		{title}
 	</h4>
-	<p>{desc}</p>
+	<p>{@html desc}</p>
 	<a href={link} target={target_blank ? "_blank" : ""}>
 		Plus d'infos >
 	</a>

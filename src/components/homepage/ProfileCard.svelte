@@ -12,7 +12,7 @@
 	<div class="flip-card">
 		<!-- FRONT -->
 		<div class="flip-front">
-			<div class="img">
+			<div class="img-cover">
 				<img class="cover" src={img} alt={name} />
 			</div>
 			<h5 class="light">
@@ -25,7 +25,7 @@
 		<!-- BACK -->
 		<div class="flip-back">
 			<h5 class="light">{name}</h5>
-			<h6>{desc}</h6>
+			<h6>{@html desc}</h6>
 			<a
 				href={linkedin}
 				target="_blank"
@@ -83,11 +83,9 @@
 
 			.flip-front {
 				background-color: $white;
-				.img {
-					overflow: hidden;
+				.img-cover {
 					width: 11rem;
 					height: 11rem;
-					@include circle;
 					margin-bottom: $sp-200;
 				}
 
