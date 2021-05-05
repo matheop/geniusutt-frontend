@@ -2,6 +2,7 @@
 	import MetricBox from "$components/homepage/MetricBox.svelte";
 	import ObjectiveCard from "$components/homepage/ObjectiveCard.svelte";
 	import ProfileCard from "$components/homepage/ProfileCard.svelte";
+	import { form } from "$stores/contact-form";
 	import University from "$svg/University.svelte";
 </script>
 
@@ -25,6 +26,10 @@
 		img="/img/helping-hand.jpeg"
 		title="Aider 🤝"
 		desc="Les étudiants à développer leur projet en les accompagnant tout le long de leur formation." />
+
+	<button class="fill-blue" on:click={() => form.set()}>
+		Contact
+	</button>
 </main>
 
 <style lang="scss">

@@ -6,16 +6,22 @@
 	import ModalCompo from "$components/templates/Modal.svelte";
 	import { modal } from "$stores/modal";
 	import { media } from "$stores/media";
+	import { form } from "$stores/contact-form";
+	import ContactForm from "$uikit/ContactForm.svelte";
 
 	let windowWidth: number;
 	$: if (windowWidth) media.up(windowWidth);
 </script>
 
+<svelte:window bind:innerWidth={windowWidth} />
+
 {#if !!$modal}
 	<ModalCompo {...$modal} />
 {/if}
 
-<svelte:window bind:innerWidth={windowWidth} />
+{#if !!$form}
+	<ContactForm />
+{/if}
 
 <Header />
 

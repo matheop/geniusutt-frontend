@@ -16,8 +16,14 @@
 				"Vous êtes sur le point de supprimer un utilisateur.<br />Êtes-vous sûr de vouloir continuer ?",
 			btn1: "Confirmer",
 			btn2: "Annuler",
-			action_btn1: () => modal.remove(),
-			action_btn2: () => modal.remove(),
+			action_btn1: () => {
+				console.log("1");
+				modal.remove();
+			},
+			action_btn2: () => {
+				console.log("2");
+				modal.remove();
+			},
 			displayCrossBtn: true,
 		});
 	};

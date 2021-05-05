@@ -1,7 +1,4 @@
 <script lang="ts">
-	/* Svelte */
-	import { slide } from "svelte/transition";
-
 	/* Helpers */
 	import type { ValidationProperty } from "$helpers/interfaces/index";
 	import ErrorMessage from "$uikit/helpers/ErrorMessage.svelte";

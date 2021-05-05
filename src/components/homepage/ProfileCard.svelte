@@ -1,5 +1,5 @@
 <script>
-	import LinkedIn from "$svg/icons/LinkedIn.svelte";
+	import LinkedIn from "$svg/networks/LinkedIn.svelte";
 
 	export let img: string;
 	export let name: string;

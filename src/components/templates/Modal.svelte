@@ -1,9 +1,5 @@
 <script>
-	import { modal } from "$stores/modal";
-	import { onDestroy } from "svelte";
-
-	/* Svelte */
-	import { fade, fly } from "svelte/transition";
+	import PopIn from "./PopIn.svelte";
 
 	export let title: string;
 	export let desc: string;
@@ -13,32 +9,12 @@
 	export let action_btn1: () => {};
 	export let action_btn2: () => {};
 	export let action_3: () => {} = action_btn1;
+
 	export let displayCrossBtn: boolean = false;
-
-	document.body.classList.add("no-scroll");
-
-	onDestroy(() => {
-		document.body.classList.remove("no-scroll");
-	});
-
-	const checkTargetId = (e) => {
-		if (e.target.id === "modal-blur") {
-			modal.remove();
-			action_3();
-		}
-	};
 </script>
 
-<svelte:body />
-
-<div
-	transition:fade={{ duration: 400 }}
-	id="modal-blur"
-	on:click={(e) => checkTargetId(e)}>
-	<div
-		in:fly={{ delay: 250, y: 200, duration: 400 }}
-		out:fly={{ y: 200 }}
-		id="modal">
+<PopIn on:out-popin={() => action_3()}>
+	<section>
 		{#if displayCrossBtn}
 			<div id="cross" on:click={action_3}>&#10005;</div>
 		{/if}
@@ -52,76 +28,57 @@
 			<button class="fill-blue" on:click={action_btn2}
 				>{btn2}</button>
 		</div>
-	</div>
-</div>
+	</section>
+</PopIn>
 
 <style lang="scss">
-	#modal-blur {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100vw;
-		height: 100vh;
-		z-index: 99999;
-		background-color: rgba($prim-900, 0.6);
+	section {
+		background-color: $white;
+		border-radius: $br-500;
+		padding: $sp-400 $sp-500;
+	}
+	.title {
+		@include t3-sb;
+	}
+
+	.title,
+	p {
+		text-align: center;
+		margin: $sp-400 0;
+	}
+
+	#cross {
+		position: absolute;
+		top: $sp-200;
+		right: $sp-200;
+		@include flex;
+		cursor: pointer;
+		color: $grey-700;
+		@include transition(color 0.4s ease);
+
+		&:hover {
+			color: $danger-500;
+			@include transition(color 0.4s ease);
+		}
+	}
+
+	.btn-box {
 		@include flex;
 
-		#modal {
-			position: relative;
-			background-color: $white;
-			border-radius: $br-500;
-			padding: $sp-400 $sp-500;
-			max-width: 90%;
-			z-index: 10000;
+		@include phone {
+			flex-direction: column;
+		}
 
-			@include min-tablet {
-				max-width: 600px;
-			}
+		button {
+			width: $sp-1000;
 
-			.title {
-				@include t3-sb;
-			}
+			&:first-of-type {
+				margin-right: 0;
+				margin-bottom: $sp-200;
 
-			.title,
-			p {
-				text-align: center;
-				margin: $sp-400 0;
-			}
-
-			#cross {
-				position: absolute;
-				top: $sp-200;
-				right: $sp-200;
-				@include flex;
-				cursor: pointer;
-				color: $grey-700;
-				@include transition(color 0.4s ease);
-
-				&:hover {
-					color: $danger-500;
-					@include transition(color 0.4s ease);
-				}
-			}
-
-			.btn-box {
-				@include flex;
-
-				@include phone {
-					flex-direction: column;
-				}
-
-				button {
-					width: $sp-1000;
-
-					&:first-of-type {
-						margin-right: 0;
-						margin-bottom: $sp-200;
-
-						@include min-tablet {
-							margin-right: $sp-200;
-							margin-bottom: 0;
-						}
-					}
+				@include min-tablet {
+					margin-right: $sp-200;
+					margin-bottom: 0;
 				}
 			}
 		}
