@@ -3,7 +3,7 @@
 	import ObjectiveCard from "$components/homepage/ObjectiveCard.svelte";
 	import ProfileCard from "$components/homepage/ProfileCard.svelte";
 	import { form } from "$stores/contact-form";
-	import University from "$svg/University.svelte";
+	import University from "$svg/homepage/University.svelte";
 </script>
 
 <main class="global-container">

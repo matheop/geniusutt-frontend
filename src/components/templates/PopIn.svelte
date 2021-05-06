@@ -9,6 +9,7 @@
 
 	export let width: string = "90%";
 	export let maxWidth: string = "600px";
+	export let maxHeight: string = "90vh";
 
 	const dispatch = createEventDispatcher();
 
@@ -27,7 +28,7 @@
 	<div
 		in:fly={{ delay: 250, y: 200, duration: 400 }}
 		out:fly={{ y: 200 }}
-		style="width: {width}; max-width: {maxWidth};"
+		style="width: {width}; max-width: {maxWidth}; max-height: {maxHeight}"
 		id="popin">
 		<slot />
 	</div>

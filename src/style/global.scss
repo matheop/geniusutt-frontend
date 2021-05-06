@@ -121,7 +121,7 @@ textarea {
 }
 
 /* -----------------
-	BUTTONS & LINKS
+	BUTTONS & LINKS & LABELS
 ----------------- */
 
 button {
@@ -133,6 +133,7 @@ button {
 	// LINK
 	&.link {
 		@include link($white);
+		padding: 0;
 	}
 
 	// BLUE BTN
@@ -193,6 +194,17 @@ button {
 		&.active {
 			@include btn($danger-500, $white, $br-500);
 		}
+	}
+}
+
+.tag {
+	@include circle;
+	@include ds-300;
+	padding: $sp-100;
+	@include body2;
+
+	&:hover {
+		@include ds-500;
 	}
 }
 
