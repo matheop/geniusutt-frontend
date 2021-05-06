@@ -65,6 +65,7 @@ h5 {
 
 p {
 	@include body1-light;
+	text-align: justify;
 }
 
 h6 {
@@ -256,4 +257,32 @@ img.cover {
 	overflow: hidden;
 	@include circle;
 	// add width & height
+}
+
+/* -----------------
+	POP-IN RELATED
+----------------- */
+
+.popin-cross {
+	position: absolute;
+	top: $sp-300;
+	right: $sp-300;
+	width: 1.5rem;
+	height: 1.5rem;
+	cursor: pointer;
+}
+
+/* -----------------
+	EVENTS PAGE
+----------------- */
+
+.event-card {
+	button {
+		display: block;
+
+		&.video {
+			color: $black;
+			text-decoration: underline;
+		}
+	}
 }

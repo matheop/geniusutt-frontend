@@ -132,22 +132,22 @@ $scale: 1.25;
 // BODIES
 @mixin body1 {
 	font-family: "Poppins Medium";
-	line-height: 170%;
+	line-height: 150%;
 	@include fs1;
 }
 @mixin body1-light {
 	font-family: "Poppins Light";
-	line-height: 170%;
+	line-height: 150%;
 	@include fs1;
 }
 @mixin body1-sb {
 	font-family: "Poppins SemiBold";
-	line-height: 170%;
+	line-height: 150%;
 	@include fs1;
 }
 @mixin body1-bold {
 	font-family: "Poppins Bold";
-	line-height: 170%;
+	line-height: 150%;
 	@include fs1;
 }
 

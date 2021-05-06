@@ -37,44 +37,46 @@
 
 <section class="global-container">
 	<div>
-		<h2>BUTTONS</h2>
-		<button class="fill-blue">Primary Fill</button>
-		<button class="outline-blue">Primary Outline</button>
-		<button class="fill-yellow">Secondary Fill</button>
-		<button class="outline-yellow">Secondary Outline</button>
-		<button class="link">Link Button</button>
-	</div>
-	<div>
-		<h2>LINKS</h2>
-		<a href="#">default</a>
-		<a href="#" class="yellow-link">yell</a>
-		<a href="#" class="header-link">Header Link</a>
-	</div>
+		<div>
+			<h2>BUTTONS</h2>
+			<button class="fill-blue">Primary Fill</button>
+			<button class="outline-blue">Primary Outline</button>
+			<button class="fill-yellow">Secondary Fill</button>
+			<button class="outline-yellow">Secondary Outline</button>
+			<button class="link">Link Button</button>
+		</div>
+		<div>
+			<h2>LINKS</h2>
+			<a href="#">default</a>
+			<a href="#" class="yellow-link">yell</a>
+			<a href="#" class="header-link">Header Link</a>
+		</div>
 
-	<div>
-		<h2>INPUTS</h2>
-		<Input
-			placeholder="placeholder"
-			type="email"
-			autocomplete="email" />
+		<div>
+			<h2>INPUTS</h2>
+			<Input
+				placeholder="placeholder"
+				type="email"
+				autocomplete="email" />
 
-		<hr />
-		<Select placeholder="Test" values={selectArray} />
+			<hr />
+			<Select placeholder="Test" values={selectArray} />
 
-		<hr />
-		<TextArea />
+			<hr />
+			<TextArea />
 
-		<hr />
-		<TextMessage />
+			<hr />
+			<TextMessage />
 
-		<hr />
-	</div>
+			<hr />
+		</div>
 
-	<div>
-		<h2>MODAL</h2>
+		<div>
+			<h2>MODAL</h2>
 
-		<button class="outline-blue" on:click={showModal}
-			>Show Modal</button>
+			<button class="outline-blue" on:click={showModal}
+				>Show Modal</button>
+		</div>
 	</div>
 </section>
 

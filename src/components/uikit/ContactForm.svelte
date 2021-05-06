@@ -13,7 +13,7 @@
 
 <PopIn on:out-popin={remove} maxWidth="800px">
 	<section class="form">
-		<div class="cross" on:click={remove}>
+		<div class="popin-cross" on:click={remove}>
 			<Cross />
 		</div>
 
@@ -105,14 +105,6 @@
 		button {
 			margin: auto;
 			@include icon-btn(1.5rem, 1rem);
-		}
-
-		.cross {
-			position: absolute;
-			top: $sp-300;
-			right: $sp-300;
-			width: 1.5rem;
-			height: 1.5rem;
 		}
 	}
 </style>
