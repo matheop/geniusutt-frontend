@@ -1,5 +1,5 @@
 <script>
-	export let img: string;
+	export let imgUrl: string;
 	export let title: string;
 	export let desc: string;
 	export let link: string;
@@ -8,7 +8,7 @@
 
 <div class="card">
 	<div class="img">
-		<img class="cover" src={img} alt={title} />
+		<img class="cover" src={imgUrl} alt={title} />
 	</div>
 	<h4>
 		{title}

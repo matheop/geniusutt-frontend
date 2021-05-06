@@ -3,28 +3,30 @@
 
 	export let name: string;
 	export let position: string;
-	export let img: string;
+	export let imgUrl: string;
 	export let desc: string;
 	export let imgSide: "left" | "right" = "left";
 </script>
 
-<div class="info-box">
+<article>
 	<h2 style="text-align: {imgSide}">{name} – {position}</h2>
 	<hr />
 	<div
 		class="flex-content"
 		style="flex-direction: {imgSide === 'right' && !$isPhone
 			? 'row-reverse'
+			: imgSide === 'left' && !$isPhone
+			? 'row'
 			: ''}">
 		<div class="img-cover {imgSide}">
-			<img class="cover" src={img} alt={name} />
+			<img class="cover" src={imgUrl} alt={name} />
 		</div>
 		<p>{@html desc}</p>
 	</div>
-</div>
+</article>
 
 <style lang="scss">
-	.info-box {
+	article {
 		width: 100%;
 		height: 100%;
 		color: $white;
