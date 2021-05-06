@@ -69,7 +69,7 @@
 	</PopIn>
 
 	{#if showVideo}
-		<VideoPopIn {name} {videoUrl} bind:showVideo />
+		<VideoPopIn title={name} {videoUrl} bind:showVideo />
 	{/if}
 {/if}
 

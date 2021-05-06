@@ -1,5 +1,8 @@
 <script>
+	import CoachingCard from "$components/coaching/CoachingCard.svelte";
 	import ObjectiveBanner from "$components/coaching/ObjectiveBanner.svelte";
+	import VideoPopIn from "$components/events/utils/VideoPopIn.svelte";
+	import { isPhone } from "$stores/media";
 
 	interface Objective {
 		title: string;
@@ -39,8 +42,72 @@
 			imgSide: "right",
 		},
 	];
+
+	interface CoachingCard {
+		title: string;
+		desc: string;
+		color: "blue" | "yellow";
+		displayBtn: boolean;
+		videoUrl: string;
+	}
+
+	const cards: CoachingCard[] = [
+		{
+			title: "Coaching EGEE",
+			desc: `Fréquence : 4-5 fois /semestre
+			\nType : Coaching personnalisé
+			\nConcept : d’anciens entrepreneurs aident individuellement les porteurs de projet selon leurs problématiques. Un Coach est assigné à un projet pour 1 semestre à minima et permet un meilleur accompagnement.`,
+			color: "blue",
+			displayBtn: true,
+			videoUrl: "https://www.youtube.com/embed/tgbNymZ7vqY",
+		},
+		{
+			title: "Coaching EGEE",
+			desc: `Fréquence : 4-5 fois /semestre
+			\nType : Coaching personnalisé
+			\nConcept : d’anciens entrepreneurs aident individuellement les porteurs de projet selon leurs problématiques. Un Coach est assigné à un projet pour 1 semestre à minima et permet un meilleur accompagnement.`,
+			color: "yellow",
+			displayBtn: false,
+			videoUrl: "https://www.youtube.com/embed/tgbNymZ7vqY",
+		},
+	];
 </script>
+
+{#each cards as { title, desc, color, displayBtn, videoUrl }}
+	<div class="card-container">
+		{#if !$isPhone}
+			<iframe {title} src={videoUrl} />
+		{/if}
+		<div class="info">
+			<CoachingCard
+				{title}
+				{desc}
+				{color}
+				{displayBtn}
+				{videoUrl} />
+		</div>
+	</div>
+{/each}
 
 {#each objectives as { title, desc, imgUrl, imgSide }}
 	<ObjectiveBanner {title} {desc} {imgUrl} {imgSide} />
 {/each}
+
+<style lang="scss">
+	.card-container {
+		@include min-tablet {
+			@include grid-12;
+		}
+		iframe {
+			@include br-500;
+			@include ds-500;
+			grid-column: 1 / 9;
+			width: 100%;
+			height: 25rem;
+		}
+
+		.info {
+			grid-column: 9 / -1;
+		}
+	}
+</style>

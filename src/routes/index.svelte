@@ -23,7 +23,7 @@
 
 	<ObjectiveCard
 		link="uikit"
-		img="/img/helping-hand.jpeg"
+		imgUrl="/img/helping-hand.jpeg"
 		title="Aider 🤝"
 		desc="Les étudiants à développer leur projet en les accompagnant tout le long de leur formation." />
 

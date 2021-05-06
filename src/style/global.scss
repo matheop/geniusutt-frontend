@@ -130,6 +130,7 @@ button {
 	padding: $sp-200 $sp-300;
 	@include caption;
 	cursor: pointer;
+	display: block;
 
 	// LINK
 	&.link {
