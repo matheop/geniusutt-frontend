@@ -25,6 +25,14 @@
 
 <Header />
 
-<slot />
+<main>
+	<slot />
+</main>
 
 <Footer />
+
+<style lang="scss">
+	main {
+		margin-top: $headerHeight;
+	}
+</style>

@@ -27,9 +27,7 @@
 		title="Aider 🤝"
 		desc="Les étudiants à développer leur projet en les accompagnant tout le long de leur formation." />
 
-	<button class="fill-blue" on:click={() => form.set()}>
-		Contact
-	</button>
+	<button class="fill-blue" on:click={form.set}>Contact</button>
 </main>
 
 <style lang="scss">

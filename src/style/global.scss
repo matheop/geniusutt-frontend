@@ -131,6 +131,7 @@ button {
 	@include caption;
 	cursor: pointer;
 	display: block;
+	text-decoration: none;
 
 	// LINK
 	&.link {
@@ -219,7 +220,8 @@ a {
 	}
 
 	&.header-link,
-	&.yellow-link {
+	&.yellow-link,
+	&.no-deco {
 		text-decoration: none;
 	}
 
@@ -229,7 +231,8 @@ a {
 			opacity: 0;
 			@include transition(opacity 0.4s);
 		}
-		&:hover {
+		&:hover,
+		&.active {
 			&:after {
 				opacity: 1;
 				@include transition(opacity 0.4s);
