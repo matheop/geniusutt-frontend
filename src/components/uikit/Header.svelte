@@ -11,7 +11,7 @@
 
 <header>
 	<div class="global-container">
-		<a href="/">
+		<a aria-label="Accueil" href="/">
 			<div class="logo">
 				<i>
 					<GeniusUtt />

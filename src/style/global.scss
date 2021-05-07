@@ -248,7 +248,7 @@ a {
 }
 
 /* -----------------
-	IMAGES & RELATED
+	IMAGES & SVG
 ----------------- */
 
 img.cover {
@@ -261,6 +261,25 @@ img.cover {
 	overflow: hidden;
 	@include circle;
 	// add width & height
+}
+
+svg {
+	&.white {
+		path {
+			fill: $white;
+		}
+	}
+
+	&.black {
+		path {
+			fill: $black;
+		}
+	}
+	&.yellow {
+		path {
+			fill: $sec-500;
+		}
+	}
 }
 
 /* -----------------
