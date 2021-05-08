@@ -37,6 +37,51 @@
 			compo: CheckedCalendar,
 		},
 	];
+
+	interface Objective {
+		link: string;
+		imgUrl: string;
+		title: string;
+		desc: string;
+		position: string;
+		target_blank?: boolean;
+	}
+
+	const objectives: Objective[] = [
+		{
+			link: "uikit",
+			imgUrl: "/img/helping-hand.jpeg",
+			title: "🤝 Aider...",
+			desc:
+				"Les étudiants à développer leur projet en les accompagnant tout le long de leur formation",
+			position: "top",
+		},
+		{
+			link: "/equipe",
+			imgUrl: "/img/helping-hand.jpeg",
+			title: "🎓 Découvrir...",
+			desc:
+				"La vie associative et développer de nouvelles compétences complémentaires à la formation",
+			position: "right",
+		},
+		{
+			link: "https://geniusglobal.fr/",
+			imgUrl: "/img/helping-hand.jpeg",
+			title: "🙏 Rencontrer...",
+			desc:
+				"Un nouveau réseau d’étudiants et d’entrepreneurs ambitieux, motivés, et cool !",
+			position: "bottom",
+			target_blank: true,
+		},
+		{
+			link: "/evenements",
+			imgUrl: "/img/helping-hand.jpeg",
+			title: "✨ Inspirer...",
+			desc:
+				"Les étudiants à entreprendre et à repousser leurs propres limites à travers différents événements",
+			position: "left",
+		},
+	];
 </script>
 
 <main class="page-pd">
@@ -81,7 +126,9 @@
 			{/each}
 		</Sweeper>
 
-		<button class="outline-yellow">En savoir +</button>
+		<a href="/equipe" class="no-deco">
+			<button class="outline-yellow">En savoir +</button>
+		</a>
 	</section>
 
 	<section class="genius-global pb-500-inner">
@@ -128,16 +175,30 @@
 				{/each}
 			</Sweeper>
 
-			<button class="fill-blue">Découvrir Genius Global</button>
+			<a
+				href="https://geniusglobal.fr/"
+				target="_blank"
+				class="no-deco">
+				<button class="fill-blue"
+					>Découvrir Genius Global</button>
+			</a>
 		</div>
 	</section>
 
-	<section class="global-container pb-500-inner">
-		<ObjectiveCard
-			link="uikit"
-			imgUrl="/img/helping-hand.jpeg"
-			title="Aider 🤝"
-			desc="Les étudiants à développer leur projet en les accompagnant tout le long de leur formation." />
+	<section class="global-container page-pd pb-500-inner">
+		<h2>Genius, à votre service !</h2>
+		<div class="obj-grid">
+			{#each objectives as { link, imgUrl, title, desc, position, target_blank }}
+				<div class={position}>
+					<ObjectiveCard
+						{link}
+						{imgUrl}
+						{title}
+						{desc}
+						{target_blank} />
+				</div>
+			{/each}
+		</div>
 	</section>
 </main>
 
@@ -187,6 +248,39 @@
 					@include desktop {
 						top: -50%;
 					}
+				}
+			}
+		}
+
+		.obj-grid {
+			display: grid;
+			grid-gap: $sp-500;
+
+			& > * {
+				margin: auto;
+			}
+
+			@include min-tablet {
+				grid-template-columns: repeat(3, 1fr);
+				grid-template-rows: repeat(4, 1fr);
+
+				.top {
+					grid-column: 2/3;
+					grid-row: 1/3;
+				}
+				.right {
+					grid-column: 3/-1;
+					grid-row: 2/4;
+					margin-left: 0;
+				}
+				.bottom {
+					grid-column: 2/3;
+					grid-row: 3/-1;
+				}
+				.left {
+					grid-column: 1/2;
+					grid-row: 2/4;
+					margin-right: 0;
 				}
 			}
 		}

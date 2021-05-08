@@ -73,6 +73,7 @@
 		}
 
 		h1 {
+			color: $black;
 			text-align: center;
 			text-transform: uppercase;
 			margin-bottom: $sp-400;
