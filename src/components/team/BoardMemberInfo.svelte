@@ -9,7 +9,11 @@
 </script>
 
 <article>
-	<h2 style="text-align: {imgSide}">{name} – {position}</h2>
+	<h2 style="text-align: {imgSide}">
+		{name}
+		{@html $isPhone ? "<br/>" : " – "}
+		<span>{position}</span>
+	</h2>
 	<hr />
 	<div
 		class="flex-content"
@@ -28,14 +32,16 @@
 <style lang="scss">
 	article {
 		width: 100%;
-		height: 100%;
 		color: $white;
 		background-color: $prim-900;
 
 		h2 {
 			@include phone {
-				@include t4;
 				text-align: center !important;
+
+				span {
+					@include t4;
+				}
 			}
 		}
 
