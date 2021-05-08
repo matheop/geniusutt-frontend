@@ -1,7 +1,7 @@
 <script>
 	import LinkedIn from "$svg/networks/LinkedIn.svelte";
 
-	export let img: string;
+	export let imgUrl: string;
 	export let name: string;
 	export let position: string;
 	export let desc: string;
@@ -13,12 +13,12 @@
 		<!-- FRONT -->
 		<div class="flip-front">
 			<div class="img-cover">
-				<img class="cover" src={img} alt={name} />
+				<img class="cover" src={imgUrl} alt={name} />
 			</div>
 			<h5 class="light">
 				{name}
 			</h5>
-			<p class="label">
+			<p>
 				{position}
 			</p>
 		</div>
@@ -41,6 +41,7 @@
 <style lang="scss">
 	.profile-card {
 		width: 13.5rem;
+		min-width: 13.5rem;
 		height: 17rem;
 		perspective: 1000px; // 3D effect
 
@@ -92,6 +93,10 @@
 				h5 {
 					margin-bottom: $sp-100;
 					@include backface-visibility; // bc h5 also exists in .flip-back
+				}
+
+				p {
+					text-align: center;
 				}
 			}
 

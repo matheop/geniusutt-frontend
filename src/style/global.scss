@@ -42,6 +42,15 @@ body {
 	@include container-width;
 }
 
+.page-pd {
+	--pdg: #{$sp-700};
+	@include py(var(--pdg));
+
+	@include phone {
+		--pdg: #{$sp-500};
+	}
+}
+
 h1 {
 	color: $white;
 	@include t1;
