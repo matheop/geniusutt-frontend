@@ -120,8 +120,7 @@
 	}
 
 	@include desktop {
-		@include flex;
-		max-width: 80vw;
+		max-width: 76vw;
 		margin: auto;
 	}
 

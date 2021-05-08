@@ -51,6 +51,26 @@ body {
 	}
 }
 
+.pb-500-inner > * {
+	--pb-500: #{$sp-500};
+
+	@include phone {
+		--pb: #{$sp-300};
+	}
+	&:not(:last-child) {
+		padding-bottom: var(--pb-500);
+	}
+}
+
+.pb-500 {
+	--pb-500: #{$sp-500};
+
+	@include phone {
+		--pb: #{$sp-300};
+	}
+	padding-bottom: var(--pb-500);
+}
+
 h1 {
 	color: $white;
 	@include t1;
@@ -80,6 +100,12 @@ h5 {
 p {
 	@include body1-light;
 	text-align: justify;
+
+	&.block {
+		@include min-tablet {
+			@include px(5vw);
+		}
+	}
 }
 
 h6 {

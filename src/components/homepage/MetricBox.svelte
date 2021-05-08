@@ -1,5 +1,5 @@
 <script>
-	export let metric: number;
+	export let metric: string;
 	export let label: string;
 	export let color: "blue" | "yellow" = "blue";
 </script>
@@ -26,6 +26,7 @@
 		grid-template-rows: 1fr 1fr;
 
 		width: 13rem;
+		max-width: 13rem;
 		height: 11rem;
 		padding: $sp-300;
 		background-color: $white;
