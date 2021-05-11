@@ -172,6 +172,7 @@ button {
 	cursor: pointer;
 	display: block;
 	text-decoration: none;
+	@include transition($transition);
 
 	// LINK
 	&.link {
@@ -187,6 +188,8 @@ button {
 		&.focus,
 		&.active {
 			@include btn($prim-700, $white, $br-500);
+			@include transition($transition);
+			transform: translateY(-#{$sp-50});
 		}
 	}
 	&.outline-blue {

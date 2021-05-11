@@ -24,6 +24,7 @@
 
 <style lang="scss">
 	article {
+		color: $white;
 		@include flex-y;
 		text-align: justify;
 		flex-direction: column;

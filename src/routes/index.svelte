@@ -4,6 +4,7 @@
 	import ProfileCard from "$components/homepage/ProfileCard.svelte";
 	import Sweeper from "$components/templates/Sweeper.svelte";
 	import { boardmembers } from "$helpers/boardmembers";
+	import { isPhone } from "$stores/media";
 	import CheckedCalendar from "$svg/homepage/CheckedCalendar.svelte";
 	import Members from "$svg/homepage/Members.svelte";
 	import University from "$svg/homepage/University.svelte";
@@ -112,7 +113,7 @@
 		</p>
 	</section>
 
-	<section class="pb-500-inner">
+	<section class="board pb-500-inner">
 		<h2>Le Bureau</h2>
 
 		<Sweeper contentWidth="13.5rem">
@@ -179,8 +180,9 @@
 				href="https://geniusglobal.fr/"
 				target="_blank"
 				class="no-deco">
-				<button class="fill-blue"
-					>Découvrir Genius Global</button>
+				<button class="fill-blue">
+					Découvrir Genius Global
+				</button>
 			</a>
 		</div>
 	</section>
@@ -227,9 +229,64 @@
 			}
 		}
 
+		.board {
+			@include min-tablet {
+				:global(.sweeper) {
+					display: grid;
+					grid: repeat(8, calc(17rem / 3)) / repeat(9, 1fr);
+					max-width: $maxWidth;
+					margin: auto;
+				}
+
+				:global(.profile-card) {
+					margin: auto;
+					padding: 0;
+
+					&:first-child {
+						grid-column: 2 / 4;
+					}
+					&:nth-child(2) {
+						grid-column: 4 / -4;
+						grid-row: 1 / 5;
+					}
+					&:nth-child(3) {
+						grid-column: -4 / -2;
+					}
+					&:nth-child(4) {
+						grid-column: -5 / -3;
+						margin-left: 0;
+					}
+					&:nth-child(5) {
+						grid-column: 3 / 5;
+						margin-right: 0;
+					}
+					&:nth-child(4),
+					&:last-child {
+						grid-row: 6 / -1;
+					}
+					&:first-child,
+					&:nth-child(3) {
+						grid-row: 2 / 5;
+					}
+				}
+			}
+		}
+
 		.genius-global {
 			padding-top: $sp-700;
 			background-color: $prim-900;
+
+			@include min-tablet {
+				:global(.sweeper) {
+					max-width: $maxWidth;
+					margin: auto;
+					justify-content: space-around;
+				}
+				.metric {
+					margin: 0;
+					@include px(0);
+				}
+			}
 
 			.shape-container {
 				position: relative;
