@@ -9,6 +9,7 @@
 	import Members from "$svg/homepage/Members.svelte";
 	import University from "$svg/homepage/University.svelte";
 	import YellowShape from "$svg/homepage/YellowShape.svelte";
+	import Star1 from "$svg/stars/Star1.svelte";
 	import type { SvelteComponent } from "svelte";
 
 	interface MetricBox {
@@ -141,6 +142,9 @@
 <section class="board pb-500-inner">
 	<h2>Le Bureau</h2>
 
+	<i>
+		<Star1 />
+	</i>
 	<Sweeper contentWidth="13.5rem">
 		{#each boardmembers as m}
 			<ProfileCard
@@ -338,7 +342,17 @@
 	}
 
 	.board {
+		position: relative;
+		i {
+			display: none;
+		}
 		@include min-tablet {
+			i {
+				display: block;
+				position: absolute;
+				bottom: 10%;
+				left: 20%;
+			}
 			:global(.sweeper) {
 				display: grid;
 				grid: repeat(8, calc(17rem / 3)) / repeat(9, 1fr);
@@ -352,6 +366,9 @@
 
 				&:first-child {
 					grid-column: 2 / 4;
+					@include tablet {
+						grid-column: 1 / 4;
+					}
 				}
 				&:nth-child(2) {
 					grid-column: 4 / -4;
@@ -359,6 +376,9 @@
 				}
 				&:nth-child(3) {
 					grid-column: -4 / -2;
+					@include tablet {
+						grid-column: -4 / -1;
+					}
 				}
 				&:nth-child(4) {
 					grid-column: -5 / -3;
@@ -367,6 +387,9 @@
 				&:nth-child(5) {
 					grid-column: 3 / 5;
 					margin-right: 0;
+					@include tablet {
+						grid-column: 2 / 5;
+					}
 				}
 				&:nth-child(4),
 				&:last-child {
@@ -470,6 +493,7 @@
 
 		p {
 			@include container-width;
+			@include px($sp-800 !important);
 		}
 
 		button {

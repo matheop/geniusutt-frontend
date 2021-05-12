@@ -191,6 +191,10 @@
 	-ms-transition: #{$str};
 	transition: #{$str};
 }
+@mixin animation($str) {
+	-webkit-animation: #{$str};
+	animation: #{$str};
+}
 
 @mixin box-shadow($str) {
 	-webkit-box-shadow: $str;
