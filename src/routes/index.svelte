@@ -4,7 +4,6 @@
 	import ProfileCard from "$components/homepage/ProfileCard.svelte";
 	import Sweeper from "$components/templates/Sweeper.svelte";
 	import { boardmembers } from "$helpers/boardmembers";
-	import { isPhone } from "$stores/media";
 	import CheckedCalendar from "$svg/homepage/CheckedCalendar.svelte";
 	import Members from "$svg/homepage/Members.svelte";
 	import University from "$svg/homepage/University.svelte";
@@ -83,6 +82,14 @@
 			position: "left",
 		},
 	];
+
+	const partners: string[] = [
+		"/img/partner-fondation.png",
+		"/img/partner-utt.png",
+		"/img/partner-aubassadeur.png",
+		"/img/partner-pumpkin.png",
+		"/img/partner-sparkmate.png",
+	];
 </script>
 
 <main class="page-pd">
@@ -132,7 +139,7 @@
 		</a>
 	</section>
 
-	<section class="genius-global pb-500-inner">
+	<section class="genius-global page-pd pb-500-inner">
 		<article class="global-container pb-500-inner">
 			<h2>Genius Global – A plusieurs, plus loin</h2>
 			<p class="block">
@@ -187,7 +194,7 @@
 		</div>
 	</section>
 
-	<section class="global-container page-pd pb-500-inner">
+	<section class="page-pd pb-500-inner">
 		<h2>Genius, à votre service !</h2>
 		<div class="obj-grid">
 			{#each objectives as { link, imgUrl, title, desc, position, target_blank }}
@@ -202,6 +209,39 @@
 			{/each}
 		</div>
 	</section>
+
+	<section class="partnerships page-pd pb-500-inner">
+		<h2>Nos partenaires</h2>
+
+		<Sweeper contentWidth="10rem">
+			{#each partners as p}
+				<i>
+					<img src={p} alt={p} />
+				</i>
+			{/each}
+		</Sweeper>
+
+		<h3>Pourquoi devenir Partenaire ?</h3>
+
+		<p class="block">
+			Lorem Ipsum is simply dummy text of the printing and
+			typesetting industry. Lorem Ipsum has been the industry's
+			standard dummy text ever since the 1500s, when an unknown
+			printer took a galley of type and scrambled it to make a
+			type specimen book. It has survived not only five
+			centuries, but also the leap into electronic typesetting,
+			remaining essentially unchanged. It was popularised in the
+			1960s with the release of Letraset sheets containing Lorem
+			Ipsum passages, and more recently with desktop publishing
+			software like Aldus PageMaker including versions of Lorem
+			Ipsum. Lorem Ipsum is simply dummy text of the printing
+			and typesetting industry. Lorem Ipsum has been the
+			industry's standard dummy text ever since the 1500s, when
+			an unknown printer took a galley of type
+		</p>
+
+		<button class="fill-blue"> Devenir Partenaire ! </button>
+	</section>
 </main>
 
 <style lang="scss">
@@ -209,10 +249,12 @@
 		background-color: $black;
 
 		h2,
+		h3,
 		p {
 			color: $white;
 		}
-		h2 {
+		h2,
+		h3 {
 			text-align: center;
 		}
 		button {
@@ -273,7 +315,6 @@
 		}
 
 		.genius-global {
-			padding-top: $sp-700;
 			background-color: $prim-900;
 
 			@include min-tablet {
@@ -338,6 +379,66 @@
 					grid-column: 1/2;
 					grid-row: 2/4;
 					margin-right: 0;
+				}
+			}
+		}
+
+		.partnerships {
+			background-color: $prim-900;
+
+			:global(.sweeper) {
+				background-color: $sec-500;
+				@include py($sp-400);
+				margin-bottom: $sp-500;
+
+				@include min-tablet {
+					@include py($sp-600);
+					max-width: 100%;
+					margin: auto auto $sp-500 auto;
+					justify-content: space-around;
+					align-items: center;
+					gap: $sp-600;
+					@include px($sp-800);
+				}
+			}
+			h3 {
+				@include t3-light;
+			}
+
+			p {
+				@include container-width;
+			}
+
+			button {
+				margin-top: 0;
+			}
+
+			i {
+				@include flex;
+
+				@include min-tablet {
+					height: 7rem;
+					width: calc(100% / 5);
+					margin: 0;
+					padding: 0;
+
+					img {
+						max-width: 100%;
+					}
+				}
+
+				@include phone {
+					height: 6rem;
+					&:last-child {
+						padding-right: 15vw;
+
+						img {
+							max-width: 70vw;
+						}
+					}
+				}
+				img {
+					max-height: 100%;
 				}
 			}
 		}
