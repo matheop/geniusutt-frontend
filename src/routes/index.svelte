@@ -2,6 +2,7 @@
 	import MetricBox from "$components/homepage/MetricBox.svelte";
 	import ObjectiveCard from "$components/homepage/ObjectiveCard.svelte";
 	import ProfileCard from "$components/homepage/ProfileCard.svelte";
+	import Seo from "$components/templates/SEO.svelte";
 	import Sweeper from "$components/templates/Sweeper.svelte";
 	import { boardmembers } from "$helpers/boardmembers";
 	import CheckedCalendar from "$svg/homepage/CheckedCalendar.svelte";
@@ -91,6 +92,8 @@
 		"/img/partner-sparkmate.png",
 	];
 </script>
+
+<Seo title="Genius UTT | Accueil" url="TODO" image="TODO" />
 
 <main class="page-pd">
 	<section class="global-container pb-500-inner">

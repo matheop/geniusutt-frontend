@@ -1,7 +1,7 @@
 <script>
 	import CoachingCard from "$components/coaching/CoachingCard.svelte";
 	import ObjectiveBanner from "$components/coaching/ObjectiveBanner.svelte";
-	import VideoPopIn from "$components/events/utils/VideoPopIn.svelte";
+	import Seo from "$components/templates/SEO.svelte";
 	import { isPhone } from "$stores/media";
 
 	interface Objective {
@@ -72,6 +72,8 @@
 		},
 	];
 </script>
+
+<Seo title="Genius UTT | Coaching" url="TODO" image="TODO" />
 
 {#each cards as { title, desc, color, displayBtn, videoUrl }}
 	<div class="card-container">

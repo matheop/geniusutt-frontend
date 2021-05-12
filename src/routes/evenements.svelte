@@ -1,7 +1,10 @@
 <script>
 	import EventDesktop from "$components/events/EventDesktop.svelte";
 	import EventMobile from "$components/events/EventMobile.svelte";
+	import Seo from "$components/templates/SEO.svelte";
 </script>
+
+<Seo title="Genius UTT | Événements" url="TODO" image="TODO" />
 
 <main class="global-container">
 	<section>

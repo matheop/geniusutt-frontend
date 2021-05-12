@@ -1,8 +1,11 @@
 <script>
 	import BoardMemberInfo from "$components/team/BoardMemberInfo.svelte";
+	import Seo from "$components/templates/SEO.svelte";
 	import { boardmembers } from "$helpers/boardmembers";
 	import { isPhone } from "$stores/media";
 </script>
+
+<Seo title="Genius UTT | Bureau" url="TODO" image="TODO" />
 
 <main class="global-container page-pd">
 	<section>
