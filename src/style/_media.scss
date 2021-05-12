@@ -93,6 +93,12 @@ $screen-xl: 1800px;
 		@content;
 	}
 }
+// ---- Laptops && Desktops (+ Ipads Pro)
+@mixin screen-min-xl {
+	@media (min-width: #{$screen-xl}) {
+		@content;
+	}
+}
 
 /* -----------------
 	CUSTOM
@@ -146,6 +152,12 @@ $screen-xl: 1800px;
 
 @mixin desktop {
 	@include screen-min-md {
+		@content;
+	}
+}
+
+@mixin xl-desktop {
+	@include screen-min-xl {
 		@content;
 	}
 }

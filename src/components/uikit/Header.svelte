@@ -74,6 +74,10 @@
 				@include flex-y;
 				justify-content: space-between;
 
+				@include xl-desktop {
+					grid-column: 3 / -1;
+				}
+
 				@include tablet {
 					grid-column: 3 / -1;
 				}

@@ -7,7 +7,7 @@
 
 <Seo title="Genius UTT | Bureau" url="TODO" image="TODO" />
 
-<main class="global-container page-pd">
+<main class="global-container section-pdg">
 	<section>
 		<h1>le bureau {$isPhone ? "" : " – Genius Utt"}</h1>
 

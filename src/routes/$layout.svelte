@@ -34,6 +34,6 @@
 <style lang="scss">
 	main {
 		margin-top: $headerHeight;
-		background-color: $prim-900;
+		background-color: $black;
 	}
 </style>
