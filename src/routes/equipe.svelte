@@ -22,6 +22,10 @@
 <style lang="scss">
 	main {
 		@include grid-12;
+		--mb: #{$sp-700};
+		@include phone {
+			--mb: #{$sp-500};
+		}
 
 		section {
 			grid-column: 1 / -1;
