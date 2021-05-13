@@ -39,10 +39,11 @@
 	<div>
 		<div>
 			<h2>BUTTONS</h2>
-			<button class="fill-blue">Primary Fill</button>
-			<button class="outline-blue">Primary Outline</button>
-			<button class="fill-yellow">Secondary Fill</button>
-			<button class="outline-yellow">Secondary Outline</button>
+			<button class="fill-blue-btn">Primary Fill</button>
+			<button class="outline-blue-btn">Primary Outline</button>
+			<button class="fill-yellow-btn">Secondary Fill</button>
+			<button class="outline-yellow-btn"
+				>Secondary Outline</button>
 			<button class="link">Link Button</button>
 		</div>
 		<div>
@@ -74,7 +75,7 @@
 		<div>
 			<h2>MODAL</h2>
 
-			<button class="outline-blue" on:click={showModal}
+			<button class="outline-blue-btn" on:click={showModal}
 				>Show Modal</button>
 		</div>
 	</div>

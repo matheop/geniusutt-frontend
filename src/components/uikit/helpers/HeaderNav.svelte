@@ -21,9 +21,9 @@
 	COACHING
 </a>
 <a class="no-deco" href="/evenements" on:click>
-	<button class="outline-yellow">Events</button>
+	<button class="outline-yellow-btn">Events</button>
 </a>
-<button class="fill-blue contact" on:click on:click={form.set}>
+<button class="fill-blue-btn contact" on:click on:click={form.set}>
 	Contact
 	<i>
 		<PaperPlane />

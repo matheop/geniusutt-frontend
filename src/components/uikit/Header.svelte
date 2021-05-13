@@ -79,7 +79,7 @@
 				}
 
 				@include tablet {
-					grid-column: 3 / -1;
+					grid-column: 5 / -1;
 				}
 
 				@include phone {

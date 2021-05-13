@@ -160,7 +160,7 @@
 	</Sweeper>
 
 	<a href="/equipe" class="no-deco">
-		<button class="outline-yellow">En savoir +</button>
+		<button class="outline-yellow-btn">En savoir +</button>
 	</a>
 </section>
 
@@ -210,7 +210,7 @@
 			href="https://geniusglobal.fr/"
 			target="_blank"
 			class="no-deco">
-			<button class="fill-blue">
+			<button class="fill-blue-btn">
 				Découvrir Genius Global
 			</button>
 		</a>
@@ -263,7 +263,7 @@
 		galley of type
 	</p>
 
-	<button class="fill-blue"> Devenir Partenaire ! </button>
+	<button class="fill-blue-btn"> Devenir Partenaire ! </button>
 </section>
 
 <style lang="scss">

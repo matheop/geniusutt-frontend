@@ -50,7 +50,7 @@
 			<TextMessage placeholder="Votre message..." />
 		</div>
 
-		<button class="fill-blue">
+		<button class="fill-blue-btn">
 			C'est parti !
 			<i>
 				<PaperPlane />

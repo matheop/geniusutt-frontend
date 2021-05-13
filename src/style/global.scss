@@ -5,7 +5,7 @@
 :root {
 	font-size: calc(50% + 0.4vw);
 	@include screen-md {
-		font-size: calc(50% + 0.85vw);
+		font-size: calc(50% + 0.5vw);
 	}
 	@include phone {
 		font-size: calc(80% + 0.5vw);
@@ -70,6 +70,8 @@ body {
 	}
 	padding-bottom: var(--pb-500);
 }
+
+// Titles & Bodies
 
 h1 {
 	color: $white;
@@ -181,7 +183,7 @@ button {
 	}
 
 	// BLUE BTN
-	&.fill-blue {
+	&.fill-blue-btn {
 		@include btn($prim-500, $white, $br-500);
 
 		&:hover,
@@ -192,7 +194,7 @@ button {
 			transform: translateY(-#{$sp-50});
 		}
 	}
-	&.outline-blue {
+	&.outline-blue-btn {
 		@include btn(transparent, $prim-500, $br-500, $prim-500);
 
 		&:hover,
@@ -203,7 +205,7 @@ button {
 	}
 
 	// YELLOW BTN
-	&.fill-yellow {
+	&.fill-yellow-btn {
 		@include btn($sec-500, $white, $br-500);
 
 		&:hover,
@@ -212,7 +214,7 @@ button {
 			@include btn($sec-700, $white, $br-500);
 		}
 	}
-	&.outline-yellow {
+	&.outline-yellow-btn {
 		@include btn(transparent, $sec-500, $br-500, $sec-500);
 
 		&:hover,

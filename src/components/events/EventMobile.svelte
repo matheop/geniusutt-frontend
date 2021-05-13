@@ -1,21 +1,13 @@
 <script>
 	import PopIn from "$components/templates/PopIn.svelte";
+	import type { Event } from "$helpers/interfaces/events";
 	import Cross from "$svg/Cross.svelte";
 	import Info from "$svg/Info.svelte";
 	import EventInfo from "./utils/EventInfo.svelte";
 	import VideoPopIn from "./utils/VideoPopIn.svelte";
 
-	export let name: string;
-	export let desc: string;
-	export let date: string;
-	export let imgUrl: string;
-	export let videoUrl: string =
-		"https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1";
-	export let eventInfo: string[] = [date, "Dev Perso"];
-	export let tags: string[] = ["Conférence", "Dev Perso"];
+	export let event: Event;
 
-	// TODO: gestion auto avec moment
-	export let upcomingEvent: boolean = true;
 	let showInfo: boolean = false;
 	let showVideo: boolean = false;
 	let maxHeight: string = "90vh";
@@ -23,14 +15,14 @@
 
 <article on:click={() => (showInfo = true)}>
 	<div class="info">
-		<h4>{name}</h4>
-		<p>{date}</p>
+		<h4>{event.name}</h4>
+		<p>{event.date}</p>
 		<i>
 			<Info />
 		</i>
 	</div>
 	<div class="tags">
-		{#each tags as tag}
+		{#each event.tags as tag}
 			<span class="tag">{tag}</span>
 		{/each}
 	</div>
@@ -46,30 +38,48 @@
 			</div>
 
 			<div class="img-cover">
-				<img class="cover" src={imgUrl} alt={name} />
+				<img
+					class="cover"
+					src={event.imgUrl}
+					alt={event.name} />
 			</div>
 
-			<h3>{name}</h3>
+			<h3>{event.name}</h3>
 
 			<div>
-				<EventInfo {eventInfo} />
+				<EventInfo
+					eventInfo={[
+						event.date,
+						event.schedule,
+						event.place,
+					]} />
 			</div>
 
-			<p>{desc}</p>
+			<p>{event.desc}</p>
 
-			{#if !!videoUrl}
+			{#if !!event.videoUrl}
 				<button
 					on:click={() => (showVideo = true)}
 					class="link video">Voir la vidéo</button>
 			{/if}
-			{#if upcomingEvent}
-				<button class="fill-blue">Participer</button>
+			{#if event.upcoming}
+				<a
+					href={event.eventUrl}
+					target="_blank"
+					class="no-deco">
+					<button class="fill-blue-btn">
+						Je participe !
+					</button>
+				</a>
 			{/if}
 		</section>
 	</PopIn>
 
 	{#if showVideo}
-		<VideoPopIn title={name} {videoUrl} bind:showVideo />
+		<VideoPopIn
+			title={event.name}
+			videoUrl={event.videoUrl}
+			bind:showVideo />
 	{/if}
 {/if}
 

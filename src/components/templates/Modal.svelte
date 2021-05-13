@@ -25,7 +25,7 @@
 		<div class="btn-box">
 			<button class="outline-danger" on:click={action_btn1}
 				>{btn1}</button>
-			<button class="fill-blue" on:click={action_btn2}
+			<button class="fill-blue-btn" on:click={action_btn2}
 				>{btn2}</button>
 		</div>
 	</section>
