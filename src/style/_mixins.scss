@@ -189,16 +189,11 @@
 	transform: #{$str};
 }
 
-/* ---- Transitions ----*/
 @mixin transition($str) {
 	-webkit-transition: #{$str};
 	-moz-transition: #{$str};
 	-ms-transition: #{$str};
 	transition: #{$str};
-}
-@mixin animation($str) {
-	-webkit-animation: #{$str};
-	animation: #{$str};
 }
 
 @mixin box-shadow($str) {
@@ -212,6 +207,11 @@
 	backface-visibility: $value;
 }
 
+/* Animation */
+@mixin animation($str) {
+	-webkit-animation: #{$str};
+	animation: #{$str};
+}
 @mixin anim($anim) {
 	@keyframes #{$anim} {
 		@content;

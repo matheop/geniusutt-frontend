@@ -111,7 +111,7 @@
 			Fais décoller ton projet grâce à la branche
 			entrepreneuriat !
 		</h2>
-		<button on:click={$form.set} class="fill-blue-btn">
+		<button on:click={form.set} class="fill-blue-btn">
 			J'ai un projet !
 		</button>
 	</div>
@@ -209,12 +209,22 @@
 			max-width: 55%;
 			@include mx(12vw);
 
+			& > * {
+				opacity: 0;
+				@include animation(fadein 2s linear forwards);
+			}
+
 			h1,
 			h2 {
+				animation-delay: 1s;
 				text-align: left;
 			}
 			h2 {
 				@include t2-light;
+				animation-delay: 2s;
+			}
+			button {
+				animation-delay: 3s;
 			}
 		}
 
@@ -226,7 +236,8 @@
 			position: absolute;
 			right: 12.5%;
 			bottom: -446px; // lightbeams height
-			@include animation(slide-top 10s linear 1s infinite);
+			@include animation(slide-top 10s linear 3.5s infinite);
+			transition-delay: 3s;
 			opacity: 0;
 		}
 	}
@@ -289,6 +300,16 @@
 			@include ds-500;
 			width: 100%;
 			height: 25rem;
+		}
+	}
+
+	@include anim(fadein) {
+		0% {
+			opacity: 0;
+		}
+
+		100% {
+			opacity: 1;
 		}
 	}
 
