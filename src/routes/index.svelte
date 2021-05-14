@@ -318,7 +318,7 @@
 		}
 		.content {
 			position: relative;
-			padding-top: 20%;
+			padding-top: 20vh;
 			z-index: 10;
 			h3 {
 				text-align: left;

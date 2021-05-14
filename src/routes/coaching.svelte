@@ -2,7 +2,9 @@
 	import CoachingCard from "$components/coaching/CoachingCard.svelte";
 	import ObjectiveBanner from "$components/coaching/ObjectiveBanner.svelte";
 	import Seo from "$components/templates/SEO.svelte";
+	import { form } from "$stores/contact-form";
 	import { isPhone } from "$stores/media";
+	import RocketTakeOff from "$svg/stars/RocketTakeOff.svelte";
 	import Star2 from "$svg/stars/Star2.svelte";
 
 	interface Objective {
@@ -102,6 +104,25 @@
 
 <Seo title="Genius UTT | Coaching" url="TODO" image="TODO" />
 
+<section class="rocket">
+	<div class="global-container content pb-500-inner">
+		<h1>Genius Coaching</h1>
+		<h2>
+			Fais décoller ton projet grâce à la branche
+			entrepreneuriat !
+		</h2>
+		<button on:click={$form.set} class="fill-blue-btn">
+			J'ai un projet !
+		</button>
+	</div>
+	<i class="stars">
+		<Star2 />
+	</i>
+	<i class="bfr">
+		<RocketTakeOff />
+	</i>
+</section>
+
 <section class="objectives section-pdg">
 	<div class="global-container pb-500-inner">
 		<h2 class="pb-700">
@@ -152,7 +173,7 @@
 		</i>
 	</h2>
 
-	{#each events as { title, desc, color, displayBtn, videoUrl, descSide }}
+	{#each projects as { title, desc, color, displayBtn, videoUrl, descSide }}
 		<div class="card-container {descSide}">
 			{#if !$isPhone}
 				<iframe {title} src={videoUrl} />
@@ -173,6 +194,41 @@
 	section {
 		color: $white;
 		text-align: center;
+	}
+
+	.rocket {
+		position: relative;
+		height: calc(100vh - #{$headerHeight});
+		width: 100%;
+		overflow: hidden;
+		padding: 0;
+
+		.content {
+			padding-top: 20vh;
+			z-index: 10;
+			max-width: 55%;
+			@include mx(12vw);
+
+			h1,
+			h2 {
+				text-align: left;
+			}
+			h2 {
+				@include t2-light;
+			}
+		}
+
+		.stars {
+			margin-right: 35%;
+		}
+
+		.bfr {
+			position: absolute;
+			right: 12.5%;
+			bottom: -446px; // lightbeams height
+			@include animation(slide-top 10s linear 1s infinite);
+			opacity: 0;
+		}
 	}
 	.objectives {
 		background-color: $black;
@@ -233,6 +289,26 @@
 			@include ds-500;
 			width: 100%;
 			height: 25rem;
+		}
+	}
+
+	@include anim(slide-top) {
+		0% {
+			opacity: 0;
+		}
+		20% {
+			opacity: 1;
+			@include transform(translateY(0));
+		}
+		40% {
+			@include transform(translateY(-20%));
+		}
+		50% {
+			@include transform(translateY(-60%));
+		}
+		100% {
+			@include transform(translateY(-400%));
+			opacity: 1;
 		}
 	}
 </style>

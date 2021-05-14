@@ -184,6 +184,11 @@
 	Cross-plateform
 ----------------- */
 
+@mixin transform($str) {
+	-webkit-transform: #{$str};
+	transform: #{$str};
+}
+
 /* ---- Transitions ----*/
 @mixin transition($str) {
 	-webkit-transition: #{$str};
@@ -205,4 +210,13 @@
 @mixin backface-visibility($value: hidden) {
 	-webkit-backface-visibility: $value; /* Safari */
 	backface-visibility: $value;
+}
+
+@mixin anim($anim) {
+	@keyframes #{$anim} {
+		@content;
+	}
+	@-webkit-keyframes #{$anim} {
+		@content;
+	}
 }
