@@ -51,24 +51,44 @@ body {
 	}
 }
 
+.pb-700-inner > * {
+	--pb: #{$sp-700};
+
+	@include phone {
+		--pb: #{$sp-500};
+	}
+	&:not(:last-child) {
+		padding-bottom: var(--pb);
+	}
+}
+
 .pb-500-inner > * {
-	--pb-500: #{$sp-500};
+	--pb: #{$sp-500};
 
 	@include phone {
 		--pb: #{$sp-300};
 	}
 	&:not(:last-child) {
-		padding-bottom: var(--pb-500);
+		padding-bottom: var(--pb);
 	}
 }
 
+.pb-700 {
+	--pb: #{$sp-700};
+
+	@include phone {
+		--pb: #{$sp-500};
+	}
+	padding-bottom: var(--pb);
+}
+
 .pb-500 {
-	--pb-500: #{$sp-500};
+	--pb: #{$sp-500};
 
 	@include phone {
 		--pb: #{$sp-300};
 	}
-	padding-bottom: var(--pb-500);
+	padding-bottom: var(--pb);
 }
 
 // Titles & Bodies

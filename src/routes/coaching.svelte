@@ -75,6 +75,15 @@
 
 <Seo title="Genius UTT | Coaching" url="TODO" image="TODO" />
 
+<section class="objectives section-pdg">
+	<div class="global-container pb-500-inner">
+		<h2 class="pb-700">Qu’est-ce que Genius Coaching ?</h2>
+		{#each objectives as { title, desc, imgUrl, imgSide }}
+			<ObjectiveBanner {title} {desc} {imgUrl} {imgSide} />
+		{/each}
+	</div>
+</section>
+
 {#each cards as { title, desc, color, displayBtn, videoUrl }}
 	<div class="card-container">
 		{#if !$isPhone}
@@ -91,11 +100,24 @@
 	</div>
 {/each}
 
-{#each objectives as { title, desc, imgUrl, imgSide }}
-	<ObjectiveBanner {title} {desc} {imgUrl} {imgSide} />
-{/each}
-
 <style lang="scss">
+	section {
+		color: $white;
+		text-align: center;
+	}
+	.objectives {
+		background-color: $black;
+
+		.global-container {
+			@include grid-12;
+			grid-row-gap: 0;
+
+			& > :global(*) {
+				grid-column: 2 / -2;
+			}
+		}
+	}
+
 	.card-container {
 		@include min-tablet {
 			@include grid-12;
