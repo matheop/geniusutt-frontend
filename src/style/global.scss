@@ -66,7 +66,7 @@ body {
 	--pb: #{$sp-500};
 
 	@include phone {
-		--pb: #{$sp-300};
+		--pb: #{$sp-400};
 	}
 	&:not(:last-child) {
 		padding-bottom: var(--pb);
@@ -86,7 +86,7 @@ body {
 	--pb: #{$sp-500};
 
 	@include phone {
-		--pb: #{$sp-300};
+		--pb: #{$sp-400};
 	}
 	padding-bottom: var(--pb);
 }

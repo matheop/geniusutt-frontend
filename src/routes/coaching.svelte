@@ -3,6 +3,7 @@
 	import ObjectiveBanner from "$components/coaching/ObjectiveBanner.svelte";
 	import Seo from "$components/templates/SEO.svelte";
 	import { isPhone } from "$stores/media";
+	import Star2 from "$svg/stars/Star2.svelte";
 
 	interface Objective {
 		title: string;
@@ -46,28 +47,54 @@
 	interface CoachingCard {
 		title: string;
 		desc: string;
+		descSide: "left" | "right";
 		color: "blue" | "yellow";
 		displayBtn: boolean;
 		videoUrl: string;
 	}
 
-	const cards: CoachingCard[] = [
+	const events: CoachingCard[] = [
 		{
 			title: "Coaching EGEE",
 			desc: `Fréquence : 4-5 fois /semestre
 			\nType : Coaching personnalisé
 			\nConcept : d’anciens entrepreneurs aident individuellement les porteurs de projet selon leurs problématiques. Un Coach est assigné à un projet pour 1 semestre à minima et permet un meilleur accompagnement.`,
+			descSide: "right",
+			color: "blue",
+			displayBtn: false,
+			videoUrl: "https://www.youtube.com/embed/tgbNymZ7vqY",
+		},
+		{
+			title: "MINDStart",
+			desc: `Fréquence : 4-5 fois /semestre
+			\nType : Coaching personnalisé
+			\nConcept : d’anciens entrepreneurs aident individuellement les porteurs de projet selon leurs problématiques. Un Coach est assigné à un projet pour 1 semestre à minima et permet un meilleur accompagnement.`,
+			descSide: "left",
+			color: "yellow",
+			displayBtn: false,
+			videoUrl: "https://www.youtube.com/embed/tgbNymZ7vqY",
+		},
+	];
+
+	const projects: CoachingCard[] = [
+		{
+			title: "BigBird",
+			desc: `Fréquence : 4-5 fois /semestre
+			\nType : Coaching personnalisé
+			\nConcept : d’anciens entrepreneurs aident individuellement les porteurs de projet selon leurs problématiques. Un Coach est assigné à un projet pour 1 semestre à minima et permet un meilleur accompagnement.`,
+			descSide: "right",
 			color: "blue",
 			displayBtn: true,
 			videoUrl: "https://www.youtube.com/embed/tgbNymZ7vqY",
 		},
 		{
-			title: "Coaching EGEE",
+			title: "Ellipse",
 			desc: `Fréquence : 4-5 fois /semestre
 			\nType : Coaching personnalisé
 			\nConcept : d’anciens entrepreneurs aident individuellement les porteurs de projet selon leurs problématiques. Un Coach est assigné à un projet pour 1 semestre à minima et permet un meilleur accompagnement.`,
+			descSide: "left",
 			color: "yellow",
-			displayBtn: false,
+			displayBtn: true,
 			videoUrl: "https://www.youtube.com/embed/tgbNymZ7vqY",
 		},
 	];
@@ -77,28 +104,70 @@
 
 <section class="objectives section-pdg">
 	<div class="global-container pb-500-inner">
-		<h2 class="pb-700">Qu’est-ce que Genius Coaching ?</h2>
+		<h2 class="pb-700">
+			{!$isPhone ? "Qu’est-ce que" : ""} Genius Coaching
+		</h2>
 		{#each objectives as { title, desc, imgUrl, imgSide }}
 			<ObjectiveBanner {title} {desc} {imgUrl} {imgSide} />
 		{/each}
 	</div>
 </section>
 
-{#each cards as { title, desc, color, displayBtn, videoUrl }}
-	<div class="card-container">
-		{#if !$isPhone}
-			<iframe {title} src={videoUrl} />
+<section
+	class="coaching-events global-container pb-700-inner section-pdg">
+	<h2 class="pb-700">
+		{#if $isPhone}
+			Events Coaching
+		{:else}
+			#ZoomEvent : 2 événements phares chez Genius Coaching
 		{/if}
-		<div class="info">
-			<CoachingCard
-				{title}
-				{desc}
-				{color}
-				{displayBtn}
-				{videoUrl} />
+	</h2>
+
+	{#each events as { title, desc, color, displayBtn, videoUrl, descSide }}
+		<div class="card-container {descSide}">
+			{#if !$isPhone}
+				<iframe {title} src={videoUrl} />
+			{/if}
+			<div class="info">
+				<CoachingCard
+					{title}
+					{desc}
+					{color}
+					{displayBtn}
+					{videoUrl} />
+			</div>
 		</div>
-	</div>
-{/each}
+	{/each}
+</section>
+
+<section class="projects global-container pb-700-inner pb-500">
+	<h2 class="pb-700">
+		{#if $isPhone}
+			Retours d’expérience
+		{:else}
+			#ZoomExp : Retours d’expérience d’étudiants
+		{/if}
+		<i>
+			<Star2 />
+		</i>
+	</h2>
+
+	{#each events as { title, desc, color, displayBtn, videoUrl, descSide }}
+		<div class="card-container {descSide}">
+			{#if !$isPhone}
+				<iframe {title} src={videoUrl} />
+			{/if}
+			<div class="info">
+				<CoachingCard
+					{title}
+					{desc}
+					{color}
+					{displayBtn}
+					{videoUrl} />
+			</div>
+		</div>
+	{/each}
+</section>
 
 <style lang="scss">
 	section {
@@ -109,29 +178,61 @@
 		background-color: $black;
 
 		.global-container {
-			@include grid-12;
-			grid-row-gap: 0;
+			@include min-tablet {
+				@include grid-12;
+				grid-row-gap: 0;
 
-			& > :global(*) {
-				grid-column: 2 / -2;
+				& > :global(*) {
+					grid-column: 2 / -2;
+				}
+			}
+		}
+	}
+
+	.projects {
+		h2 {
+			position: relative;
+			z-index: 1;
+
+			i {
+				position: absolute;
+				top: 25%;
+				left: 20%;
+				transform: translate(-50%, -50%);
+				z-index: -1;
 			}
 		}
 	}
 
 	.card-container {
+		z-index: 5;
+		position: relative;
 		@include min-tablet {
 			@include grid-12;
+		}
+
+		&.right {
+			iframe {
+				grid-column: 1 / 9;
+			}
+			.info {
+				grid-column: 9 / -1;
+			}
+		}
+		&.left {
+			iframe {
+				grid-column: -9 / -1;
+			}
+			.info {
+				grid-column: 1 / -9;
+				grid-row: 1;
+			}
 		}
 		iframe {
 			@include br-500;
 			@include ds-500;
-			grid-column: 1 / 9;
 			width: 100%;
 			height: 25rem;
-		}
-
-		.info {
-			grid-column: 9 / -1;
 		}
 	}
 </style>

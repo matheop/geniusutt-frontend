@@ -25,7 +25,7 @@
 	{/if}
 
 	{#if displayBtn}
-		<button class="fill-{color}">En savoir +</button>
+		<button class="fill-{color}-btn">En savoir +</button>
 	{/if}
 </article>
 
