@@ -114,31 +114,75 @@
 </section>
 
 <section class="section-pdg">
-	<article class=" global-container pb-500-inner">
+	<article class="geniusutt global-container pb-500-inner">
 		<h2>Qui sommes-nous ?</h2>
-		<p class="block">
-			Lorem Ipsum is simply dummy text of the printing and
-			typesetting industry. Lorem Ipsum has been the industry's
-			standard dummy text ever since the 1500s, when an unknown
-			printer took a galley of type and scrambled it to make a
-			type specimen book. It has survived not only five
-			centuries, but also the leap into electronic typesetting,
-			remaining essentially unchanged. It was popularised in the
-			1960s with the release of Letraset sheets containing Lorem
-			Ipsum passages, and more recently with desktop publishing
-			software like Aldus PageMaker including versions of Lorem
-			Ipsum. Lorem Ipsum is simply dummy text of the printing
-			and typesetting industry. Lorem Ipsum has been the
-			industry's standard dummy text ever since the 1500s, when
-			an unknown printer took a galley of type and scrambled it
-			to make a type specimen book. It has survived not only
-			five centuries, but also the leap into electronic
-			typesetting, remaining essentially unchanged. It was
-			popularised in the 1960s with the release of Letraset
-			sheets containing Lorem Ipsum passages, and more recently
-			with desktop publishing software like Aldus PageMaker
-			including versions of Lorem Ipsum.
-		</p>
+		<div>
+			<p>
+				Genius UTT est l'association étudiante qui vise à
+				promouvoir l'innovation et l'entrepreneuriat au sein
+				de l'UTT. Fondée en 2013 par des étudiants UTTiens,
+				Genius encourage les initiatives étudiantes,
+				accompagne les projets innovants et met en avant
+				l'entrepreneuriat auprès des étudiants de l'UTT.
+				L'association est entièrement animée par des étudiants
+				de l'UTT et réunit aujourd’hui une trentaine de
+				membres actifs.
+			</p>
+			<p>
+				Nous souhaitons avant tout offrir une porte d’entrée
+				unique sur le monde de l'entreprenariat et apporter
+				des moyens de supporter les projets d'innovation
+				étudiants comme un encadrement personnalisé de vos
+				projets ou le prototypage de vos idées.
+			</p>
+			<p>
+				Genius UTT fait aussi partie de la fédération Genius
+				Global qui est une fédération d’associations
+				étudiantes ayant les mêmes objectifs axés sur
+				l'innovation et l'entreprenarait au sein de diverses
+				écoles de toute la France (écoles de commerce, de
+				design, des universités et des écoles d’ingénieur).
+				Cette fédération compte aujourd’hui dans ses rangs
+				Dauphine, Centrale Paris, Mines Paris, Les Ponts
+				Paris, Supelec, Strate, IPSA, Mines Nancy, l’UTT et
+				bientôt l’EM Lyon. Ce regroupement de nombreuses
+				écoles nous permet donc d’accéder à un réseau national
+				d’intervenants, d’étudiants aux compétences diverses
+				et de ressources en tout genre.
+			</p>
+			<p>
+				En ce qui concerne les projets de Genius UTT, nous
+				avons une grande partie qui est axée sur un type
+				évènementiel afin de proposer aux étudiants une
+				découverte de différents domaines d'activités, les
+				courants d'innovations actuels et comment l'innovation
+				et l'entreprenariat évoluent en temps réel au sein de
+				notre société. Cela se réalise par exemple à travers
+				l'UTT Innovation Crunch Time (Concours d'innovation),
+				les conférences sur les nouvelles technologies
+				(Geneo), le TEDxUTTroyes, les workshops, les visites
+				d'entreprises... De nombreux partenaires locaux,
+				entreprises, associations et startups Troyennes
+				soutiennent nos projets et participent à la
+				réalisation de ces évenements.
+			</p>
+			<p>
+				Enfin, Genius UTT c’est aussi une partie Coaching pour
+				les étudiants ayant des projets entrepreneuriaux. Nous
+				les accompagnons et les coachons via des ateliers
+				coorganisés avec l’association dans anciens cadres et
+				dirigeants d’entreprises, EGEE. Grace à nos
+				partenaires à l’UTT et à la Fondation UTT nous
+				organisons en fin de semestre et pour ces projets
+				étudiants, une commission de financement se nommant le
+				Mind Start. Cela se joint aux formations et ateliers
+				proposés sur des sujets tels que le business plan, les
+				statuts juridiques ou la communication. Les projets
+				émergents de Genius Coaching sont de plus en plus
+				nombreux, certains sont ensuite incubés pour qu’ils
+				puissent augmenter leur portée.
+			</p>
+		</div>
 	</article>
 </section>
 
@@ -154,7 +198,7 @@
 				name={m.name}
 				position={m.position}
 				imgUrl={m.imgUrl}
-				desc={m.desc}
+				desc={m.shortDesc}
 				linkedin={m.linkedin} />
 		{/each}
 	</Sweeper>
@@ -168,27 +212,15 @@
 	<article class="global-container pb-500-inner">
 		<h2>Genius Global – A plusieurs, plus loin</h2>
 		<p class="block">
-			Lorem Ipsum is simply dummy text of the printing and
-			typesetting industry. Lorem Ipsum has been the industry's
-			standard dummy text ever since the 1500s, when an unknown
-			printer took a galley of type and scrambled it to make a
-			type specimen book. It has survived not only five
-			centuries, but also the leap into electronic typesetting,
-			remaining essentially unchanged. It was popularised in the
-			1960s with the release of Letraset sheets containing Lorem
-			Ipsum passages, and more recently with desktop publishing
-			software like Aldus PageMaker including versions of Lorem
-			Ipsum. Lorem Ipsum is simply dummy text of the printing
-			and typesetting industry. Lorem Ipsum has been the
-			industry's standard dummy text ever since the 1500s, when
-			an unknown printer took a galley of type and scrambled it
-			to make a type specimen book. It has survived not only
-			five centuries, but also the leap into electronic
-			typesetting, remaining essentially unchanged. It was
-			popularised in the 1960s with the release of Letraset
-			sheets containing Lorem Ipsum passages, and more recently
-			with desktop publishing software like Aldus PageMaker
-			including versions of Lorem Ipsum.
+			Genius souhaite rendre l’entrepreneuriat accessible à tous
+			les étudiants, peu importe leur orientation (business,
+			design, ingénieurs, universitaires, etc.) et devenir la
+			référence de l’entrepreneuriat étudiant. Présente dans +15
+			écoles, chaque association vise à promouvoir
+			l’entrepreneuriat étudiant dans son école.
+			<br />
+			Genius Global fédère les différentes associations Genius et
+			fait émerger des startups étudiantes.
 		</p>
 	</article>
 
@@ -341,6 +373,17 @@
 		.yellow {
 			background-color: $sec-500;
 			transform: rotate(-5deg);
+		}
+	}
+
+	.geniusutt {
+		div {
+			@include min-tablet {
+				@include px(5vw);
+			}
+		}
+		p {
+			margin-bottom: $sp-100;
 		}
 	}
 

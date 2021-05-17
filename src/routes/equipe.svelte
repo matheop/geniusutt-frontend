@@ -17,7 +17,7 @@
 				name={m.name}
 				position={m.position}
 				imgUrl={m.imgUrl}
-				desc={m.desc} />
+				desc={m.longDesc} />
 		{/each}
 	</section>
 </main>
