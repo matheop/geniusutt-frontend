@@ -50,6 +50,7 @@ module.exports = {
 					),
 					$stores: resolve(__dirname, "./src/stores"),
 					$helpers: resolve(__dirname, "./src/helpers"),
+					env: resolve("./src/env.ts"),
 				},
 			},
 		},

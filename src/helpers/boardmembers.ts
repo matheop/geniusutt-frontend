@@ -5,7 +5,6 @@ export interface BoardMember {
 	longDesc: string;
 	imgUrl: string;
 	linkedin?: string;
-	imgSide?: "left" | "right";
 }
 
 export const boardmembers: BoardMember[] = [
@@ -18,7 +17,6 @@ export const boardmembers: BoardMember[] = [
 		imgUrl: "/img/board-salome-bompart.jpeg",
 		linkedin:
 			"https://www.linkedin.com/in/salom%C3%A9-bompard-825285179/",
-		imgSide: "right",
 	},
 	{
 		name: "Paul Julien",
@@ -28,7 +26,6 @@ export const boardmembers: BoardMember[] = [
 		longDesc: `Hi, je suis Paul JULIEN (aka PJ) j'occupe le poste de président de Genius UTT depuis septembre 2020. Je suis chez Genius depuis le TC01, dans le but de découvrir ce monde associatif et j'ai très vite apprécié l'ambiance au sein de Genius UTT, c'est une association avec de beaux projets de et de beaux évènements, cette année a été une année charnière, nous nous sommes adaptés à la situation et cela fut également très intéressante dans la montée en compétence. Nous sommes dès à présent sur la préparation de l'année 2021-2022 avec de nombreux projets et des nouveautés donc si tu veux rejoindre Genius contacte nous ;)`,
 		imgUrl: "/img/board-paul-julien.jpeg",
 		linkedin: "https://www.linkedin.com/in/paul-julien0704/",
-		imgSide: "left",
 	},
 	{
 		name: "Augustin Ruttinger",
@@ -38,7 +35,6 @@ export const boardmembers: BoardMember[] = [
 		longDesc: `Hola, je m'appelle Augustin Ruttinger, actuellement en TC04 j'occupe le poste de Secretaire au sein de GeniusUTT. J'ai rejoint Genius en TC01 afin de découvrir l'association et je suis peu à peu monté en compétences grâce aux différents évenements sur lesquels j'ai pu travailler. Ce semestre j'étais réponsable du site internet du Tedx, ainsi qu'organisateur d'une conférence entrepreneuriale en extérieur.`,
 		imgUrl: "/img/board-augustin-ruttinger.png",
 		linkedin: "https://www.linkedin.com/in/augustin-ruttinger/",
-		imgSide: "left",
 	},
 	{
 		name: "Julien Auffret",
@@ -48,7 +44,6 @@ export const boardmembers: BoardMember[] = [
 				Loin d’une traduction de vos contenus, le lorem ipsum est le petit nom qu’on donne au texte de substitution ou faux-texte.`,
 		imgUrl: "/img/board-julien-auffret.jpeg",
 		linkedin: "https://www.linkedin.com/in/paul-julien0704/",
-		imgSide: "right",
 	},
 	{
 		name: "Tristan Pierquin",
@@ -58,6 +53,5 @@ export const boardmembers: BoardMember[] = [
 				Loin d’une traduction de vos contenus, le lorem ipsum est le petit nom qu’on donne au texte de substitution ou faux-texte.`,
 		imgUrl: "/img/paul-julien.jpeg",
 		linkedin: "https://www.linkedin.com/in/paul-julien0704/",
-		imgSide: "left",
 	},
 ];

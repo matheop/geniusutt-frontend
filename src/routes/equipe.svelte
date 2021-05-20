@@ -1,8 +1,43 @@
+<script context="module">
+	import { API_URL } from "env";
+
+	export async function load({ fetch }) {
+		try {
+			const res = await fetch(
+				`${API_URL}/board-members/getAll`,
+				{
+					headers: {
+						"Content-Type": "application/json",
+						"Access-Control-Allow-Origin": "*",
+					},
+				}
+			);
+
+			const boardmembers = await res.json();
+
+			if (res.status === 200) {
+				return {
+					props: { boardmembers: boardmembers.members },
+				};
+			} else {
+				return {
+					status: res.status,
+					error: new Error(boardmembers),
+				};
+			}
+		} catch (error) {
+			console.error("error:", error);
+		}
+	}
+</script>
+
 <script>
 	import BoardMemberInfo from "$components/team/BoardMemberInfo.svelte";
 	import Seo from "$components/templates/SEO.svelte";
-	import { boardmembers } from "$helpers/boardmembers";
 	import { isPhone } from "$stores/media";
+	import type { BoardMember } from "$helpers/boardmembers";
+
+	export let boardmembers: BoardMember[];
 </script>
 
 <Seo title="Genius UTT | Bureau" url="TODO" image="TODO" />
@@ -11,9 +46,9 @@
 	<section>
 		<h1>le bureau {$isPhone ? "" : " – Genius Utt"}</h1>
 
-		{#each boardmembers as m}
+		{#each boardmembers as m, i}
 			<BoardMemberInfo
-				imgSide={m.imgSide}
+				imgSide={i % 2 === 0 ? "left" : "right"}
 				name={m.name}
 				position={m.position}
 				imgUrl={m.imgUrl}

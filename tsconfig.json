@@ -31,7 +31,8 @@
 			"$svg/*": ["src/components/svg/*"],
 			"$components/*": ["src/components/*"],
 			"$stores/*": ["src/stores/*"],
-			"$helpers/*": ["src/helpers/*"]
+			"$helpers/*": ["src/helpers/*"],
+			"env": ["./src/env.ts"]
 		}
 	},
 	"include": [

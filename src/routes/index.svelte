@@ -1,16 +1,51 @@
+<script context="module">
+	import { API_URL } from "env";
+
+	export async function load({ fetch }) {
+		try {
+			const res = await fetch(
+				`${API_URL}/board-members/getAll`,
+				{
+					headers: {
+						"Content-Type": "application/json",
+						"Access-Control-Allow-Origin": "*",
+					},
+				}
+			);
+
+			const boardmembers = await res.json();
+
+			if (res.status === 200) {
+				return {
+					props: { boardmembers: boardmembers.members },
+				};
+			} else {
+				return {
+					status: res.status,
+					error: new Error(boardmembers),
+				};
+			}
+		} catch (error) {
+			console.error("error:", error);
+		}
+	}
+</script>
+
 <script>
 	import MetricBox from "$components/homepage/MetricBox.svelte";
 	import ObjectiveCard from "$components/homepage/ObjectiveCard.svelte";
 	import ProfileCard from "$components/homepage/ProfileCard.svelte";
 	import Seo from "$components/templates/SEO.svelte";
 	import Sweeper from "$components/templates/Sweeper.svelte";
-	import { boardmembers } from "$helpers/boardmembers";
 	import CheckedCalendar from "$svg/homepage/CheckedCalendar.svelte";
 	import Members from "$svg/homepage/Members.svelte";
 	import University from "$svg/homepage/University.svelte";
 	import YellowShape from "$svg/homepage/YellowShape.svelte";
 	import Star1 from "$svg/stars/Star1.svelte";
 	import type { SvelteComponent } from "svelte";
+	import type { BoardMember } from "$helpers/boardmembers";
+
+	export let boardmembers: BoardMember[];
 
 	interface MetricBox {
 		metric: string;
