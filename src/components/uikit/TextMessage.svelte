@@ -10,7 +10,8 @@
 	/* Components */
 	import ErrorMessage from "$uikit/helpers/ErrorMessage.svelte";
 
-	export let value: string = "";
+	export let subject: string = "";
+	export let message: string = "";
 	export let placeholder: string = "Message";
 	export let rows: number = 5;
 	export let maxChars: number = 500;
@@ -22,7 +23,7 @@
 	export let errors: string[] = [];
 	export let isFormChecked: boolean = false;
 
-	$: chars = maxChars - value.length;
+	$: chars = maxChars - message.length;
 
 	$: chars < 100 ? (warning = true) : (warning = false);
 
@@ -31,6 +32,7 @@
 
 <div class="text-message" class:isFocused>
 	<input
+		bind:value={subject}
 		on:focus={onFocus}
 		on:blur={onBlur}
 		use:events
@@ -46,7 +48,7 @@
 		on:blur={onBlur}
 		{rows}
 		{placeholder}
-		bind:value
+		bind:value={message}
 		on:input={() => (isInputClicked = true)} />
 	<!-- class:valid={!errors.length && value} -->
 	<!-- class:error={errors.length && displayError} -->

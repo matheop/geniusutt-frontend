@@ -1,3 +1,33 @@
+<script context="module">
+	import { API_URL } from "env";
+
+	export async function load({ fetch }) {
+		try {
+			const res = await fetch(`${API_URL}/events/getAll`, {
+				headers: {
+					"Content-Type": "application/json",
+					"Access-Control-Allow-Origin": "*",
+				},
+			});
+
+			const events = await res.json();
+
+			if (res.status === 200) {
+				return {
+					props: { events: events.events },
+				};
+			} else {
+				return {
+					status: res.status,
+					error: new Error(events),
+				};
+			}
+		} catch (error) {
+			console.error("error:", error);
+		}
+	}
+</script>
+
 <script>
 	import EventDesktop from "$components/events/EventDesktop.svelte";
 	import EventMobile from "$components/events/EventMobile.svelte";
@@ -5,72 +35,7 @@
 	import type { Event } from "$helpers/interfaces/events";
 	import { isPhone } from "$stores/media";
 
-	const events: Event[] = [
-		{
-			name: "TEDxUTTroyes 2021",
-			desc: `Une petite description des familles pour présenter ce magnifique événement qui se tient chez nous chaque année.
-		Que dire de plus ? Je ne sais que trop vous répondre. Lorem ipsum.
-		Une petite description des familles pour présenter ce magnifique événement qui se tient chez nous chaque année.
-		Que dire de plus ? Je ne sais que trop vous répondre. Lorem ipsum.`,
-			imgUrl: "/img/paul-julien.jpeg",
-			videoUrl:
-				"https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1",
-			place: "M500",
-			date: "9 Mai 2021", // TODO: Date
-			schedule: "16h-20h",
-			eventUrl: "string", // Facebook event
-			tags: ["Conférence", "Dev Perso"],
-			upcoming: true,
-		},
-		{
-			name: "TEDxUTTroyes 2021",
-			desc: `Une petite description des familles pour présenter ce magnifique événement qui se tient chez nous chaque année.
-		Que dire de plus ? Je ne sais que trop vous répondre. Lorem ipsum.
-		Une petite description des familles pour présenter ce magnifique événement qui se tient chez nous chaque année.
-		Que dire de plus ? Je ne sais que trop vous répondre. Lorem ipsum.`,
-			imgUrl: "/img/paul-julien.jpeg",
-			videoUrl:
-				"https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1",
-			place: "M500",
-			date: "9 Mai 2021", // TODO: Date
-			schedule: "16h-20h",
-			eventUrl: "string", // Facebook event
-			tags: ["Conférence", "Dev Perso"],
-			upcoming: true,
-		},
-		{
-			name: "TEDxUTTroyes 2021",
-			desc: `Une petite description des familles pour présenter ce magnifique événement qui se tient chez nous chaque année.
-		Que dire de plus ? Je ne sais que trop vous répondre. Lorem ipsum.
-		Une petite description des familles pour présenter ce magnifique événement qui se tient chez nous chaque année.
-		Que dire de plus ? Je ne sais que trop vous répondre. Lorem ipsum.`,
-			imgUrl: "/img/paul-julien.jpeg",
-			videoUrl:
-				"https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1",
-			place: "M500",
-			date: "9 Mai 2021", // TODO: Date
-			schedule: "16h-20h",
-			eventUrl: "string", // Facebook event
-			tags: ["Conférence", "Dev Perso"],
-			upcoming: false,
-		},
-		{
-			name: "TEDxUTTroyes 2021",
-			desc: `Une petite description des familles pour présenter ce magnifique événement qui se tient chez nous chaque année.
-		Que dire de plus ? Je ne sais que trop vous répondre. Lorem ipsum.
-		Une petite description des familles pour présenter ce magnifique événement qui se tient chez nous chaque année.
-		Que dire de plus ? Je ne sais que trop vous répondre. Lorem ipsum.`,
-			imgUrl: "/img/paul-julien.jpeg",
-			videoUrl:
-				"https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1",
-			place: "M500",
-			date: "9 Mai 2021", // TODO: Date
-			schedule: "16h-20h",
-			eventUrl: "string", // Facebook event
-			tags: ["Conférence", "Dev Perso"],
-			upcoming: false,
-		},
-	];
+	export let events: Event[];
 
 	const upcomingEvents: Event[] = events.filter(
 		(e) => e.upcoming === true

@@ -1,6 +1,7 @@
 <script>
 	import { form } from "$stores/contact-form";
 	import PopIn from "$components/templates/PopIn.svelte";
+	import { API_URL } from "env";
 
 	import Cross from "$svg/Cross.svelte";
 	import PaperPlane from "$svg/PaperPlane.svelte";
@@ -9,6 +10,37 @@
 	import TextMessage from "./TextMessage.svelte";
 
 	const remove = () => form.remove();
+
+	const formData = {
+		firstname: "Math",
+		lastname: "Polymath",
+		email: "polymath@gmail.com",
+		organization: "Entreprise",
+		subject: "Exemple",
+		message: "Un petit trux bullshit takapté",
+	};
+
+	const sendForm = async (data) => {
+		console.log("data:", data);
+		try {
+			const res = await fetch(`${API_URL}/contact/send`, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+					"Access-Control-Allow-Origin": "*",
+				},
+				body: JSON.stringify(data),
+			});
+
+			if (res.status === 201) {
+				alert("form sent");
+			} else {
+				alert("an error occured");
+			}
+		} catch (error) {
+			console.error("error:", error);
+		}
+	};
 </script>
 
 <PopIn on:out-popin={remove} maxWidth="800px">
@@ -22,12 +54,14 @@
 		<div class="info">
 			<div class="lastname">
 				<Input
+					bind:value={formData.lastname}
 					placeholder="Nom*"
 					autocomplete="family-name"
 					isRequired={true} />
 			</div>
 			<div class="firstname">
 				<Input
+					bind:value={formData.firstname}
 					placeholder="Prénom*"
 					autocomplete="given-name"
 					isRequired={true} />
@@ -37,20 +71,28 @@
 		<div class="info">
 			<div class="email">
 				<Input
+					bind:value={formData.email}
 					placeholder="email@exemple.fr*"
 					autocomplete="email"
 					isRequired={true} />
 			</div>
 			<div class="organization">
-				<Input placeholder="Organisation" />
+				<Input
+					bind:value={formData.organization}
+					placeholder="Organisation" />
 			</div>
 		</div>
 		<!-- ROW 3 -->
 		<div class="message">
-			<TextMessage placeholder="Votre message..." />
+			<TextMessage
+				bind:subject={formData.subject}
+				bind:message={formData.message}
+				placeholder="Votre message..." />
 		</div>
 
-		<button class="fill-blue-btn">
+		<button
+			on:click={() => sendForm(formData)}
+			class="fill-blue-btn">
 			C'est parti !
 			<i>
 				<PaperPlane />
