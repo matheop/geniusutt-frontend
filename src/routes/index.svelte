@@ -43,7 +43,7 @@
 	import YellowShape from "$svg/homepage/YellowShape.svelte";
 	import Star1 from "$svg/stars/Star1.svelte";
 	import type { SvelteComponent } from "svelte";
-	import type { BoardMember } from "$helpers/boardmembers";
+	import type { BoardMember } from "$helpers/interfaces/boardmembers";
 
 	export let boardmembers: BoardMember[];
 

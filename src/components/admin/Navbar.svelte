@@ -64,7 +64,7 @@
 		background-color: $black;
 		color: $white;
 		height: 100vh;
-		width: 6rem;
+		width: $BOnavWidth;
 		padding: $sp-300 $sp-200;
 
 		.logo {
