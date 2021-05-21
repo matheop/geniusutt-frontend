@@ -8,7 +8,7 @@
 	export let btn2: string = "Confirmer";
 	export let action_btn1: () => {};
 	export let action_btn2: () => {};
-	export let action_3: () => {} = action_btn1;
+	export let action_3: () => {} = action_btn2;
 
 	export let displayCrossBtn: boolean = false;
 </script>

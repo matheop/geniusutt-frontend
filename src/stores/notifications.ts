@@ -7,11 +7,11 @@ import { writable } from "svelte/store";
 export class Alert {
 	title: string;
 	text: string;
-	type: string; // error || success || warning || info
+	type: "error" | "success" | "warning" | "info";
 	timer: number;
 	id: number;
 
-	constructor(title, type = "error", text = "", timer = 4500) {
+	constructor(title: string, type, text = "", timer = 4500) {
 		this.title = title;
 		this.text = text;
 		this.type = type;

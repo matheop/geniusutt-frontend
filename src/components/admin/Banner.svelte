@@ -2,6 +2,8 @@
 	import type { Event } from "$helpers/interfaces/events";
 
 	import type { User } from "$helpers/interfaces/user";
+	import { modal } from "$stores/modal";
+	import { Alert, notifications } from "$stores/notifications";
 	import Gear from "$svg/admin/Gear.svelte";
 	import Trash from "$svg/admin/Trash.svelte";
 	import UserDelete from "$svg/admin/UserDelete.svelte";
@@ -10,6 +12,26 @@
 
 	export let type: "users" | "events" = "users";
 	export let data: User | Event;
+
+	const showDeleteModal = (type, data) => {
+		modal.show({
+			title: "Attention !",
+			desc:
+				type === "users"
+					? "Vous êtes sur le point de supprimer un utilisateur.<br />Êtes-vous sûr de vouloir continuer ?"
+					: "Vous êtes sur le point de supprimer un évènement.<br />Êtes-vous sûr de vouloir continuer ?",
+			btn1: "Confirmer",
+			btn2: "Annuler",
+			action_btn1: () => {
+				deleteData(data);
+				modal.remove();
+			},
+			action_btn2: () => {
+				modal.remove();
+			},
+			displayCrossBtn: true,
+		});
+	};
 
 	const deleteData = async (data) => {
 		try {
@@ -25,15 +47,36 @@
 			);
 
 			const result = await res.json();
-			console.log("result:", result);
 
 			if (res.status === 200) {
 				alert("data deleted");
+				notifications.add(
+					new Alert(
+						`${
+							type === "users"
+								? "Utilisateur"
+								: "Évènement"
+						} supprimé !`,
+						"success"
+					)
+				);
 			} else {
-				alert("an error occured");
+				console.log("iminnigga");
+				notifications.add(
+					new Alert(
+						"Oups ! Une erreur est survenue...",
+						"error"
+					)
+				);
 			}
 		} catch (err) {
 			console.error("err:", err);
+			notifications.add(
+				new Alert(
+					"Oups ! Une erreur est survenue...",
+					"error"
+				)
+			);
 		}
 	};
 
@@ -106,7 +149,7 @@
 				<Gear />
 			{/if}
 		</i>
-		<i on:click={() => deleteData(data)}>
+		<i on:click={() => showDeleteModal(type, data)}>
 			{#if type === "users"}
 				<UserDelete />
 			{:else}
