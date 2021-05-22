@@ -1,0 +1,54 @@
+<script context="module">
+	import { API_URL } from "env";
+
+	export async function load({ fetch }) {
+		try {
+			const res = await fetch(`${API_URL}/users/getAll`, {
+				headers: {
+					"Content-Type": "application/json",
+					"Access-Control-Allow-Origin": "*",
+				},
+			});
+
+			const result = await res.json();
+
+			if (res.status === 200) {
+				return {
+					props: { users: result.users },
+				};
+			} else {
+				return {
+					status: res.status,
+					error: new Error(result),
+				};
+			}
+		} catch (error) {
+			console.error("error:", error);
+		}
+	}
+</script>
+
+<script>
+	import Banner from "$components/admin/Banner.svelte";
+	import type { User } from "$helpers/interfaces/user";
+
+	export let users: User[];
+
+	const removeUser = (i) => {
+		users = users.filter((user) => user._id !== users[i]._id);
+	};
+</script>
+
+<h3>Users</h3>
+{#await users}
+	<p>Chargement...</p>
+{:then}
+	{#each users as user, i}
+		<Banner
+			type="users"
+			on:delete={() => removeUser(i)}
+			data={user} />
+	{/each}
+{:catch err}
+	<p>{err}</p>
+{/await}

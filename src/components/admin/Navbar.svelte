@@ -18,7 +18,7 @@
 	const links: Links[] = [
 		{
 			icon: UserSettings,
-			route: "/admin/users-settings",
+			route: "/admin/users",
 			hover: false,
 		},
 		{

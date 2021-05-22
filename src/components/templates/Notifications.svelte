@@ -5,7 +5,6 @@
 
 	/* Helpers */
 	import { notifications } from "$stores/notifications";
-	console.log("ayoo");
 </script>
 
 <div id="notifications">

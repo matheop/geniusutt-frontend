@@ -20,5 +20,9 @@
 <style lang="scss">
 	main {
 		margin-left: $BOnavWidth;
+
+		:global(*) {
+			color: $black;
+		}
 	}
 </style>

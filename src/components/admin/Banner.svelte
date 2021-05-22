@@ -1,6 +1,7 @@
 <script>
+	/* Svelte */
+	import { createEventDispatcher } from "svelte";
 	import type { Event } from "$helpers/interfaces/events";
-
 	import type { User } from "$helpers/interfaces/user";
 	import { modal } from "$stores/modal";
 	import { Alert, notifications } from "$stores/notifications";
@@ -9,9 +10,14 @@
 	import UserDelete from "$svg/admin/UserDelete.svelte";
 	import UserSettings from "$svg/admin/UserSettings.svelte";
 	import { API_URL } from "env";
+	import UserModal from "./UserModal.svelte";
 
 	export let type: "users" | "events" = "users";
 	export let data: User | Event;
+
+	const dispatch = createEventDispatcher();
+
+	let isModalDisplayed: boolean = false;
 
 	const showDeleteModal = (type, data) => {
 		modal.show({
@@ -33,6 +39,7 @@
 		});
 	};
 
+	// TODO: DESTrOY compo
 	const deleteData = async (data) => {
 		try {
 			const res = await fetch(
@@ -49,7 +56,6 @@
 			const result = await res.json();
 
 			if (res.status === 200) {
-				alert("data deleted");
 				notifications.add(
 					new Alert(
 						`${
@@ -60,8 +66,8 @@
 						"success"
 					)
 				);
+				dispatch("delete");
 			} else {
-				console.log("iminnigga");
 				notifications.add(
 					new Alert(
 						"Oups ! Une erreur est survenue...",
@@ -80,32 +86,12 @@
 		}
 	};
 
-	const getData = async (data) => {
-		try {
-			const res = await fetch(
-				`${API_URL}/${type}/getOne/${data._id}`,
-				{
-					method: "GET",
-					headers: {
-						"Content-Type": "application/json",
-						"Access-Control-Allow-Origin": "*",
-					},
-				}
-			);
-
-			const result = await res.json();
-			console.log("result:", result);
-
-			if (res.status === 200) {
-				alert("data successfully fetch");
-			} else {
-				alert("an error occured");
-			}
-		} catch (err) {
-			console.error("err:", err);
-		}
+	const update = (e) => {
+		data = e.detail.user;
+		isModalDisplayed = false;
 	};
 
+	// TODO: remove this
 	const updateData = async (data) => {
 		try {
 			const res = await fetch(
@@ -142,7 +128,7 @@
 		{type === "users" ? data.role : data.place}
 	</div>
 	<div class="settings">
-		<i on:click={() => getData(data)}>
+		<i on:click={() => (isModalDisplayed = true)}>
 			{#if type === "users"}
 				<UserSettings color={"#000"} />
 			{:else}
@@ -158,6 +144,12 @@
 		</i>
 	</div>
 </article>
+
+{#if isModalDisplayed && type === "users"}
+	<UserModal userInfo={data} on:remove={update} />
+{:else if isModalDisplayed && type === "events"}
+	<UserModal eventInfo={data} on:remove={update} />
+{/if}
 
 <style lang="scss">
 	article {
@@ -180,19 +172,19 @@
 			@include flex-y;
 		}
 		.col-1 {
-			grid-column: 1 / 3;
+			grid-column: 1 / 5;
 			@include caption-light;
 		}
 		.col-2 {
-			grid-column: 3 / 7;
+			grid-column: 5 / 8;
 		}
 		.col-3 {
-			grid-column: 7 / 9;
+			grid-column: 8 / 10;
 			justify-content: center;
 		}
 
 		.settings {
-			grid-column: 9 / 13;
+			grid-column: 10 / 13;
 			justify-content: flex-end;
 
 			i {
