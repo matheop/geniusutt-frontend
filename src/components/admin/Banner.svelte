@@ -11,6 +11,7 @@
 	import UserSettings from "$svg/admin/UserSettings.svelte";
 	import { API_URL } from "env";
 	import UserModal from "./UserModal.svelte";
+	import EventModal from "./EventModal.svelte";
 
 	export let type: "users" | "events" = "users";
 	export let data: User | Event;
@@ -87,7 +88,8 @@
 	};
 
 	const update = (e) => {
-		data = e.detail.user;
+		if (e.detail.user) data = e.detail.user;
+		if (e.detail.event) data = e.detail.event;
 		isModalDisplayed = false;
 	};
 
@@ -106,7 +108,6 @@
 			);
 
 			const result = await res.json();
-			console.log("result:", result);
 
 			if (res.status === 200) {
 				alert("data successfully updated");
@@ -148,7 +149,7 @@
 {#if isModalDisplayed && type === "users"}
 	<UserModal userInfo={data} on:remove={update} />
 {:else if isModalDisplayed && type === "events"}
-	<UserModal eventInfo={data} on:remove={update} />
+	<EventModal eventInfo={data} on:remove={update} />
 {/if}
 
 <style lang="scss">
@@ -172,19 +173,20 @@
 			@include flex-y;
 		}
 		.col-1 {
-			grid-column: 1 / 5;
+			grid-column: 1 / 4;
 			@include caption-light;
 		}
 		.col-2 {
-			grid-column: 5 / 8;
+			grid-column: 4 / 8;
+			justify-content: center;
 		}
 		.col-3 {
-			grid-column: 8 / 10;
+			grid-column: 8 / 11;
 			justify-content: center;
 		}
 
 		.settings {
-			grid-column: 10 / 13;
+			grid-column: 11 / 13;
 			justify-content: flex-end;
 
 			i {

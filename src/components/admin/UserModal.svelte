@@ -12,7 +12,10 @@
 	export let userInfo: User;
 	const dispatch = createEventDispatcher();
 
-	const remove = (user?) => {
+	let storedUser: User = JSON.parse(JSON.stringify(userInfo));
+
+	const remove = (user?: User) => {
+		if (!user) user = storedUser;
 		dispatch("remove", { user });
 	};
 
@@ -37,9 +40,7 @@
 				},
 				body: JSON.stringify(user),
 			});
-
 			const result = await res.json();
-			console.log("result:", result);
 
 			if (res.status === 200) {
 				notifications.add(
@@ -67,11 +68,9 @@
 	};
 </script>
 
-<PopIn on:out-popin={() => remove(userInfo)}>
+<PopIn on:out-popin={() => remove()}>
 	<section>
-		<div id="cross" on:click={() => remove(userInfo)}>
-			&#10005;
-		</div>
+		<div id="cross" on:click={() => remove()}>&#10005;</div>
 
 		<p class="title">
 			{action === "create"
