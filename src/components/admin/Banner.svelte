@@ -1,5 +1,6 @@
 <script>
 	/* Svelte */
+	import { slide } from "svelte/transition";
 	import { createEventDispatcher } from "svelte";
 	import type { Event } from "$helpers/interfaces/events";
 	import type { User } from "$helpers/interfaces/user";
@@ -12,9 +13,12 @@
 	import { API_URL } from "env";
 	import UserModal from "./UserModal.svelte";
 	import EventModal from "./EventModal.svelte";
+	import type { ContactForm } from "$helpers/interfaces/contact-forms";
+	import Info from "$svg/Info.svelte";
+	import Checkbox from "$uikit/Checkbox.svelte";
 
-	export let type: "users" | "events" = "users";
-	export let data: User | Event;
+	export let type: "users" | "events" | "contacts" = "users";
+	export let data: User | Event | ContactForm;
 
 	const dispatch = createEventDispatcher();
 
@@ -26,7 +30,9 @@
 			desc:
 				type === "users"
 					? "Vous êtes sur le point de supprimer un utilisateur.<br />Êtes-vous sûr de vouloir continuer ?"
-					: "Vous êtes sur le point de supprimer un évènement.<br />Êtes-vous sûr de vouloir continuer ?",
+					: type === "events"
+					? "Vous êtes sur le point de supprimer un évènement.<br />Êtes-vous sûr de vouloir continuer ?"
+					: "Vous êtes sur le point de supprimer un message.<br />Êtes-vous sûr de vouloir continuer ?",
 			btn1: "Confirmer",
 			btn2: "Annuler",
 			action_btn1: () => {
@@ -62,7 +68,9 @@
 						`${
 							type === "users"
 								? "Utilisateur"
-								: "Évènement"
+								: type === "events"
+								? "Évènement"
+								: "Message"
 						} supprimé !`,
 						"success"
 					)
@@ -93,26 +101,36 @@
 		isModalDisplayed = false;
 	};
 
-	// TODO: remove this
-	const updateData = async (data) => {
+	const updateContact = async (e) => {
+		const contacted: boolean = e.detail;
+
 		try {
 			const res = await fetch(
-				`${API_URL}/${type}/update/${data._id}`,
+				`${API_URL}/contacts/update-state/${data._id}`,
 				{
 					method: "PUT",
 					headers: {
 						"Content-Type": "application/json",
 						"Access-Control-Allow-Origin": "*",
 					},
+					body: JSON.stringify({
+						contacted,
+					}),
 				}
 			);
 
 			const result = await res.json();
+			console.log("result:", result);
 
 			if (res.status === 200) {
-				alert("data successfully updated");
+				data.contacted = contacted;
 			} else {
-				alert("an error occured");
+				notifications.add(
+					new Alert(
+						"Oups ! Une erreur est survenue...",
+						"error"
+					)
+				);
 			}
 		} catch (err) {
 			console.error("err:", err);
@@ -120,20 +138,30 @@
 	};
 </script>
 
-<article>
-	<div class="col-1">{data.name}</div>
+<article class:contacted={data.contacted}>
+	<div class="col-1">
+		{type === "contacts"
+			? data.lastname + " " + data.firstname
+			: data.name}
+	</div>
 	<div class="col-2">
-		{type === "users" ? data.email : data.date}
+		{type === "events" ? data.date : data.email}
 	</div>
 	<div class="col-3">
-		{type === "users" ? data.role : data.place}
+		{type === "users"
+			? data.role
+			: type === "events"
+			? data.place
+			: data.date}
 	</div>
 	<div class="settings">
-		<i on:click={() => (isModalDisplayed = true)}>
+		<i on:click={() => (isModalDisplayed = !isModalDisplayed)}>
 			{#if type === "users"}
 				<UserSettings color={"#000"} />
-			{:else}
+			{:else if type === "events"}
 				<Gear />
+			{:else}
+				<Info />
 			{/if}
 		</i>
 		<i on:click={() => showDeleteModal(type, data)}>
@@ -144,6 +172,16 @@
 			{/if}
 		</i>
 	</div>
+	{#if isModalDisplayed && type === "contacts"}
+		<div transition:slide class="form-info">
+			<h4>Objet : {data.subject}</h4>
+			<p>{data.message}</p>
+			<Checkbox
+				label="Recontacté"
+				isChecked={data.contacted}
+				on:toggle-check={updateContact} />
+		</div>
+	{/if}
 </article>
 
 {#if isModalDisplayed && type === "users"}
@@ -167,6 +205,10 @@
 			@include ds-500;
 			@include transform(scale(1.02));
 			@include transition($transition);
+		}
+
+		&.contacted {
+			background-color: rgba($prim-300, 0.2);
 		}
 
 		& > * {
@@ -208,6 +250,26 @@
 						}
 					}
 				}
+			}
+		}
+
+		.form-info {
+			display: block;
+			grid-row: 2;
+			grid-column: 1 / -1;
+
+			& > * {
+				text-align: left;
+
+				&:not(:last-child) {
+					margin-bottom: $sp-200;
+				}
+			}
+
+			p {
+				padding: $sp-200;
+				background-color: $white;
+				@include br-300;
 			}
 		}
 	}

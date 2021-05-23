@@ -6,6 +6,7 @@
 	import Members from "$svg/admin/Members.svelte";
 	import GeniusUtt from "$svg/logos/GeniusUTT.svelte";
 	import type { SvelteComponent } from "svelte";
+	import TextBubble from "$svg/admin/TextBubble.svelte";
 
 	$: path = $page.path;
 
@@ -29,6 +30,11 @@
 		{
 			icon: Members,
 			route: "/admin/board-members",
+			hover: false,
+		},
+		{
+			icon: TextBubble,
+			route: "/admin/contact-forms",
 			hover: false,
 		},
 	];
