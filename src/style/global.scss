@@ -382,7 +382,7 @@ svg {
 	padding: $sp-700 $sp-1000;
 
 	.adding {
-		button {
+		& > button {
 			@include my($sp-500);
 			@include icon-btn(1rem, $sp-200);
 		}
