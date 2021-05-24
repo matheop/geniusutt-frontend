@@ -384,10 +384,7 @@ svg {
 	.adding {
 		button {
 			@include my($sp-500);
-
-			i {
-				width: 1rem;
-			}
+			@include icon-btn(1rem, $sp-200);
 		}
 	}
 
