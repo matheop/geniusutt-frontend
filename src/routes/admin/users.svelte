@@ -33,11 +33,17 @@
 	import UserModal from "$components/admin/UserModal.svelte";
 	import type { User } from "$helpers/interfaces/user";
 	import UserAdd from "$svg/admin/UserAdd.svelte";
+	import { Role } from "$helpers/enums";
 
 	export let users: User[];
 
-	// sort by role
-	$: users.sort((a, b) => (a.role > b.role ? 1 : -1));
+	let adminUsers: User[];
+	let modoUsers: User[];
+
+	$: if (users) {
+		adminUsers = users.filter((user) => user.role === Role.ADMIN);
+		modoUsers = users.filter((user) => user.role === Role.MODO);
+	}
 
 	let isModalDisplayed: boolean = false;
 
@@ -68,7 +74,15 @@
 		{#await users}
 			<p>Chargement...</p>
 		{:then}
-			{#each users as user, i}
+			<h4>Administrateurs</h4>
+			{#each adminUsers as user, i}
+				<Banner
+					type="users"
+					on:delete={() => removeUser(i)}
+					data={user} />
+			{/each}
+			<h4>Modérateurs</h4>
+			{#each modoUsers as user, i}
 				<Banner
 					type="users"
 					on:delete={() => removeUser(i)}
