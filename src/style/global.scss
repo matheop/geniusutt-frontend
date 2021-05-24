@@ -374,3 +374,30 @@ svg {
 		}
 	}
 }
+
+/* -----------------
+	ADMIN
+----------------- */
+.admin-page {
+	padding: $sp-700 $sp-1000;
+
+	.adding {
+		button {
+			@include my($sp-500);
+
+			i {
+				width: 1rem;
+			}
+		}
+	}
+
+	h3 {
+		margin-bottom: $sp-400;
+	}
+
+	.banners {
+		& > * {
+			margin-bottom: $sp-300;
+		}
+	}
+}

@@ -2,6 +2,7 @@
 	/* Svelte */
 	import { createEventDispatcher } from "svelte";
 	import PopIn from "$components/templates/PopIn.svelte";
+	import { emptyUser } from "$helpers/interfaces/user";
 	import type { User } from "$helpers/interfaces/user";
 	import Input from "$uikit/Input.svelte";
 	import { API_URL } from "env";
@@ -9,13 +10,14 @@
 
 	export let action: "create" | "update";
 
-	export let userInfo: User;
+	export let userInfo: User = emptyUser;
+
 	const dispatch = createEventDispatcher();
 
 	let storedUser: User = JSON.parse(JSON.stringify(userInfo));
 
 	const remove = (user?: User) => {
-		if (!user) user = storedUser;
+		if (!user && action !== "create") user = storedUser;
 		dispatch("remove", { user });
 	};
 
@@ -42,9 +44,11 @@
 			});
 			const result = await res.json();
 
-			if (res.status === 200) {
+			if ([200, 201].includes(res.status)) {
+				const text =
+					action === "create" ? "ajouté" : "modifié";
 				notifications.add(
-					new Alert("Utilisateur modifié !", "success")
+					new Alert(`Utilisateur ${text} !`, "success")
 				);
 				remove(result.user);
 			} else {
@@ -54,7 +58,6 @@
 						"error"
 					)
 				);
-				console.log("user:", user);
 			}
 		} catch (err) {
 			console.error("err:", err);

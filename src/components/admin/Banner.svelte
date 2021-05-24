@@ -195,7 +195,7 @@
 		@include grid-12;
 		@include body1;
 		width: 100%;
-		padding: $sp-400;
+		padding: $sp-300 $sp-400;
 		background-color: $grey-300;
 		@include br-500;
 		@include ds-300;
