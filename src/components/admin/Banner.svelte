@@ -208,7 +208,7 @@
 		}
 
 		&.contacted {
-			background-color: rgba($prim-300, 0.2);
+			background-color: rgba($success, 0.15);
 		}
 
 		& > * {
