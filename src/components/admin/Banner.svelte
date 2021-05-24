@@ -46,7 +46,6 @@
 		});
 	};
 
-	// TODO: DESTrOY compo
 	const deleteData = async (data) => {
 		try {
 			const res = await fetch(

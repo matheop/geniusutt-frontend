@@ -50,7 +50,6 @@
 				body: JSON.stringify(event),
 			});
 			const result = await res.json();
-			console.log("result:", result);
 
 			if ([200, 201].includes(res.status)) {
 				const text =

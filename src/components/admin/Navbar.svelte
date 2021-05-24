@@ -28,13 +28,13 @@
 			hover: false,
 		},
 		{
-			icon: Members,
-			route: "/admin/board-members",
+			icon: TextBubble,
+			route: "/admin/contact-forms",
 			hover: false,
 		},
 		{
-			icon: TextBubble,
-			route: "/admin/contact-forms",
+			icon: Members,
+			route: "/admin/board-members",
 			hover: false,
 		},
 	];
