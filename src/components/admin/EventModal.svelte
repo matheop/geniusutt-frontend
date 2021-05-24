@@ -5,13 +5,15 @@
 	import Input from "$uikit/Input.svelte";
 	import { API_URL } from "env";
 	import { Alert, notifications } from "$stores/notifications";
+	import { emptyEvent } from "$helpers/interfaces/events";
 	import type { Event } from "$helpers/interfaces/events";
 	import TextArea from "$uikit/TextArea.svelte";
 	import EventDesktop from "$components/events/EventDesktop.svelte";
 
 	export let action: "create" | "update";
 
-	export let eventInfo: Event;
+	export let eventInfo: Event = emptyEvent;
+
 	const dispatch = createEventDispatcher();
 
 	let storedEvent: Event = JSON.parse(JSON.stringify(eventInfo));
@@ -19,7 +21,7 @@
 	let isEventDisplayed: boolean = false;
 
 	const remove = (event?: Event) => {
-		if (!event) event = storedEvent;
+		if (!event && action !== "create") event = storedEvent;
 		dispatch("remove", { event });
 	};
 
@@ -30,6 +32,9 @@
 		if (action === "create") {
 			route = "create";
 			method = "POST";
+
+			// TODO: TEMP - Remove this then
+			event.upcoming = true;
 		} else {
 			route = `update/${event._id}`;
 			method = "PUT";
@@ -45,10 +50,13 @@
 				body: JSON.stringify(event),
 			});
 			const result = await res.json();
+			console.log("result:", result);
 
-			if (res.status === 200) {
+			if ([200, 201].includes(res.status)) {
+				const text =
+					action === "create" ? "ajouté" : "modifié";
 				notifications.add(
-					new Alert("Évènement modifié !", "success")
+					new Alert(`Évènement ${text} !`, "success")
 				);
 				remove(result.event);
 			} else {
@@ -87,7 +95,7 @@
 				<div class="input">
 					<Input
 						bind:value={eventInfo.name}
-						placeholder="Nom de l'évènement" />
+						placeholder="TEDxUTTroyes 2021" />
 				</div>
 			</div>
 
@@ -96,7 +104,7 @@
 				<div class="input">
 					<Input
 						bind:value={eventInfo.place}
-						placeholder="Lieu" />
+						placeholder="M500" />
 				</div>
 			</div>
 		</div>
@@ -107,7 +115,7 @@
 				<div class="input">
 					<Input
 						bind:value={eventInfo.date}
-						placeholder="Date(s)" />
+						placeholder="08/05/2021" />
 				</div>
 			</div>
 
@@ -116,7 +124,7 @@
 				<div class="input">
 					<Input
 						bind:value={eventInfo.schedule}
-						placeholder="Horaire(s)" />
+						placeholder="16h-20h" />
 				</div>
 			</div>
 		</div>
@@ -125,7 +133,7 @@
 		<div class="input">
 			<TextArea
 				bind:value={eventInfo.desc}
-				placeholder="Description" />
+				placeholder="Il était une fois..." />
 		</div>
 
 		<div class="btn-box">
@@ -174,6 +182,7 @@
 	.label {
 		@include caption-sb;
 		margin-bottom: $sp-100;
+		margin-left: $sp-100;
 	}
 	.input {
 		margin-bottom: $sp-400;

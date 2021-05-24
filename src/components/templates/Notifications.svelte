@@ -36,9 +36,8 @@
 
 <style lang="scss">
 	#notifications {
-		z-index: 10001;
+		z-index: 100100;
 		position: fixed;
-		background-color: $white;
 		top: 6rem;
 		right: 1rem;
 		@include phone {
@@ -52,6 +51,7 @@
 
 		.alert {
 			// Une notification
+			background-color: $white;
 			position: relative;
 			padding: 0.5rem 1rem;
 			min-height: 3.5rem;

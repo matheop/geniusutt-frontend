@@ -11,3 +11,16 @@ export interface Event {
 	eventUrl: string; // Facebook event
 	upcoming: boolean;
 }
+
+const event: Event = {
+	name: "",
+	date: "",
+	schedule: "",
+	place: "",
+	desc: "",
+	imgUrl: "",
+	eventUrl: "",
+	upcoming: null,
+};
+
+export const emptyEvent: Event = JSON.parse(JSON.stringify(event));
