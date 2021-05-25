@@ -7,8 +7,11 @@
 	import GeniusUtt from "$svg/logos/GeniusUTT.svelte";
 	import type { SvelteComponent } from "svelte";
 	import TextBubble from "$svg/admin/TextBubble.svelte";
+	import User from "$svg/admin/User.svelte";
 
 	$: path = $page.path;
+
+	let profileHovering: boolean = false;
 
 	interface Links {
 		icon: typeof SvelteComponent;
@@ -40,7 +43,7 @@
 	];
 </script>
 
-<div>
+<div class="navbar">
 	<i class="logo">
 		<GeniusUtt />
 	</i>
@@ -62,10 +65,20 @@
 			</a>
 		{/each}
 	</nav>
+
+	<i class="profile">
+		<a
+			href="/admin/profile"
+			class:active={path === "/admin/profile"}
+			on:mouseenter={() => (profileHovering = true)}
+			on:mouseleave={() => (profileHovering = false)}>
+			<User color={profileHovering ? "#fbde4b" : "#fff"} />
+		</a>
+	</i>
 </div>
 
 <style lang="scss">
-	div {
+	.navbar {
 		position: fixed;
 		background-color: $black;
 		color: $white;
@@ -90,6 +103,13 @@
 			i {
 				height: 2.5rem;
 			}
+		}
+
+		.profile {
+			cursor: pointer;
+			width: 4rem;
+			position: absolute;
+			bottom: 1rem;
 		}
 	}
 </style>

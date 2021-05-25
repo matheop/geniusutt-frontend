@@ -4,7 +4,7 @@
 	import ErrorMessage from "$uikit/helpers/ErrorMessage.svelte";
 
 	export let value: string = "";
-	export let type: string = "text";
+	export let type: "text" | "email" | "password" | "tel" = "text";
 	export let placeholder: string = "";
 	export let autocomplete: string = "";
 
@@ -28,9 +28,6 @@
 		class:valid={!errors.length && value}
 		required={isRequired}
 		on:input={() => (isInputClicked = true)} />
-	{#if errors.length && displayError}
-		<ErrorMessage error={errors[0]} />
-	{/if}
 {:else if type === "email"}
 	<input
 		type="email"
@@ -41,9 +38,6 @@
 		class:valid={!errors.length && value}
 		required={isRequired}
 		on:input={() => (isInputClicked = true)} />
-	{#if errors.length && displayError}
-		<ErrorMessage error={errors[0]} />
-	{/if}
 {:else if type === "tel"}
 	<input
 		type="text"
@@ -53,7 +47,17 @@
 		class:error={errors.length && displayError}
 		class:valid={!errors.length && value}
 		on:input={() => (isInputClicked = true)} />
-	{#if errors.length && displayError}
-		<ErrorMessage error={errors[0]} />
-	{/if}
+{:else if type === "password"}
+	<input
+		type="password"
+		{placeholder}
+		bind:value
+		autocomplete="password"
+		class:error={errors.length && displayError}
+		class:valid={!errors.length && value}
+		required={isRequired}
+		on:input={() => (isInputClicked = true)} />
+{/if}
+{#if errors.length && displayError}
+	<ErrorMessage error={errors[0]} />
 {/if}
