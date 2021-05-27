@@ -1,5 +1,6 @@
-import { isAuth } from "$stores/isAuth";
+import { session } from "$app/stores";
 
 export const logout = (): void => {
-	isAuth.set(null);
+	session.set(null);
+	localStorage.clear();
 };

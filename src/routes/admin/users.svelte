@@ -1,16 +1,18 @@
 <script context="module">
 	import { API_URL } from "env";
 
-	export async function load({ fetch }) {
+	export async function load({ fetch, session }) {
 		try {
 			const res = await fetch(`${API_URL}/users/getAll`, {
 				headers: {
 					"Content-Type": "application/json",
 					"Access-Control-Allow-Origin": "*",
+					Authorization: "Bearer " + session.token,
 				},
 			});
 
 			const result = await res.json();
+			console.log("result:", result);
 
 			if (res.status === 200) {
 				return {
@@ -19,7 +21,7 @@
 			} else {
 				return {
 					status: res.status,
-					error: new Error(result),
+					error: new Error(JSON.stringify(result)),
 				};
 			}
 		} catch (error) {
