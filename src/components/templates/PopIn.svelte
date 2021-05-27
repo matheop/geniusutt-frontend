@@ -13,7 +13,7 @@
 
 	const dispatch = createEventDispatcher();
 
-	onMount(() => document.body.classList.add("no-scroll"));
+	// onMount(() => document.body.classList.add("no-scroll"));
 	// onDestroy(() => document.body.classList.remove("no-scroll"));
 
 	const checkTargetId = (e) => {

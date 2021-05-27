@@ -8,6 +8,7 @@
 	import type { SvelteComponent } from "svelte";
 	import TextBubble from "$svg/admin/TextBubble.svelte";
 	import User from "$svg/admin/User.svelte";
+	import { session } from "$app/stores";
 
 	$: path = $page.path;
 
@@ -19,12 +20,20 @@
 		hover: boolean;
 	}
 
-	const links: Links[] = [
+	const adminLinks: Links[] = [
 		{
 			icon: UserSettings,
 			route: "/admin/users",
 			hover: false,
 		},
+		{
+			icon: Members,
+			route: "/admin/board-members",
+			hover: false,
+		},
+	];
+
+	const links: Links[] = [
 		{
 			icon: Calendar,
 			route: "/admin/events",
@@ -35,12 +44,12 @@
 			route: "/admin/contact-forms",
 			hover: false,
 		},
-		{
-			icon: Members,
-			route: "/admin/board-members",
-			hover: false,
-		},
 	];
+
+	if ($session.user?.role) {
+		links.unshift(adminLinks[0]);
+		links.push(adminLinks[1]);
+	}
 </script>
 
 <div class="navbar">
@@ -51,6 +60,7 @@
 	<nav>
 		{#each links as i}
 			<a
+				sveltekit:prefetch
 				on:mouseenter={() => (i.hover = true)}
 				on:mouseleave={() => (i.hover = false)}
 				href={i.route}
@@ -68,6 +78,7 @@
 
 	<i class="profile">
 		<a
+			sveltekit:prefetch
 			href="/admin/profile"
 			class:active={path === "/admin/profile"}
 			on:mouseenter={() => (profileHovering = true)}

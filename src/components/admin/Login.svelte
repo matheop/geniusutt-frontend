@@ -5,10 +5,10 @@
 	import Input from "$uikit/Input.svelte";
 	import PopIn from "$components/templates/PopIn.svelte";
 	import { Alert, notifications } from "$stores/notifications";
-	import { isAuth } from "$stores/isAuth";
+	import { session } from "$app/stores";
 
 	let email: string = "matheo.pierini1@gmail.com";
-	let pass: string = "80WgvtS&>v";
+	let pass: string = "80WgvtS&>vx";
 
 	const login = async (email, password) => {
 		try {
@@ -33,8 +33,20 @@
 					new Alert("Identifiants invalides", "error")
 				);
 			} else {
-				$isAuth = true;
-				window.localStorage.setItem("token", data.token);
+				var expiryDate = new Date();
+				expiryDate.setHours(expiryDate.getHours() + 1);
+				$session.user = data.payload.user;
+				$session.token = data.token;
+				$session.expiryDate = expiryDate;
+				localStorage.setItem(
+					"user",
+					JSON.stringify(data.payload.user)
+				);
+				localStorage.setItem("token", data.token);
+				localStorage.setItem(
+					"expiryDate",
+					expiryDate.toISOString()
+				);
 			}
 		} catch (err) {
 			console.error("err:", err);
