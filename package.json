@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "dotenv": "^9.0.2",
-    "moment": "^2.29.1"
+    "moment": "^2.29.1",
+    "svelte-particles": "^1.10.0"
   }
 }

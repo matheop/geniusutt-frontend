@@ -100,6 +100,76 @@
 			videoUrl: "https://www.youtube.com/embed/tgbNymZ7vqY",
 		},
 	];
+
+	import { onMount } from "svelte";
+
+	let ParticlesComponent;
+
+	onMount(async () => {
+		const module = await import("svelte-particles");
+
+		ParticlesComponent = module.default;
+	});
+
+	let particlesConfig = {
+		detectRetina: false,
+		fpsLimit: 30,
+		interactivity: {
+			detectsOn: "canvas",
+			events: {
+				resize: true,
+			},
+		},
+		particles: {
+			color: {
+				value: "#fff",
+			},
+			number: {
+				density: {
+					enable: true,
+					area: 1080,
+				},
+				limit: 0,
+				value: 400,
+			},
+			opacity: {
+				animation: {
+					enable: true,
+					minimumValue: 0.05,
+					speed: 0.25,
+					sync: false,
+				},
+				random: {
+					enable: true,
+					minimumValue: 0.05,
+				},
+				value: 1,
+			},
+			shape: {
+				type: "circle",
+			},
+			size: {
+				random: {
+					enable: true,
+					minimumValue: 0.5,
+				},
+				value: 1,
+			},
+			move: {
+				enable: true,
+				speed: 0.2,
+				direction: "none",
+				random: false,
+				straight: false,
+				out_mode: "out",
+				attract: {
+					enable: false,
+					rotateX: 600,
+					rotateY: 1200,
+				},
+			},
+		},
+	};
 </script>
 
 <Seo title="Genius UTT | Coaching" url="TODO" image="TODO" />
@@ -121,6 +191,11 @@
 	<i class="bfr">
 		<RocketTakeOff />
 	</i>
+
+	<svelte:component
+		this={ParticlesComponent}
+		id="tsparticles"
+		options={particlesConfig} />
 </section>
 
 <section class="objectives section-pdg">
@@ -239,6 +314,13 @@
 			@include animation(slide-top 10s linear 3.5s infinite);
 			transition-delay: 3s;
 			opacity: 0;
+		}
+
+		#tsparticles {
+			position: absolute;
+			width: 100%;
+			height: 100vh;
+			top: 0;
 		}
 	}
 	.objectives {

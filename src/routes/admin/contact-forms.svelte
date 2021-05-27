@@ -31,6 +31,7 @@
 <script>
 	import Banner from "$components/admin/Banner.svelte";
 	import type { ContactForm } from "$helpers/interfaces/contact-forms";
+	import Seo from "$components/templates/SEO.svelte";
 
 	export let contacts: ContactForm[];
 
@@ -54,6 +55,8 @@
 		);
 	};
 </script>
+
+<Seo title="Admin | Contacts" url="TODO" image="TODO" />
 
 <section class="admin-page">
 	<h2>Contacts</h2>

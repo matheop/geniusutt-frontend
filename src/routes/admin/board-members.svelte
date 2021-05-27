@@ -37,6 +37,7 @@
 	import UserAdd from "$svg/admin/UserAdd.svelte";
 	import BoardMemberBanner from "$components/admin/BoardMemberBanner.svelte";
 	import MemberModal from "$components/admin/MemberModal.svelte";
+	import Seo from "$components/templates/SEO.svelte";
 
 	export let members: BoardMember[];
 
@@ -53,6 +54,8 @@
 		isModalDisplayed = false;
 	};
 </script>
+
+<Seo title="Admin | Membres du bureau" url="TODO" image="TODO" />
 
 <section class="admin-page">
 	<article class="adding">

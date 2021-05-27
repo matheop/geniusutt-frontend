@@ -36,6 +36,7 @@
 	import type { User } from "$helpers/interfaces/user";
 	import UserAdd from "$svg/admin/UserAdd.svelte";
 	import { Role } from "$helpers/enums";
+	import Seo from "$components/templates/SEO.svelte";
 
 	export let users: User[];
 
@@ -58,6 +59,8 @@
 		isModalDisplayed = false;
 	};
 </script>
+
+<Seo title="Admin | Utilisateurs" url="TODO" image="TODO" />
 
 <section class="admin-page">
 	<article class="adding">

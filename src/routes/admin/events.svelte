@@ -33,6 +33,7 @@
 	import type { Event } from "$helpers/interfaces/events";
 	import EventModal from "$components/admin/EventModal.svelte";
 	import Plus from "$svg/admin/Plus.svelte";
+	import Seo from "$components/templates/SEO.svelte";
 
 	export let events: Event[];
 
@@ -62,6 +63,8 @@
 		isModalDisplayed = false;
 	};
 </script>
+
+<Seo title="Admin | Events" url="TODO" image="TODO" />
 
 <section class="admin-page">
 	<article class="adding">
