@@ -61,7 +61,6 @@
 
 			&.video {
 				color: $black;
-				margin-bottom: $sp-400;
 			}
 		}
 	}

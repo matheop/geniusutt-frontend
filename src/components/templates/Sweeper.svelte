@@ -11,7 +11,7 @@
 	});
 </script>
 
-<div class="sweeper" style="">
+<div class="sweeper">
 	<slot />
 </div>
 
@@ -29,8 +29,10 @@
 
 		& > :global(*) {
 			scroll-snap-align: center;
-			margin: 0 calc(50vw - (var(--content-width) / 2)); // 13.5 === ProfileCard's width
 			box-sizing: initial;
+			@include phone {
+				margin: 0 calc(50vw - (var(--content-width) / 2)); // 13.5 === ProfileCard's width
+			}
 			&:last-child {
 				padding-right: calc(
 					50vw - (var(--content-width) / 2)

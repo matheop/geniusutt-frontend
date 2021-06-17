@@ -1,3 +1,4 @@
+@use "sass:math";
 //Fluid typography
 
 @function pow($number, $exponent) {
@@ -13,7 +14,7 @@
 $scale: 1.25;
 
 @mixin fs0 {
-	font-size: 1rem / $scale;
+	font-size: math.div(1rem, $scale);
 	font-size: clamp(12px, 0.8rem, 16px);
 }
 
@@ -26,19 +27,19 @@ $scale: 1.25;
 }
 
 @mixin fs3 {
-	font-size: pow($scale, 2) * 1rem;
+	font-size: math.pow($scale, 2) * 1rem;
 }
 
 @mixin fs4 {
-	font-size: pow($scale, 3) * 1rem;
+	font-size: math.pow($scale, 3) * 1rem;
 }
 
 @mixin fs5 {
-	font-size: pow($scale, 4) * 1rem;
+	font-size: math.pow($scale, 4) * 1rem;
 }
 
 @mixin fs6 {
-	font-size: pow($scale, 5) * 1rem;
+	font-size: math.pow($scale, 5) * 1rem;
 }
 
 /* -----------------

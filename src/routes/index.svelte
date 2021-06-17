@@ -227,7 +227,7 @@
 	<i>
 		<Star1 />
 	</i>
-	<Sweeper contentWidth="13.5rem">
+	<Sweeper contentWidth="10rem">
 		{#each boardmembers as m}
 			<ProfileCard
 				name={m.name}
@@ -441,46 +441,7 @@
 				margin: auto;
 			}
 
-			:global(.profile-card) {
-				margin: auto;
-				padding: 0;
-
-				&:first-child {
-					grid-column: 2 / 4;
-					@include tablet {
-						grid-column: 1 / 4;
-					}
-				}
-				&:nth-child(2) {
-					grid-column: 4 / -4;
-					grid-row: 1 / 5;
-				}
-				&:nth-child(3) {
-					grid-column: -4 / -2;
-					@include tablet {
-						grid-column: -4 / -1;
-					}
-				}
-				&:nth-child(4) {
-					grid-column: -5 / -3;
-					margin-left: 0;
-				}
-				&:nth-child(5) {
-					grid-column: 3 / 5;
-					margin-right: 0;
-					@include tablet {
-						grid-column: 2 / 5;
-					}
-				}
-				&:nth-child(4),
-				&:last-child {
-					grid-row: 6 / -1;
-				}
-				&:first-child,
-				&:nth-child(3) {
-					grid-row: 2 / 5;
-				}
-			}
+			/* profile-card in global.scss */
 		}
 	}
 
@@ -574,7 +535,9 @@
 
 		p {
 			@include container-width;
-			@include px($sp-800 !important);
+			@include min-tablet {
+				@include px($sp-800 !important);
+			}
 		}
 
 		button {
@@ -598,8 +561,6 @@
 			@include phone {
 				height: 6rem;
 				&:last-child {
-					padding-right: 15vw;
-
 					img {
 						max-width: 70vw;
 					}

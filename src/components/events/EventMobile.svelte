@@ -21,11 +21,11 @@
 			<Info />
 		</i>
 	</div>
-	<div class="tags">
+	<!-- <div class="tags">
 		{#each event.tags as tag}
 			<span class="tag">{tag}</span>
 		{/each}
-	</div>
+	</div> -->
 </article>
 
 {#if showInfo}
@@ -62,7 +62,7 @@
 					on:click={() => (showVideo = true)}
 					class="link video">Voir la vidéo</button>
 			{/if}
-			{#if event.upcoming}
+			{#if event.upcoming && !!event.eventUrl}
 				<a
 					href={event.eventUrl}
 					target="_blank"
@@ -94,7 +94,7 @@
 		.info {
 			@include flex-y;
 			justify-content: space-between;
-			margin-bottom: $sp-200;
+			// margin-bottom: $sp-200;
 
 			h4 {
 				width: 60%;

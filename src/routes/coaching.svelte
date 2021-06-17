@@ -174,7 +174,7 @@
 
 <Seo title="Genius UTT | Coaching" url="TODO" image="TODO" />
 
-<section class="rocket">
+<section class="rocket section-pdg">
 	<div class="global-container content pb-500-inner">
 		<h1>Genius Coaching</h1>
 		<h2>
@@ -273,16 +273,29 @@
 
 	.rocket {
 		position: relative;
-		height: calc(100vh - #{$headerHeight});
 		width: 100%;
 		overflow: hidden;
-		padding: 0;
+
+		@include min-tablet {
+			padding: 0;
+		}
+
+		@include min-tablet {
+			height: calc(100vh - #{$headerHeight});
+		}
+
+		& > * {
+			position: relative;
+			z-index: 1;
+		}
 
 		.content {
-			padding-top: 20vh;
-			z-index: 10;
-			max-width: 55%;
-			@include mx(12vw);
+			@include min-tablet {
+				padding-top: 20vh;
+				z-index: 10;
+				max-width: 55%;
+				@include mx(12vw);
+			}
 
 			& > * {
 				opacity: 0;
@@ -292,7 +305,10 @@
 			h1,
 			h2 {
 				animation-delay: 1s;
-				text-align: left;
+
+				@include min-tablet {
+					text-align: left;
+				}
 			}
 			h2 {
 				@include t2-light;
@@ -300,11 +316,17 @@
 			}
 			button {
 				animation-delay: 3s;
+
+				@include phone {
+					margin: auto;
+				}
 			}
 		}
 
 		.stars {
-			margin-right: 35%;
+			@include min-tablet {
+				margin-right: 35%;
+			}
 		}
 
 		.bfr {
@@ -314,9 +336,14 @@
 			@include animation(slide-top 10s linear 3.5s infinite);
 			transition-delay: 3s;
 			opacity: 0;
+
+			@include phone {
+				display: none;
+			}
 		}
 
-		#tsparticles {
+		:global(#tsparticles) {
+			z-index: 0;
 			position: absolute;
 			width: 100%;
 			height: 100vh;
