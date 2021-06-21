@@ -1,5 +1,6 @@
 <script>
 	/* Svelte */
+	import { session } from "$app/stores";
 	import { createEventDispatcher } from "svelte";
 	import PopIn from "$components/templates/PopIn.svelte";
 	import { emptyUser } from "$helpers/interfaces/user";
@@ -39,10 +40,13 @@
 				headers: {
 					"Content-Type": "application/json",
 					"Access-Control-Allow-Origin": "*",
+					Authorization: "Bearer " + $session.token,
 				},
 				body: JSON.stringify(user),
 			});
 			const result = await res.json();
+
+			console.log("result:", result);
 
 			if ([200, 201].includes(res.status)) {
 				const text =
@@ -52,12 +56,23 @@
 				);
 				remove(result.user);
 			} else {
-				notifications.add(
-					new Alert(
-						"Oups ! Une erreur est survenue...",
-						"error"
-					)
-				);
+				if (res.status === 409) {
+					notifications.add(
+						new Alert(
+							"Oups, erreur !",
+							"error",
+							"Utilisateur déjà existant"
+						)
+					);
+				} else {
+					notifications.add(
+						new Alert(
+							"Oups ! Une erreur est survenue...",
+							"error",
+							"Veuillez réessayer plus tard"
+						)
+					);
+				}
 			}
 		} catch (err) {
 			console.error("err:", err);

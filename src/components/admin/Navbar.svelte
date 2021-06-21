@@ -9,6 +9,7 @@
 	import TextBubble from "$svg/admin/TextBubble.svelte";
 	import User from "$svg/admin/User.svelte";
 	import { session } from "$app/stores";
+	import { Role } from "$helpers/enums";
 
 	$: path = $page.path;
 
@@ -46,7 +47,7 @@
 		},
 	];
 
-	if ($session.user?.role) {
+	if ($session.user?.role === Role.ADMIN) {
 		links.unshift(adminLinks[0]);
 		links.push(adminLinks[1]);
 	}

@@ -1,4 +1,5 @@
 <script>
+	import { session } from "$app/stores";
 	import { slide } from "svelte/transition";
 	import { createEventDispatcher } from "svelte";
 	import type { BoardMember } from "$helpers/interfaces/boardmembers";
@@ -59,6 +60,7 @@
 					headers: {
 						"Content-Type": "application/json",
 						"Access-Control-Allow-Origin": "*",
+						Authorization: "Bearer " + $session.token,
 					},
 				}
 			);

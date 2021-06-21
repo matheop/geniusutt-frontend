@@ -1,4 +1,5 @@
 <script>
+	import { session } from "$app/stores";
 	import { createEventDispatcher } from "svelte";
 	import type { BoardMember } from "$helpers/interfaces/boardmembers";
 	import { emptyMember } from "$helpers/interfaces/boardmembers";
@@ -35,6 +36,7 @@
 					headers: {
 						"Content-Type": "application/json",
 						"Access-Control-Allow-Origin": "*",
+						Authorization: "Bearer " + $session.token,
 					},
 					body: JSON.stringify(member),
 				}
@@ -102,7 +104,7 @@
 	<button
 		class="fill-blue-btn"
 		on:click={() => sendData(action, member)}>
-		Modifier
+		{action === "create" ? "Ajouter" : "Modifier"}
 	</button>
 </div>
 

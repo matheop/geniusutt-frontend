@@ -5,7 +5,8 @@
 	import Input from "$uikit/Input.svelte";
 	import PopIn from "$components/templates/PopIn.svelte";
 	import { Alert, notifications } from "$stores/notifications";
-	import { session } from "$app/stores";
+	import { page, session } from "$app/stores";
+	import { goto } from "$app/navigation";
 
 	let email: string = "matheo.pierini1@gmail.com";
 	let pass: string = "80WgvtS&>vx";
@@ -33,20 +34,20 @@
 					new Alert("Identifiants invalides", "error")
 				);
 			} else {
+				// creer cookie token
 				var expiryDate = new Date();
 				expiryDate.setHours(expiryDate.getHours() + 1);
+
+				if (!$session) $session = {};
 				$session.user = data.payload.user;
 				$session.token = data.token;
 				$session.expiryDate = expiryDate;
-				localStorage.setItem(
-					"user",
-					JSON.stringify(data.payload.user)
-				);
-				localStorage.setItem("token", data.token);
-				localStorage.setItem(
-					"expiryDate",
-					expiryDate.toISOString()
-				);
+
+				document.cookie = "token=" + $session.token; // TODO: expires/maxAge
+				document.cookie =
+					"user=" + JSON.stringify($session.user);
+
+				if ($page.path === "/admin") goto("/admin/profile");
 			}
 		} catch (err) {
 			console.error("err:", err);

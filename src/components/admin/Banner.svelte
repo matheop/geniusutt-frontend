@@ -1,5 +1,6 @@
 <script>
 	/* Svelte */
+	import { session } from "$app/stores";
 	import { slide } from "svelte/transition";
 	import { createEventDispatcher } from "svelte";
 	import type { Event } from "$helpers/interfaces/events";
@@ -55,11 +56,10 @@
 					headers: {
 						"Content-Type": "application/json",
 						"Access-Control-Allow-Origin": "*",
+						Authorization: "Bearer " + $session.token,
 					},
 				}
 			);
-
-			const result = await res.json();
 
 			if (res.status === 200) {
 				notifications.add(
@@ -111,6 +111,7 @@
 					headers: {
 						"Content-Type": "application/json",
 						"Access-Control-Allow-Origin": "*",
+						Authorization: "Bearer " + $session.token,
 					},
 					body: JSON.stringify({
 						contacted,

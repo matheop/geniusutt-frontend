@@ -1,7 +1,7 @@
 <script context="module">
 	import { API_URL } from "env";
 
-	export async function load({ fetch }) {
+	export async function load({ fetch, session }) {
 		try {
 			const res = await fetch(
 				`${API_URL}/board-members/getAll`,

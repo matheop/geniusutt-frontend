@@ -1,12 +1,13 @@
 <script context="module">
 	import { API_URL } from "env";
 
-	export async function load({ fetch }) {
+	export async function load({ fetch, session }) {
 		try {
 			const res = await fetch(`${API_URL}/contacts/getAll`, {
 				headers: {
 					"Content-Type": "application/json",
 					"Access-Control-Allow-Origin": "*",
+					Authorization: "Bearer " + session.token,
 				},
 			});
 

@@ -6,14 +6,8 @@
 	import ModalCompo from "$components/templates/Modal.svelte";
 	import Notifications from "$components/templates/Notifications.svelte";
 	import { modal } from "$stores/modal";
-	import { onMount } from "svelte";
 
-	onMount(() => {
-		$session.user = JSON.parse(localStorage.getItem("user"));
-		$session.token = localStorage.getItem("token");
-		$session.expiryDate = localStorage.getItem("expiryDate");
-	});
-	$: console.log("$session:", $session);
+	// $: console.log("$session:", $session);
 </script>
 
 <Notifications />
@@ -22,7 +16,7 @@
 	<ModalCompo {...$modal} />
 {/if}
 
-{#if $session?.token}
+{#if $session.token && $session.user}
 	<Navbar />
 
 	<main>

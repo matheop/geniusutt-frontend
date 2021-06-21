@@ -12,7 +12,6 @@
 			});
 
 			const result = await res.json();
-			console.log("result:", result);
 
 			if (res.status === 200) {
 				return {
@@ -40,15 +39,19 @@
 
 	export let users: User[];
 
+	let isModalDisplayed: boolean = false;
+
 	let adminUsers: User[];
 	let modoUsers: User[];
 
-	$: if (users) {
+	const updateArrays = () => {
 		adminUsers = users.filter((user) => user.role === Role.ADMIN);
 		modoUsers = users.filter((user) => user.role === Role.MODO);
-	}
+	};
 
-	let isModalDisplayed: boolean = false;
+	$: if (users) {
+		updateArrays();
+	}
 
 	const removeUser = (i) => {
 		users = users.filter((user) => user._id !== users[i]._id);

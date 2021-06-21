@@ -1,5 +1,6 @@
 <script>
 	/* Svelte */
+	import { session } from "$app/stores";
 	import { createEventDispatcher } from "svelte";
 	import PopIn from "$components/templates/PopIn.svelte";
 	import Input from "$uikit/Input.svelte";
@@ -46,10 +47,13 @@
 				headers: {
 					"Content-Type": "application/json",
 					"Access-Control-Allow-Origin": "*",
+					Authorization: "Bearer " + $session.token,
 				},
 				body: JSON.stringify(event),
 			});
 			const result = await res.json();
+
+			console.log("result:", result);
 
 			if ([200, 201].includes(res.status)) {
 				const text =
