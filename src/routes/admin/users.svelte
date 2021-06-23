@@ -18,9 +18,11 @@
 					props: { users: result.users },
 				};
 			} else {
+				session.token = null;
+				session.user = null;
 				return {
-					status: res.status,
-					error: new Error(JSON.stringify(result)),
+					// status: res.status,
+					// error: new Error(JSON.stringify(result)),
 				};
 			}
 		} catch (error) {

@@ -2,6 +2,8 @@
 	import { fly } from "svelte/transition";
 	import { API_URL } from "env";
 
+	import cookie from "cookie";
+
 	import Input from "$uikit/Input.svelte";
 	import PopIn from "$components/templates/PopIn.svelte";
 	import { Alert, notifications } from "$stores/notifications";
@@ -34,18 +36,28 @@
 					new Alert("Identifiants invalides", "error")
 				);
 			} else {
-				// creer cookie token
-				var expiryDate = new Date();
-				expiryDate.setHours(expiryDate.getHours() + 1);
-
 				if (!$session) $session = {};
 				$session.user = data.payload.user;
 				$session.token = data.token;
-				$session.expiryDate = expiryDate;
 
-				document.cookie = "token=" + $session.token; // TODO: expires/maxAge
-				document.cookie =
-					"user=" + JSON.stringify($session.user);
+				const tokenCookie = cookie.serialize(
+					"token",
+					$session.token,
+					{
+						maxAge: 60 * 60 * 4, // 4 hours
+					}
+				);
+
+				const userCookie = cookie.serialize(
+					"user",
+					JSON.stringify($session.user),
+					{
+						maxAge: 60 * 60 * 4, // 4 hours
+					}
+				);
+
+				document.cookie = tokenCookie;
+				document.cookie = userCookie;
 
 				if ($page.path === "/admin") goto("/admin/profile");
 			}

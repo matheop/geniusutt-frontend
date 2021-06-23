@@ -1,5 +1,7 @@
 <script context="module">
-	export function load({ error, status }) {
+	export function load({ error, status, session }) {
+		session.token = "";
+		session.user = false;
 		return {
 			props: {
 				status: `${status}`,

@@ -7,7 +7,7 @@
 	import Notifications from "$components/templates/Notifications.svelte";
 	import { modal } from "$stores/modal";
 
-	// $: console.log("$session:", $session);
+	$: console.log("$session:", $session);
 </script>
 
 <Notifications />
@@ -16,7 +16,7 @@
 	<ModalCompo {...$modal} />
 {/if}
 
-{#if $session.token && $session.user}
+{#if !!$session.token && !!$session.user}
 	<Navbar />
 
 	<main>
