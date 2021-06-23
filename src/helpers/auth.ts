@@ -12,5 +12,5 @@ export const logout = (): void => {
 	});
 	session.set({ user: null, token: null, expiryDate: null });
 
-	// window.location.href = `${SITE_URL}/admin`;
+	window.location.replace(`${SITE_URL}/admin`);
 };
