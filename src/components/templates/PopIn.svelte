@@ -29,7 +29,7 @@
 	<div
 		in:fly={{ delay: 250, y: 200, duration: 400 }}
 		out:fly={{ y: 200 }}
-		style="width: {width}; max-width: {maxWidth}; max-height: {maxHeight}"
+		style="width: {width}; max-width: {maxWidth}; max-height: {maxHeight};"
 		id="popin">
 		<slot />
 	</div>
@@ -47,6 +47,7 @@
 		@include flex;
 
 		#popin {
+			overflow-y: scroll;
 			position: relative;
 			background-color: transparent;
 			z-index: 10000;

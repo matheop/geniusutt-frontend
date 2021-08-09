@@ -1,3 +1,16 @@
+<script context="module">
+	export async function load({ page, session }) {
+		if (
+			/^\/admin\/(.*)/.test(page.path) &&
+			!session.token &&
+			!session.user
+		) {
+			return { redirect: "/admin", status: 302 };
+		}
+		return { props: {} };
+	}
+</script>
+
 <script>
 	import { session } from "$app/stores";
 

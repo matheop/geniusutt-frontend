@@ -12,12 +12,12 @@
 	const remove = () => form.remove();
 
 	const formData = {
-		firstname: "Math",
-		lastname: "Polymath",
-		email: "polymath@gmail.com",
-		organization: "Entreprise",
-		subject: "Exemple",
-		message: "Un petit trux bullshit takapté",
+		firstname: "",
+		lastname: "",
+		email: "",
+		organization: "",
+		subject: "",
+		message: "",
 	};
 
 	const sendForm = async (data) => {

@@ -4,12 +4,10 @@
 	import Cross from "$svg/Cross.svelte";
 	import Info from "$svg/Info.svelte";
 	import EventInfo from "./utils/EventInfo.svelte";
-	import VideoPopIn from "./utils/VideoPopIn.svelte";
 
 	export let event: Event;
 
 	let showInfo: boolean = false;
-	let showVideo: boolean = false;
 	let maxHeight: string = "90vh";
 </script>
 
@@ -56,12 +54,6 @@
 			</div>
 
 			<p>{event.desc}</p>
-
-			{#if !!event.videoUrl}
-				<button
-					on:click={() => (showVideo = true)}
-					class="link video">Voir la vidéo</button>
-			{/if}
 			{#if event.upcoming && !!event.eventUrl}
 				<a
 					href={event.eventUrl}
@@ -74,13 +66,6 @@
 			{/if}
 		</section>
 	</PopIn>
-
-	{#if showVideo}
-		<VideoPopIn
-			title={event.name}
-			videoUrl={event.videoUrl}
-			bind:showVideo />
-	{/if}
 {/if}
 
 <style lang="scss">

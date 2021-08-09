@@ -22,8 +22,28 @@
 	let isEventDisplayed: boolean = false;
 
 	const remove = (event?: Event) => {
-		if (!event && action !== "create") event = storedEvent;
+		if (!event && action !== "create") {
+			event = storedEvent;
+			removeImgUrl();
+		}
 		dispatch("remove", { event });
+	};
+
+	/* Image handling */
+	const removeImgUrl = (e?) => {
+		eventInfo.imgUrl = null;
+		imgPreview = null;
+	};
+
+	let imgPreview: ArrayBuffer | string = null;
+
+	const onFileSelected = (e) => {
+		let image = e.target.files[0];
+		let reader = new FileReader();
+		reader.readAsDataURL(image);
+		reader.onload = (e) => {
+			imgPreview = e.target.result;
+		};
 	};
 
 	const sendData = async (action, event: Event): Promise<void> => {
@@ -39,6 +59,15 @@
 		} else {
 			route = `update/${event._id}`;
 			method = "PUT";
+		}
+
+		const formData = new FormData();
+
+		formData.append("imageUrl", eventInfo.imgUrl);
+		formData.append("name", eventInfo.name);
+
+		for (var pair of formData.entries()) {
+			console.log(pair[0] + ": " + pair[1]);
 		}
 
 		try {
@@ -94,7 +123,7 @@
 
 		<div class="row">
 			<div class="col">
-				<p class="label">Nom :</p>
+				<p class="label">Nom* :</p>
 				<div class="input">
 					<Input
 						bind:value={eventInfo.name}
@@ -103,7 +132,7 @@
 			</div>
 
 			<div class="col">
-				<p class="label">Lieu :</p>
+				<p class="label">Lieu* :</p>
 				<div class="input">
 					<Input
 						bind:value={eventInfo.place}
@@ -132,12 +161,37 @@
 			</div>
 		</div>
 
-		<p class="label">Description :</p>
+		<p class="label">Description* :</p>
 		<div class="input">
 			<TextArea
 				bind:value={eventInfo.desc}
 				placeholder="Il était une fois..." />
 		</div>
+
+		<p class="label">Image* :</p>
+		<div class="input">
+			{#if !!eventInfo.imgUrl}
+				<span class="tag" on:click={(e) => removeImgUrl(e)}
+					>Supprimer</span>
+			{/if}
+			<input
+				type="file"
+				required
+				name="image"
+				bind:value={eventInfo.imgUrl}
+				on:change={(e) => onFileSelected(e)} />
+			<!-- <Input
+				isRequired
+				name="image"
+				type="file"
+				bind:value={eventInfo.imgUrl} /> -->
+		</div>
+		{#if imgPreview}
+			<img
+				class="img-preview"
+				src={imgPreview}
+				alt={eventInfo.name} />
+		{/if}
 
 		<div class="btn-box">
 			<button
@@ -157,12 +211,13 @@
 	<PopIn
 		maxWidth="74vw"
 		on:out-popin={() => (isEventDisplayed = false)}>
-		<EventDesktop event={eventInfo} />
+		<EventDesktop event={eventInfo} {imgPreview} />
 	</PopIn>
 {/if}
 
 <style lang="scss">
 	section {
+		overflow-y: scroll;
 		background-color: $white;
 		border-radius: $br-500;
 		padding: $sp-400 $sp-500;
@@ -189,6 +244,23 @@
 	}
 	.input {
 		margin-bottom: $sp-400;
+		position: relative;
+	}
+	.img-preview {
+		display: flex;
+		margin: 0 auto $sp-400;
+		border-radius: $br-500;
+		width: 50%;
+		height: 50%;
+		object-fit: cover;
+	}
+
+	.tag {
+		cursor: pointer;
+		position: absolute;
+		z-index: 10;
+		right: $sp-200;
+		top: 0.8rem;
 	}
 
 	#cross {
