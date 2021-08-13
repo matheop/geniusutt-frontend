@@ -39,6 +39,7 @@
 
 	const onFileSelected = (e) => {
 		let image = e.target.files[0];
+		eventInfo.imgUrl = image;
 		let reader = new FileReader();
 		reader.readAsDataURL(image);
 		reader.onload = (e) => {
@@ -63,22 +64,41 @@
 
 		const formData = new FormData();
 
-		formData.append("imageUrl", eventInfo.imgUrl);
+		// Mandatory fields
+		formData.append("image", eventInfo.imgUrl);
 		formData.append("name", eventInfo.name);
+		formData.append("date", eventInfo.date);
+		formData.append("schedule", eventInfo.schedule);
+		formData.append("place", eventInfo.place);
+		formData.append("desc", eventInfo.desc);
 
+		let isEmptyField: boolean = false;
 		for (var pair of formData.entries()) {
-			console.log(pair[0] + ": " + pair[1]);
+			console.log(pair[0], ":", pair[1]);
+			if (!pair[1] || pair[1] === "null") isEmptyField = true;
+		}
+		// Optional field
+		formData.append("eventUrl", eventInfo.eventUrl);
+
+		if (isEmptyField) {
+			notifications.add(
+				new Alert(
+					"Erreur dans le formulaire !",
+					"error",
+					"Un ou plusieurs champs sont incomplets"
+				)
+			);
+			return;
 		}
 
 		try {
 			const res = await fetch(`${API_URL}/events/${route}`, {
 				method: method,
 				headers: {
-					"Content-Type": "application/json",
 					"Access-Control-Allow-Origin": "*",
 					Authorization: "Bearer " + $session.token,
 				},
-				body: JSON.stringify(event),
+				body: formData,
 			});
 			const result = await res.json();
 
@@ -176,9 +196,7 @@
 			{/if}
 			<input
 				type="file"
-				required
 				name="image"
-				bind:value={eventInfo.imgUrl}
 				on:change={(e) => onFileSelected(e)} />
 			<!-- <Input
 				isRequired

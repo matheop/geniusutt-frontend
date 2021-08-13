@@ -1,4 +1,5 @@
 <script>
+	import { API_URL } from "env";
 	import PopIn from "$components/templates/PopIn.svelte";
 	import type { Event } from "$helpers/interfaces/events";
 	import Cross from "$svg/Cross.svelte";
@@ -38,7 +39,7 @@
 			<div class="img-cover">
 				<img
 					class="cover"
-					src={event.imgUrl}
+					src={`${API_URL}/${event.imgUrl}`}
 					alt={event.name} />
 			</div>
 

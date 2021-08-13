@@ -1,5 +1,6 @@
 <script>
 	import type { Event } from "$helpers/interfaces/events";
+	import { API_URL } from "env";
 
 	import EventInfo from "./utils/EventInfo.svelte";
 
@@ -14,7 +15,7 @@
 	<div class="img-div">
 		<img
 			class="cover"
-			src={imgPreview ?? event.imgUrl}
+			src={imgPreview ?? `${API_URL}/${event.imgUrl}`}
 			alt={event.name} />
 	</div>
 	<div class="info">

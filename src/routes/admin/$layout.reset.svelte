@@ -20,7 +20,7 @@
 	import Notifications from "$components/templates/Notifications.svelte";
 	import { modal } from "$stores/modal";
 
-	$: console.log("$session:", $session);
+	// $: console.log("$session:", $session);
 </script>
 
 <Notifications />
