@@ -54,9 +54,6 @@
 		if (action === "create") {
 			route = "create";
 			method = "POST";
-
-			// TODO: TEMP - Remove this then
-			event.upcoming = true;
 		} else {
 			route = `update/${event._id}`;
 			method = "PUT";
@@ -65,12 +62,12 @@
 		const formData = new FormData();
 
 		// Mandatory fields
-		formData.append("image", eventInfo.imgUrl);
 		formData.append("name", eventInfo.name);
 		formData.append("date", eventInfo.date);
 		formData.append("schedule", eventInfo.schedule);
 		formData.append("place", eventInfo.place);
 		formData.append("desc", eventInfo.desc);
+		formData.append("image", eventInfo.imgUrl);
 
 		let isEmptyField: boolean = false;
 		for (var pair of formData.entries()) {
@@ -163,7 +160,7 @@
 
 		<div class="row">
 			<div class="col">
-				<p class="label">Date(s) :</p>
+				<p class="label">Date* (JJ/MM/AAAA) :</p>
 				<div class="input">
 					<Input
 						bind:value={eventInfo.date}
@@ -172,7 +169,7 @@
 			</div>
 
 			<div class="col">
-				<p class="label">Horaire(s) :</p>
+				<p class="label">Horaire(s) [voir Aide] :</p>
 				<div class="input">
 					<Input
 						bind:value={eventInfo.schedule}
@@ -181,7 +178,7 @@
 			</div>
 		</div>
 
-		<p class="label">Description* :</p>
+		<p class="label">Description* (min. 20 caractères) :</p>
 		<div class="input">
 			<TextArea
 				bind:value={eventInfo.desc}

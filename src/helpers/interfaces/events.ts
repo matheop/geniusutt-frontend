@@ -6,7 +6,6 @@ export interface Event {
 	place: string;
 	desc: string;
 	imgUrl: string;
-	tags?: string[];
 	eventUrl: string; // Facebook event
 	upcoming: boolean;
 }

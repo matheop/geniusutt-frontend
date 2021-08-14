@@ -6,9 +6,6 @@
 
 	export let event: Event;
 	export let imgPreview: ArrayBuffer | string;
-
-	// TODO: gestion auto avec moment
-	export let upcomingEvent: boolean = false;
 </script>
 
 <article class="event-card">

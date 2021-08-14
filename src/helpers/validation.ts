@@ -1,7 +1,4 @@
-import {
-	emailRegex,
-} from "./regex";
-import type { ValidationObject } from "./interfaces/index";
+import { emailRegex } from "./regex";
 
 // Email
 export const isValidEmail = (email: string) => {

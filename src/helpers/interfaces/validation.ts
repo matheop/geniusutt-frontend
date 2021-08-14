@@ -4,11 +4,6 @@ export interface Rule {
 	isValid: (...args: Value[]) => boolean;
 	msg: string;
 }
-
-export interface ValidationObject {
-	isValid: boolean;
-	tags?: Array<string>;
-}
 export interface ValidationProperty {
 	rules: Rule[];
 	required?: boolean;

@@ -1,5 +1,7 @@
 <script context="module">
 	import { API_URL } from "env";
+	import moment from "moment";
+	moment().format();
 
 	export async function load({ fetch }) {
 		try {
@@ -11,6 +13,14 @@
 			});
 
 			const result = await res.json();
+			for (const e of result.events) {
+				let dateAsMoment = moment(e.date, "DD/MM/YYYY");
+				if (dateAsMoment.isBefore(Date.now())) {
+					e.upcoming = false;
+				} else {
+					e.upcoming = true;
+				}
+			}
 
 			if (res.status === 200) {
 				return {

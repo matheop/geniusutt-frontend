@@ -20,11 +20,6 @@
 			<Info />
 		</i>
 	</div>
-	<!-- <div class="tags">
-		{#each event.tags as tag}
-			<span class="tag">{tag}</span>
-		{/each}
-	</div> -->
 </article>
 
 {#if showInfo}
@@ -91,16 +86,6 @@
 			i {
 				width: 1.5rem;
 				height: 1.5rem;
-			}
-		}
-
-		.tags {
-			@include flex-y;
-			flex-wrap: wrap;
-			gap: $sp-50;
-			.tag {
-				color: $white;
-				background-color: $success;
 			}
 		}
 	}
