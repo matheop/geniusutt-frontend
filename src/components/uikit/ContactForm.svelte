@@ -8,6 +8,8 @@
 
 	import Input from "./Input.svelte";
 	import TextMessage from "./TextMessage.svelte";
+	import { isEmpty, isValidEmail } from "$helpers/validation";
+	import { Alert, notifications } from "$stores/notifications";
 
 	const remove = () => form.remove();
 
@@ -21,9 +23,26 @@
 	};
 
 	const sendForm = async (data) => {
-		console.log("data:", data);
+		if (isEmpty(data)) {
+			alert("Attention, Il manque un champ obligatoire !");
+			notifications.add(
+				new Alert(
+					"Attention, Il manque un champ obligatoire !",
+					"error"
+				)
+			);
+			return;
+		}
+		if (!isValidEmail(data.email)) {
+			alert("Attention, mail incorrect !");
+			notifications.add(
+				new Alert("Attention, mail incorrect !", "error")
+			);
+			return;
+		}
+
 		try {
-			const res = await fetch(`${API_URL}/contact/send`, {
+			const res = await fetch(`${API_URL}/contacts/send`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -33,9 +52,28 @@
 			});
 
 			if (res.status === 201) {
-				alert("form sent");
+				alert(
+					"Message envoyé ! Merci de nous avoir contacté, nous vous répondrons dès que possible"
+				);
+				notifications.add(
+					new Alert(
+						"Message envoyé !",
+						"success",
+						"Merci de nous avoir contacté, nous vous répondrons dès que possible"
+					)
+				);
+				remove();
 			} else {
-				alert("an error occured");
+				alert(
+					"Oups! Une erreur est survenue... Veuillez réessayer plus tard SVP"
+				);
+				notifications.add(
+					new Alert(
+						"Oups! Une erreur est survenue...",
+						"error",
+						"Veuillez réessayer plus tard SVP"
+					)
+				);
 			}
 		} catch (error) {
 			console.error("error:", error);

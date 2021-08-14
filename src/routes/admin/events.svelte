@@ -50,7 +50,11 @@
 	let upcomingEvents: Event[];
 	let pastEvents: Event[];
 
-	// TODO: sort en fonction des dates
+	events = events.sort(
+		(a, b) =>
+			moment(b.date, "DD/MM/YYYY") -
+			moment(a.date, "DD/MM/YYYY")
+	);
 
 	$: if (events) {
 		upcomingEvents = events.filter(

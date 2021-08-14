@@ -10,6 +10,7 @@
 	import User from "$svg/admin/User.svelte";
 	import { session } from "$app/stores";
 	import { Role } from "$helpers/enums";
+	import Information from "$svg/admin/Information.svelte";
 
 	$: path = $page.path;
 
@@ -45,11 +46,16 @@
 			route: "/admin/contact-forms",
 			hover: false,
 		},
+		{
+			icon: Information,
+			route: "/admin/help",
+			hover: false,
+		},
 	];
 
 	if ($session.user?.role === Role.ADMIN) {
 		links.unshift(adminLinks[0]);
-		links.push(adminLinks[1]);
+		links.splice(-1, 0, adminLinks[1]);
 	}
 </script>
 

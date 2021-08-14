@@ -47,6 +47,12 @@
 
 	export let events: Event[];
 
+	events = events.sort(
+		(a, b) =>
+			moment(b.date, "DD/MM/YYYY") -
+			moment(a.date, "DD/MM/YYYY")
+	);
+
 	const upcomingEvents: Event[] = events.filter(
 		(e) => e.upcoming === true
 	);

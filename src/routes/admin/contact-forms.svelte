@@ -1,5 +1,6 @@
 <script context="module">
 	import { API_URL } from "env";
+	moment().format();
 
 	export async function load({ fetch, session }) {
 		try {
@@ -12,6 +13,10 @@
 			});
 
 			const result = await res.json();
+
+			for (const form of result.forms) {
+				form.date = moment(form.date).format("DD/MM/YYYY");
+			}
 
 			if (res.status === 200) {
 				return {
@@ -33,13 +38,18 @@
 	import Banner from "$components/admin/Banner.svelte";
 	import type { ContactForm } from "$helpers/interfaces/contact-forms";
 	import Seo from "$components/templates/SEO.svelte";
+	import moment from "moment";
 
 	export let contacts: ContactForm[];
 
 	let contactedForms: ContactForm[];
 	let notContactedForms: ContactForm[];
 
-	// TODO: sort en fonction des dates
+	contacts = contacts.sort(
+		(a, b) =>
+			moment(b.date, "DD/MM/YYYY") -
+			moment(a.date, "DD/MM/YYYY")
+	);
 
 	$: if (contacts) {
 		contactedForms = contacts.filter(
