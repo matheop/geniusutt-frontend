@@ -70,19 +70,21 @@
 	};
 </script>
 
-<p class="label">Nom complet :</p>
+<p class="label">Nom complet* :</p>
 <div class="input">
 	<Input bind:value={member.name} placeholder="Mathéo Pierini" />
 </div>
-<p class="label">Position :</p>
+<p class="label">Position* :</p>
 <div class="input">
 	<Input bind:value={member.position} placeholder="Président" />
 </div>
-<p class="label">Mini-Description :</p>
+<p class="label">Mini-Description* (70-100 caractères):</p>
 <div class="input">
 	<TextArea bind:value={member.shortDesc} placeholder="..." />
 </div>
-<p class="label">Description du rôle et du pôle :</p>
+<p class="label">
+	Description du rôle et du pôle* (200-400 caractères) :
+</p>
 <div class="input">
 	<TextArea
 		rows={7}
