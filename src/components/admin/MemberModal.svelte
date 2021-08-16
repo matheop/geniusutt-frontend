@@ -13,6 +13,24 @@
 
 	const dispatch = createEventDispatcher();
 
+	let imgPreview: ArrayBuffer | string = null;
+
+	/* Image handling */
+	const removeImgUrl = () => {
+		member.imgUrl = null;
+		imgPreview = null;
+	};
+
+	const onFileSelected = (e) => {
+		let image = e.target.files[0];
+		member.imgUrl = image;
+		let reader = new FileReader();
+		reader.readAsDataURL(image);
+		reader.onload = (e) => {
+			imgPreview = e.target.result;
+		};
+	};
+
 	const sendData = async (
 		action: "update" | "create",
 		member: BoardMember
@@ -28,26 +46,54 @@
 			method = "PUT";
 		}
 
+		const formData = new FormData();
+
+		// Mandatory fields
+		formData.append("name", member.name);
+		formData.append("position", member.position);
+		formData.append("shortDesc", member.shortDesc);
+		formData.append("longDesc", member.longDesc);
+		formData.append("image", member.imgUrl);
+
+		let isEmptyField: boolean = false;
+		for (var pair of formData.entries()) {
+			console.log(pair[0], ":", pair[1]);
+			if (!pair[1] || pair[1] === "null") isEmptyField = true;
+		}
+		// Optional field
+		formData.append("linkedin", member.linkedin);
+
+		if (isEmptyField) {
+			notifications.add(
+				new Alert(
+					"Erreur dans le formulaire !",
+					"error",
+					"Un ou plusieurs champs sont incomplets"
+				)
+			);
+			return;
+		}
+
 		try {
 			const res = await fetch(
 				`${API_URL}/board-members/${route}`,
 				{
 					method: method,
 					headers: {
-						"Content-Type": "application/json",
 						"Access-Control-Allow-Origin": "*",
 						Authorization: "Bearer " + $session.token,
 					},
-					body: JSON.stringify(member),
+					body: formData,
 				}
 			);
 			const result = await res.json();
+			console.log("result:", result);
 
 			if ([200, 201].includes(res.status)) {
 				const text =
 					action === "create" ? "ajouté" : "modifié";
 				notifications.add(
-					new Alert(`Évènement ${text} !`, "success")
+					new Alert(`Membre ${text} !`, "success")
 				);
 				dispatch("remove", { member: result.member });
 			} else {
@@ -97,6 +143,20 @@
 		bind:value={member.linkedin}
 		placeholder="https://www.linkedin.com/in/..." />
 </div>
+
+<div class="input">
+	{#if !!member.imgUrl}
+		<span class="tag" on:click={(e) => removeImgUrl(e)}
+			>Supprimer</span>
+	{/if}
+	<input
+		type="file"
+		name="image"
+		on:change={(e) => onFileSelected(e)} />
+</div>
+{#if imgPreview}
+	<img class="img-preview" src={imgPreview} alt={member.name} />
+{/if}
 
 <div class="btn-box">
 	<button

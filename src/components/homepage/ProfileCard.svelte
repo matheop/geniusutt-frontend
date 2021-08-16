@@ -1,4 +1,5 @@
 <script>
+	import { API_URL } from "env";
 	import LinkedIn from "$svg/networks/LinkedIn.svelte";
 
 	export let imgUrl: string;
@@ -13,7 +14,10 @@
 		<!-- FRONT -->
 		<div class="flip-front">
 			<div class="img-cover">
-				<img class="cover" src={imgUrl} alt={name} />
+				<img
+					class="cover"
+					src={`${API_URL}/${imgUrl}`}
+					alt={name} />
 			</div>
 			<h5 class="light">
 				{name}

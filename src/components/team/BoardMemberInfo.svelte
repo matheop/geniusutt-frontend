@@ -1,4 +1,5 @@
 <script>
+	import { API_URL } from "env";
 	import { isPhone } from "$stores/media";
 
 	export let name: string;
@@ -23,7 +24,10 @@
 			? 'row'
 			: ''}">
 		<div class="img-cover {imgSide}">
-			<img class="cover" src={imgUrl} alt={name} />
+			<img
+				class="cover"
+				src={`${API_URL}/${imgUrl}`}
+				alt={name} />
 		</div>
 		<p>{@html desc}</p>
 	</div>
