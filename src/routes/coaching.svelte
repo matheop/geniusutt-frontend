@@ -381,8 +381,6 @@
 	}
 
 	.card-container {
-		z-index: 5;
-		position: relative;
 		@include min-tablet {
 			@include grid-12;
 		}

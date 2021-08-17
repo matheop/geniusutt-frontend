@@ -94,7 +94,9 @@
 		<div class="logo-div">
 			<i class="logo"><GeniusUtt /></i>
 			<p>
-				©{currentYear} par M&P
+				©{currentYear} par
+				<a href="https://poly-math.dev" target="_blank"
+					><span>Polymath</span></a>
 			</p>
 		</div>
 	</div>
@@ -152,11 +154,26 @@
 			}
 		}
 
-		.logo {
-			margin: auto;
-			padding-top: $sp-300;
-			display: block;
-			width: fit-content;
+		.logo-div {
+			.logo {
+				margin: auto;
+				// padding-top: $sp-300;
+				display: block;
+				width: fit-content;
+				height: 7rem;
+			}
+
+			p {
+				margin-top: $sp-50;
+				@include body2;
+				color: $white;
+				text-align: center;
+
+				span {
+					font-weight: bold;
+					font-style: italic;
+				}
+			}
 		}
 	}
 </style>

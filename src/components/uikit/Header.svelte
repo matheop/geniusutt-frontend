@@ -11,13 +11,13 @@
 
 <header>
 	<div class="global-container">
-		<a aria-label="Accueil" href="/">
-			<div class="logo">
+		<div class="logo">
+			<a aria-label="Accueil" href="/">
 				<i>
 					<GeniusUtt />
 				</i>
-			</div>
-		</a>
+			</a>
+		</div>
 
 		{#if $isPhone}
 			<div on:click={toggleMenu} class="burger" />
@@ -58,10 +58,10 @@
 				@include min-tablet {
 					grid-column: 1 / 3;
 				}
-				background-color: $white;
-				// i {
-				// 	height: 3rem;
-				// }
+
+				i {
+					height: 4rem;
+				}
 			}
 			.burger {
 				background-color: $white;

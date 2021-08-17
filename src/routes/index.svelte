@@ -135,7 +135,7 @@
 	<div class="video-foreground" />
 	<iframe
 		title=""
-		src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1&showinfo=0&controls=0&autohide=1&loop=1"
+		src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1&showinfo=0&controls=0&autohide=1&loop=1rel=0&modestbranding=1"
 		frameborder="0" />
 
 	<div class="global-container content">

@@ -198,9 +198,10 @@
 				LinkedIn, tout simplement
 			</li>
 			<li>
-				Image : fichiers <strong>PNG, JPG ou JPEG</strong> (aperçu
-				n'apparait pas à l'édition mais est toujours présent [cf.
-				la présence du bouton "Supprimer" ou non])
+				Image : fichiers <strong>PNG, JPG ou JPEG</strong> en
+				<strong>format CARRÉ</strong> (aperçu n'apparait pas à
+				l'édition mais est toujours présent [cf. la présence du
+				bouton "Supprimer" ou non])
 			</li>
 		</ul>
 	</section>
