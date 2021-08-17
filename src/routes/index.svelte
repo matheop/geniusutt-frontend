@@ -87,7 +87,7 @@
 	const objectives: Objective[] = [
 		{
 			link: "uikit",
-			imgUrl: "/img/helping-hand.jpeg",
+			imgUrl: "/img/helping-hands.jpeg",
 			title: "🤝 Aider...",
 			desc:
 				"Les étudiants à développer leur projet en les accompagnant tout le long de leur formation",
@@ -95,7 +95,7 @@
 		},
 		{
 			link: "/equipe",
-			imgUrl: "/img/helping-hand.jpeg",
+			imgUrl: "/img/helping-new-skills.jpeg",
 			title: "🎓 Découvrir...",
 			desc:
 				"La vie associative et développer de nouvelles compétences complémentaires à la formation",
@@ -103,7 +103,7 @@
 		},
 		{
 			link: "https://geniusglobal.fr/",
-			imgUrl: "/img/helping-hand.jpeg",
+			imgUrl: "/img/helping-friends.jpeg",
 			title: "🙏 Rencontrer...",
 			desc:
 				"Un nouveau réseau d’étudiants et d’entrepreneurs ambitieux, motivés, et cool !",
@@ -112,7 +112,7 @@
 		},
 		{
 			link: "/evenements",
-			imgUrl: "/img/helping-hand.jpeg",
+			imgUrl: "/img/helping-dream-big.jpeg",
 			title: "✨ Inspirer...",
 			desc:
 				"Les étudiants à entreprendre et à repousser leurs propres limites à travers différents événements",
