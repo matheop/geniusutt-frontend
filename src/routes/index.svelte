@@ -44,8 +44,80 @@
 	import Star1 from "$svg/stars/Star1.svelte";
 	import type { SvelteComponent } from "svelte";
 	import type { BoardMember } from "$helpers/interfaces/boardmembers";
+	import { isPhone, isTablet, media } from "$stores/media";
+	import GeniusUtt from "$svg/logos/GeniusUTT.svelte";
 
 	export let boardmembers: BoardMember[];
+
+	import { onMount } from "svelte";
+
+	let ParticlesComponent;
+
+	onMount(async () => {
+		const module = await import("svelte-particles");
+
+		ParticlesComponent = module.default;
+	});
+
+	let particlesConfig = {
+		detectRetina: false,
+		fpsLimit: 30,
+		interactivity: {
+			detectsOn: "canvas",
+			events: {
+				resize: true,
+			},
+		},
+		particles: {
+			color: {
+				value: "#fff",
+			},
+			number: {
+				density: {
+					enable: true,
+					area: 1080,
+				},
+				limit: 0,
+				value: 400,
+			},
+			opacity: {
+				animation: {
+					enable: true,
+					minimumValue: 0.05,
+					speed: 0.25,
+					sync: false,
+				},
+				random: {
+					enable: true,
+					minimumValue: 0.05,
+				},
+				value: 1,
+			},
+			shape: {
+				type: "circle",
+			},
+			size: {
+				random: {
+					enable: true,
+					minimumValue: 0.5,
+				},
+				value: 1,
+			},
+			move: {
+				enable: true,
+				speed: 0.2,
+				direction: "none",
+				random: false,
+				straight: false,
+				out_mode: "out",
+				attract: {
+					enable: false,
+					rotateX: 600,
+					rotateY: 1200,
+				},
+			},
+		},
+	};
 
 	interface MetricBox {
 		metric: string;
@@ -131,22 +203,33 @@
 
 <Seo title="Genius UTT | Accueil" url="TODO" image="TODO" />
 
-<section class="welcome">
-	<div class="video-foreground" />
-	<iframe
-		title="Teaser Genius"
-		src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1&showinfo=0&controls=0&autohide=1&loop=1rel=0&modestbranding=1"
-		frameborder="0" />
+{#if ["md", "lg", "xl"].includes($media)}
+	<section class="welcome">
+		<div class="video-foreground" />
 
-	<div class="global-container content">
-		<i> FUTUR PLACE POUR LOGO </i>
-		<h1>Dream Big – Work hard <br /> start small</h1>
+		<video autoplay muted loop>
+			<source
+				src="/videos/teaser-genius.mp4"
+				type="video/mp4" />
+			Your browser does not support the video tag.
+		</video>
+
+		<div class="yellow" />
+		<div class="blue" />
+	</section>
+{:else}
+	<div class="global-container headline-section">
+		<i>
+			<GeniusUtt />
+		</i>
 		<h3>APPRENDRE & ENTREPRENDRE</h3>
+		<svelte:component
+			this={ParticlesComponent}
+			id="tsparticles"
+			options={particlesConfig} />
 	</div>
-
-	<div class="yellow" />
-	<div class="blue" />
-</section>
+	<div class="divider" />
+{/if}
 
 <section class="section-pdg">
 	<article class="geniusutt global-container pb-500-inner">
@@ -372,26 +455,19 @@
 		padding: 0;
 
 		.video-foreground,
-		iframe {
+		video {
 			position: absolute;
 			top: 0;
 			left: 0;
 			width: 100%;
 			height: 100%;
 			pointer-events: none;
+			object-fit: cover;
 		}
 
 		.video-foreground {
 			z-index: 10;
-			background-color: rgba($black, 0.6);
-		}
-		.content {
-			position: relative;
-			padding-top: 20vh;
-			z-index: 10;
-			h3 {
-				text-align: left;
-			}
+			background-color: rgba($black, 0.4);
 		}
 
 		.blue,
@@ -411,6 +487,19 @@
 			background-color: $sec-500;
 			transform: rotate(-5deg);
 		}
+	}
+
+	.headline-section {
+		@include flex;
+		flex-direction: column;
+		gap: $sp-400;
+		@include py($sp-600);
+		position: relative;
+	}
+	.divider {
+		height: 0.2rem;
+		width: 100%;
+		background-color: $white;
 	}
 
 	.geniusutt {
