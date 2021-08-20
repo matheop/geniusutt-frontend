@@ -3,6 +3,7 @@
 	import GeniusUtt from "$svg/logos/GeniusUTT.svelte";
 	import { isPhone } from "$stores/media";
 	import HeaderNav from "./helpers/HeaderNav.svelte";
+	import BurgerMenu from "$svg/BurgerMenu.svelte";
 
 	let openMenu: boolean = false;
 
@@ -13,14 +14,16 @@
 	<div class="global-container">
 		<div class="logo">
 			<a aria-label="Accueil" href="/">
-				<i>
+				<i on:click={() => (openMenu = false)}>
 					<GeniusUtt />
 				</i>
 			</a>
 		</div>
 
 		{#if $isPhone}
-			<div on:click={toggleMenu} class="burger" />
+			<i on:click={toggleMenu} class="burger">
+				<BurgerMenu />
+			</i>
 		{/if}
 
 		<nav class="desktop">
@@ -63,8 +66,7 @@
 					height: 4rem;
 				}
 			}
-			.burger {
-				background-color: $white;
+			i.burger {
 				width: 2rem;
 				height: 2rem;
 				cursor: pointer;
