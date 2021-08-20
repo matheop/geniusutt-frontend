@@ -134,7 +134,7 @@
 <section class="welcome">
 	<div class="video-foreground" />
 	<iframe
-		title=""
+		title="Teaser Genius"
 		src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1&showinfo=0&controls=0&autohide=1&loop=1rel=0&modestbranding=1"
 		frameborder="0" />
 
@@ -229,12 +229,14 @@
 	</i>
 	<Sweeper contentWidth="10rem">
 		{#each boardmembers as m}
-			<ProfileCard
-				name={m.name}
-				position={m.position}
-				imgUrl={m.imgUrl}
-				desc={m.shortDesc}
-				linkedin={m.linkedin} />
+			<div class="card-container">
+				<ProfileCard
+					name={m.name}
+					position={m.position}
+					imgUrl={m.imgUrl}
+					desc={m.shortDesc}
+					linkedin={m.linkedin} />
+			</div>
 		{/each}
 	</Sweeper>
 
@@ -435,10 +437,14 @@
 				left: 20%;
 			}
 			:global(.sweeper) {
-				display: grid;
-				grid: repeat(8, calc(17rem / 3)) / repeat(9, 1fr);
+				@include flex-x;
+				flex-flow: wrap row;
+				row-gap: $sp-600;
 				max-width: $maxWidth;
 				margin: auto;
+			}
+			:global(.sweeper > *) {
+				width: 25%;
 			}
 
 			/* profile-card in global.scss */
