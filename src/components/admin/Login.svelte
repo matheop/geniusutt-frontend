@@ -25,7 +25,6 @@
 			});
 
 			const data = await res.json();
-			console.log("data:", data);
 
 			if (res.status === 422) {
 				notifications.add(

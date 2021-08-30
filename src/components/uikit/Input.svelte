@@ -17,10 +17,6 @@
 	export let isFormChecked: boolean = false;
 	export let isRequired: boolean = false;
 
-	$: if (type === "file") {
-		console.log("input:", document.getElementById("file"));
-	}
-
 	$: displayError = isInputClicked || isFormChecked;
 </script>
 

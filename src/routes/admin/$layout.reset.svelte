@@ -19,8 +19,6 @@
 	import ModalCompo from "$components/templates/Modal.svelte";
 	import Notifications from "$components/templates/Notifications.svelte";
 	import { modal } from "$stores/modal";
-
-	// $: console.log("$session:", $session);
 </script>
 
 <Notifications />

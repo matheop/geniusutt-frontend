@@ -268,38 +268,6 @@
 				d’intervenants, d’étudiants aux compétences diverses
 				et de ressources en tout genre.
 			</p>
-			<p>
-				En ce qui concerne les projets de Genius UTT, nous
-				avons une grande partie qui est axée sur un type
-				évènementiel afin de proposer aux étudiants une
-				découverte de différents domaines d'activités, les
-				courants d'innovations actuels et comment l'innovation
-				et l'entreprenariat évoluent en temps réel au sein de
-				notre société. Cela se réalise par exemple à travers
-				l'UTT Innovation Crunch Time (Concours d'innovation),
-				les conférences sur les nouvelles technologies
-				(Geneo), le TEDxUTTroyes, les workshops, les visites
-				d'entreprises... De nombreux partenaires locaux,
-				entreprises, associations et startups Troyennes
-				soutiennent nos projets et participent à la
-				réalisation de ces évenements.
-			</p>
-			<p>
-				Enfin, Genius UTT c’est aussi une partie Coaching pour
-				les étudiants ayant des projets entrepreneuriaux. Nous
-				les accompagnons et les coachons via des ateliers
-				coorganisés avec l’association dans anciens cadres et
-				dirigeants d’entreprises, EGEE. Grace à nos
-				partenaires à l’UTT et à la Fondation UTT nous
-				organisons en fin de semestre et pour ces projets
-				étudiants, une commission de financement se nommant le
-				Mind Start. Cela se joint aux formations et ateliers
-				proposés sur des sujets tels que le business plan, les
-				statuts juridiques ou la communication. Les projets
-				émergents de Genius Coaching sont de plus en plus
-				nombreux, certains sont ensuite incubés pour qu’ils
-				puissent augmenter leur portée.
-			</p>
 		</div>
 	</article>
 </section>

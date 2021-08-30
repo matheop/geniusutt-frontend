@@ -57,7 +57,6 @@
 
 		let isEmptyField: boolean = false;
 		for (var pair of formData.entries()) {
-			console.log(pair[0], ":", pair[1]);
 			if (!pair[1] || pair[1] === "null") isEmptyField = true;
 		}
 		// Optional field
@@ -87,7 +86,6 @@
 				}
 			);
 			const result = await res.json();
-			console.log("result:", result);
 
 			if ([200, 201].includes(res.status)) {
 				const text =
