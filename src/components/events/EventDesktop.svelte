@@ -19,7 +19,7 @@
 		<h2>{event.name}</h2>
 		<p>{event.desc}</p>
 
-		<div>
+		<div class="event-info">
 			<EventInfo
 				flex="inline"
 				eventInfo={[
@@ -40,6 +40,11 @@
 					</button>
 				</a>
 			{/if}
+			<a href={event.eventUrl} target="_blank" class="no-deco">
+				<button class="outline-blue-btn">
+					En savoir +
+				</button>
+			</a>
 		</div>
 	</div>
 </article>
@@ -52,7 +57,7 @@
 		@include br-900;
 		@include transition($transition);
 		overflow: hidden;
-		max-height: 23rem;
+		height: 23rem;
 
 		&:hover {
 			transform: scale(1.01);
@@ -68,17 +73,29 @@
 			padding: $sp-400 0;
 			padding-right: $sp-400;
 
-			& > *:not(:last-child) {
-				margin-bottom: $sp-300;
-			}
+			display: grid;
+			grid-template-rows: 2rem 9.5rem 1.7rem 3rem;
+			gap: $sp-200;
 
-			:global(event-info) {
-				gap: $sp-200;
+			h2 {
+				grid-row: 1 / 2;
+			}
+			p {
+				grid-row: 2 / 3;
+			}
+			.event-info {
+				grid-row: 3 / 4;
+			}
+			.footer {
+				grid-row: 4 / 5;
 			}
 
 			.footer {
 				@include flex-y;
-				justify-content: space-between;
+
+				a:first-child {
+					margin-right: $sp-300;
+				}
 			}
 		}
 	}

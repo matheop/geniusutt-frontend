@@ -1,15 +1,24 @@
 <script>
 	import Calendar from "$svg/events/calendar.svelte";
+	import Clock from "$svg/events/Clock.svelte";
+	import MapPointer from "$svg/events/MapPointer.svelte";
+	import type { SvelteComponent } from "svelte";
 
 	export let eventInfo: string[];
 	export let flex: "between" | "inline" = "between";
+
+	const icons: typeof SvelteComponent[] = [
+		Calendar,
+		Clock,
+		MapPointer,
+	];
 </script>
 
 <div class="event-info {flex}">
-	{#each eventInfo as info}
+	{#each eventInfo as info, i}
 		<p>
 			<i>
-				<Calendar />
+				<svelte:component this={icons[i]} />
 			</i>
 			<span>
 				{info}
@@ -25,11 +34,11 @@
 		@include body1;
 
 		&.between {
-			gap: $sp-100;
+			gap: $sp-200;
 			justify-content: space-between;
 		}
 		&.inline {
-			gap: $sp-300;
+			gap: $sp-400;
 		}
 
 		p {
@@ -37,7 +46,9 @@
 		}
 
 		i {
+			display: flex;
 			width: 1.5rem;
+			height: 1.5rem;
 			margin-right: $sp-100;
 		}
 	}
