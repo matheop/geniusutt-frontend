@@ -4,14 +4,21 @@
 
 import { writable } from "svelte/store";
 
+const Type: "error" | "success" | "warning" | "info" = undefined;
+
 export class Alert {
 	title: string;
 	text: string;
-	type: "error" | "success" | "warning" | "info";
+	type: typeof Type;
 	timer: number;
 	id: number;
 
-	constructor(title: string, type, text = "", timer = 4500) {
+	constructor(
+		title: string,
+		type: typeof Type,
+		text = "",
+		timer = 4500
+	) {
 		this.title = title;
 		this.text = text;
 		this.type = type;

@@ -38,7 +38,7 @@
 		use:events
 		type="text"
 		class="subject"
-		placeholder="Objet" />
+		placeholder="Objet*" />
 
 	<hr />
 

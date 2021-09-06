@@ -7,11 +7,10 @@ export const isValidEmail = (email: string) => {
 };
 
 export const isEmpty = (arr: string[]) => {
-	let isEmpty: boolean = false;
 	for (const arg in arr) {
-		if (arg.trim() === "" || arg === null) {
-			return (isEmpty = true);
+		if (arr[arg].trim() === "" || arr[arg] === null) {
+			return true;
 		}
 	}
-	return isEmpty;
+	return false;
 };

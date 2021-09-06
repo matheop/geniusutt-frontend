@@ -22,19 +22,26 @@
 		message: "",
 	};
 
+	notifications.add(
+		new Alert(
+			"Attention, Il manque un champ obligatoire !",
+			"error",
+			"Nom, Prénom, Email, Sujet et Message sont obligatoires."
+		)
+	);
+
 	const sendForm = async (data) => {
 		if (isEmpty(data)) {
-			alert("Attention, Il manque un champ obligatoire !");
 			notifications.add(
 				new Alert(
 					"Attention, Il manque un champ obligatoire !",
-					"error"
+					"error",
+					"mamen"
 				)
 			);
 			return;
 		}
 		if (!isValidEmail(data.email)) {
-			alert("Attention, mail incorrect !");
 			notifications.add(
 				new Alert("Attention, mail incorrect !", "error")
 			);
@@ -52,9 +59,6 @@
 			});
 
 			if (res.status === 201) {
-				alert(
-					"Message envoyé ! Merci de nous avoir contacté, nous vous répondrons dès que possible"
-				);
 				notifications.add(
 					new Alert(
 						"Message envoyé !",
@@ -64,9 +68,6 @@
 				);
 				remove();
 			} else {
-				alert(
-					"Oups! Une erreur est survenue... Veuillez réessayer plus tard SVP"
-				);
 				notifications.add(
 					new Alert(
 						"Oups! Une erreur est survenue...",
@@ -125,7 +126,7 @@
 			<TextMessage
 				bind:subject={formData.subject}
 				bind:message={formData.message}
-				placeholder="Votre message..." />
+				placeholder="Votre message...*" />
 		</div>
 
 		<button

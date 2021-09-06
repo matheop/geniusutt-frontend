@@ -8,12 +8,17 @@
 	import { media } from "$stores/media";
 	import { form } from "$stores/contact-form";
 	import ContactForm from "$uikit/ContactForm.svelte";
+	import Notifications from "$components/templates/Notifications.svelte";
 
 	let windowWidth: number;
 	$: if (windowWidth) media.up(windowWidth);
+
+	$: console.log("$media:", $media);
 </script>
 
 <svelte:window bind:innerWidth={windowWidth} />
+
+<Notifications />
 
 {#if !!$modal}
 	<ModalCompo {...$modal} />
