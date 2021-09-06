@@ -10,6 +10,8 @@
 	import type { Event } from "$helpers/interfaces/events";
 	import TextArea from "$uikit/TextArea.svelte";
 	import EventDesktop from "$components/events/EventDesktop.svelte";
+	import { isEmptyObject } from "$helpers/validation";
+	import { dateValidator, scheduleValidator } from "$helpers/regex";
 
 	export let action: "create" | "update";
 
@@ -48,6 +50,54 @@
 	};
 
 	const sendData = async (action, event: Event): Promise<void> => {
+		// Validity Check
+		const updatedEvent: Event = (({
+			name,
+			date,
+			schedule,
+			place,
+			desc,
+			imgUrl,
+		}) => ({
+			name,
+			date,
+			schedule,
+			place,
+			desc,
+			imgUrl,
+		}))(event);
+
+		if (isEmptyObject(updatedEvent)) {
+			notifications.add(
+				new Alert(
+					"Erreur dans le formulaire !",
+					"error",
+					"Un ou plusieurs champs sont incomplets"
+				)
+			);
+			return;
+		}
+		if (!event.date.match(dateValidator)) {
+			notifications.add(
+				new Alert(
+					"Mauvais format de date",
+					"error",
+					"Veuillez respecter le format <strong>JJ/MM/AAAA</strong>"
+				)
+			);
+			return;
+		}
+		if (!event.schedule.match(scheduleValidator)) {
+			notifications.add(
+				new Alert(
+					"Mauvais format d'horaire",
+					"error",
+					"Consulter l'aide si besoin"
+				)
+			);
+			return;
+		}
+
 		let route: string;
 		let method: "POST" | "PUT";
 
@@ -166,7 +216,12 @@
 			</div>
 
 			<div class="col">
-				<p class="label">Horaire(s) [voir Aide] :</p>
+				<p class="label">
+					Horaire(s) [
+					<a href="/admin/help#event-validation"
+						>voir Aide</a>
+					] :
+				</p>
 				<div class="input">
 					<Input
 						bind:value={eventInfo.schedule}
@@ -175,14 +230,25 @@
 			</div>
 		</div>
 
+		<p class="label">URL de l'évènement Facebook :</p>
+		<div class="input">
+			<Input
+				bind:value={eventInfo.eventUrl}
+				placeholder="https://www.facebook.com/events/..." />
+		</div>
 		<p class="label">Description* (min. 20 caractères) :</p>
 		<div class="input">
 			<TextArea
 				bind:value={eventInfo.desc}
+				maxChars={360}
 				placeholder="Il était une fois..." />
 		</div>
 
-		<p class="label">Image* :</p>
+		<p class="label">
+			Image* [
+			<a href="/admin/help#event-validation">voir Aide</a>
+			] :
+		</p>
 		<div class="input">
 			{#if !!eventInfo.imgUrl}
 				<span class="tag" on:click={(e) => removeImgUrl(e)}
@@ -248,6 +314,10 @@
 		@include caption-sb;
 		margin-bottom: $sp-100;
 		margin-left: $sp-100;
+
+		a {
+			color: $danger-500;
+		}
 	}
 	.input {
 		margin-bottom: $sp-400;

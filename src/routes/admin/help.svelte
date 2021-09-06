@@ -90,7 +90,7 @@
 	</section>
 
 	<section class="page">
-		<h3>2. Page Evénements</h3>
+		<h3 id="event-validation">2. Page Evénements</h3>
 		<p>Cette page est accessible à tous.</p>
 		<p>Elle permet :</p>
 		<ul>
@@ -120,7 +120,7 @@
 				indiquez-le ("Zoom", "en ligne"...)
 			</li>
 			<li>
-				Date : UNIQUEMENT "<strong>JJ/MM/AAAA</strong> (sinon ça
+				Date : UNIQUEMENT <strong>JJ/MM/AAAA</strong> (sinon ça
 				marche ap)
 			</li>
 			<li>Horaire(s) : un peu plus complexe :</li>
@@ -140,9 +140,12 @@
 				correspond à l'event Facebook associé s'il y en a un
 			</li>
 			<li>
-				Image : fichiers <strong>PNG, JPG ou JPEG</strong> (aperçu
-				n'apparait pas à l'édition mais est toujours présent [cf.
-				la présence du bouton "Supprimer" ou non])
+				Image : fichiers <strong>PNG, JPG ou JPEG</strong>
+				(ATTENTION : aperçu n'apparait pas à l'édition mais est
+				toujours présent
+				<strong
+					>[cf. la présence du bouton "Supprimer" ou non]</strong
+				>)
 			</li>
 		</ul>
 	</section>
