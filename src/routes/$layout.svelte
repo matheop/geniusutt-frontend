@@ -12,8 +12,6 @@
 
 	let windowWidth: number;
 	$: if (windowWidth) media.up(windowWidth);
-
-	$: console.log("$media:", $media);
 </script>
 
 <svelte:window bind:innerWidth={windowWidth} />

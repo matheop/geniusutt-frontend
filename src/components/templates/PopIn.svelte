@@ -1,10 +1,6 @@
 <script>
 	/* Svelte */
-	import {
-		createEventDispatcher,
-		onDestroy,
-		onMount,
-	} from "svelte";
+	import { createEventDispatcher } from "svelte";
 	import { fade, fly } from "svelte/transition";
 
 	export let width: string = "90%";
@@ -12,9 +8,6 @@
 	export let maxHeight: string = "90vh";
 
 	const dispatch = createEventDispatcher();
-
-	// onMount(() => document.body.classList.add("no-scroll"));
-	// onDestroy(() => document.body.classList.remove("no-scroll"));
 
 	const checkTargetId = (e) => {
 		document.body.classList.remove("no-scroll");

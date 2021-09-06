@@ -1,7 +1,7 @@
 import { writable, derived } from "svelte/store";
 
 function createCustomMedia() {
-	const { subscribe, set, update } = writable("desktop");
+	const { subscribe, set, update } = writable("lg");
 	return {
 		set,
 		subscribe,
@@ -19,7 +19,8 @@ function listenIfiOS() {
 }
 
 function defaultCalc(width: number) {
-	if (width > 1280) return "xl";
+	if (width > 1800) return "2xl";
+	if (width > 1280 && width <= 1800) return "xl";
 	if (width > 1024 && width <= 1280) return "lg";
 	if (width > 767 && width <= 1024) return "md";
 	if (width > 480 && width <= 767) return "sm";

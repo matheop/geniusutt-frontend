@@ -18,8 +18,14 @@
 	import Navbar from "$components/admin/Navbar.svelte";
 	import ModalCompo from "$components/templates/Modal.svelte";
 	import Notifications from "$components/templates/Notifications.svelte";
+	import { media } from "$stores/media";
 	import { modal } from "$stores/modal";
+
+	let windowWidth: number;
+	$: if (windowWidth) media.up(windowWidth);
 </script>
+
+<svelte:window bind:innerWidth={windowWidth} />
 
 <Notifications />
 
