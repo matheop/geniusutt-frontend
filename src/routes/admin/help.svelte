@@ -7,7 +7,7 @@
 <!-- Désolé j'ai un peu fait cette page à l'arrache j'avoue -->
 
 <section class="admin-page">
-	<h2>Aide et Assistance</h2>
+	<h2>❓ Aide et Assistance</h2>
 	<p>
 		Voici une page dédiée à l'assistance pour utiliser le site
 		sans souci et le plus indépendemment possible.
@@ -26,7 +26,7 @@
 		</p>
 		<ul>
 			<li>Les Administrateurs (ou Admins)</li>
-			<li>Les Modérateurs (ou Modos</li>
+			<li>Les Modérateurs (ou Modos)</li>
 		</ul>
 		<p>
 			Les <strong>Admins</strong> ont accès à l'entrièreté des fonctionnalités,
@@ -67,14 +67,16 @@
 				De voir les utilisateurs et leurs informations
 				associées (Nom, adresse mail, rôle), triés par rôle
 			</li>
-			<li>D'ajouter, de modifier, supprimer un utilisateur</li>
+			<li>
+				D'ajouter, de modifier ou de supprimer un utilisateur
+			</li>
 		</ul>
 
-		<h4>Validation du formulaire</h4>
+		<h4>✅ Validation du formulaire</h4>
 		<p>
-			<strong>Tous les champs sont obligatoires.</strong>Pour
-			être sûr de valider le formulaire, veuillez bien respecter
-			les conditions suivantes :
+			<strong>Tous les champs sont obligatoires.</strong> Pour être
+			sûr de valider le formulaire, veuillez bien respecter les conditions
+			suivantes :
 		</p>
 		<ul>
 			<li>Nom : Faites-vous plaiz'</li>
@@ -98,7 +100,9 @@
 				De voir les événéments et leurs informations, triés
 				chronologiquement
 			</li>
-			<li>D'ajouter, modifier, ou supprimer un événement</li>
+			<li>
+				D'ajouter, de modifier ou de supprimer un événement
+			</li>
 			<li>
 				D'avoir un aperçu de l'événément sur le site internet
 				accessible au public (créer ou éditer un évent pour
@@ -106,7 +110,7 @@
 			</li>
 		</ul>
 
-		<h4>Validation du formulaire</h4>
+		<h4>✅ Validation du formulaire</h4>
 		<p>
 			<strong
 				>Tous les champs sont obligatoires SAUF "URL de
@@ -116,12 +120,11 @@
 		<ul>
 			<li>Nom : Faites-vous plaiz'</li>
 			<li>
-				Lieu : Obligatoire, donc même si c'est en ligne
-				indiquez-le ("Zoom", "en ligne"...)
+				Lieu : <strong>Obligatoire</strong>, donc même si
+				c'est en ligne indiquez-le ("Zoom", "en ligne"...)
 			</li>
 			<li>
-				Date : UNIQUEMENT <strong>JJ/MM/AAAA</strong> (sinon ça
-				marche ap)
+				Date : UNIQUEMENT <strong>JJ/MM/AAAA</strong>
 			</li>
 			<li>Horaire(s) : un peu plus complexe :</li>
 			<ol>
@@ -131,21 +134,21 @@
 				<li>16h-20h30</li>
 				<li>etc...</li>
 			</ol>
-			<li>
-				Description : minimum 20 caractères (attention de ne
-				pas écrire un gros pavé non plus)
-			</li>
+			<li>Description : 20-360 caractères</li>
 			<li>
 				URL de l'événement : <strong>Optionnel</strong>,
-				correspond à l'event Facebook associé s'il y en a un
+				correspond à l'évent Facebook associé s'il y en a un
 			</li>
 			<li>
-				Image : fichiers <strong>PNG, JPG ou JPEG</strong>
-				(ATTENTION : aperçu n'apparait pas à l'édition mais est
-				toujours présent
+				<span class="warning">Image</span> : fichiers
 				<strong
-					>[cf. la présence du bouton "Supprimer" ou non]</strong
-				>)
+					>PNG, JPG ou JPEG, et en format paysage</strong>
+				<br />
+				(⚠️l'aperçu n'apparait pas à l'édition mais est toujours
+				présent
+				<strong
+					>[cf. la présence du bouton "Supprimer" ou non]</strong>
+				vous pouvez tester avec le bouton "Visualiser" ⚠️)
 			</li>
 		</ul>
 	</section>
@@ -173,11 +176,16 @@
 				informations associées.
 			</li>
 			<li>
-				D'ajouter, de modifier, supprimer un membre du bureau
+				D'ajouter, de modifier ou de supprimer un membre du
+				bureau
+			</li>
+			<li>
+				⚠️ Ils s'afficheront dans l'ordre d'apparition dans la
+				liste
 			</li>
 		</ul>
 
-		<h4>Validation du formulaire</h4>
+		<h4>✅ Validation du formulaire</h4>
 		<p>
 			<strong
 				>Tous les champs sont obligatoires SAUF "URL
@@ -201,16 +209,22 @@
 				LinkedIn, tout simplement
 			</li>
 			<li>
-				Image : fichiers <strong>PNG, JPG ou JPEG</strong> en
-				<strong>format CARRÉ</strong> (aperçu n'apparait pas à
-				l'édition mais est toujours présent [cf. la présence du
-				bouton "Supprimer" ou non])
+				<span class="warning">Image</span> : fichiers
+				<strong>PNG, JPG ou JPEG</strong>
+				en
+				<strong>format CARRÉ</strong>
+				<br />
+				(⚠️l'aperçu n'apparait pas à l'édition mais est toujours
+				présent
+				<strong
+					>[cf. la présence du bouton "Supprimer" ou non]</strong>
+				vous pouvez tester avec le bouton "Visualiser" ⚠️)
 			</li>
 		</ul>
 	</section>
 
 	<section class="page">
-		<h3>Super Sayan Aid</h3>
+		<h3>🔥 Super Sayan Aid 🔥</h3>
 		<p>
 			Si vous vous retrouvez dans l'impasse et que <strong
 				>personne dans l'association n'est en mesure de vous
@@ -243,5 +257,9 @@
 	}
 	li {
 		margin-bottom: $sp-200;
+	}
+	.warning {
+		color: $danger-700;
+		font-weight: bold;
 	}
 </style>

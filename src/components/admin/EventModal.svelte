@@ -230,7 +230,7 @@
 			</div>
 		</div>
 
-		<p class="label">URL de l'évènement Facebook :</p>
+		<p class="label">URL de l'évènement :</p>
 		<div class="input">
 			<Input
 				bind:value={eventInfo.eventUrl}
