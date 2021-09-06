@@ -23,7 +23,7 @@
 				<div class="text">
 					<p>{alert.title}</p>
 					{#if alert.text !== undefined && alert.text !== ""}
-						<p class="subtitle">{alert.text}</p>
+						<p class="subtitle">{@html alert.text}</p>
 					{/if}
 				</div>
 				<i

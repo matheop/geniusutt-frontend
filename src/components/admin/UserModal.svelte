@@ -8,6 +8,8 @@
 	import Input from "$uikit/Input.svelte";
 	import { API_URL } from "env";
 	import { Alert, notifications } from "$stores/notifications";
+	import { isEmptyObject, isValidEmail } from "$helpers/validation";
+	import { Role } from "$helpers/enums";
 
 	export let action: "create" | "update";
 
@@ -23,6 +25,38 @@
 	};
 
 	const sendData = async (action, user) => {
+		const updatedUser: User = (({ name, email, role }) => ({
+			name,
+			email,
+			role,
+		}))(user);
+
+		if (isEmptyObject(updatedUser)) {
+			notifications.add(
+				new Alert(
+					"Attention, un des champs est incomplet !",
+					"error"
+				)
+			);
+			return;
+		}
+		if (!isValidEmail(user.email)) {
+			notifications.add(
+				new Alert("Attention, mail incorrect !", "error")
+			);
+			return;
+		}
+		if (!Object.values(Role).includes(user.role)) {
+			notifications.add(
+				new Alert(
+					"Attention, role incorrect !",
+					"error",
+					"Doit correspondre strictement à <strong>Admin</strong> ou <strong>Modo</strong>."
+				)
+			);
+			return;
+		}
+
 		let route: string;
 		let method: "POST" | "PUT";
 

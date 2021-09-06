@@ -8,7 +8,7 @@
 
 	import Input from "./Input.svelte";
 	import TextMessage from "./TextMessage.svelte";
-	import { isEmpty, isValidEmail } from "$helpers/validation";
+	import { isEmptyArray, isValidEmail } from "$helpers/validation";
 	import { Alert, notifications } from "$stores/notifications";
 
 	const remove = () => form.remove();
@@ -22,21 +22,14 @@
 		message: "",
 	};
 
-	notifications.add(
-		new Alert(
-			"Attention, Il manque un champ obligatoire !",
-			"error",
-			"Nom, Prénom, Email, Sujet et Message sont obligatoires."
-		)
-	);
-
 	const sendForm = async (data) => {
-		if (isEmpty(data)) {
+		const { organization, ...data2 } = data;
+		if (isEmptyArray(data2)) {
 			notifications.add(
 				new Alert(
 					"Attention, Il manque un champ obligatoire !",
 					"error",
-					"mamen"
+					"Nom, Prénom, Email, Objet et Message sont obligatoires."
 				)
 			);
 			return;
