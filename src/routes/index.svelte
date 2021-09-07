@@ -366,22 +366,26 @@
 
 	<h3>Pourquoi devenir Partenaire ?</h3>
 
-	<p class="block">
-		Lorem Ipsum is simply dummy text of the printing and
-		typesetting industry. Lorem Ipsum has been the industry's
-		standard dummy text ever since the 1500s, when an unknown
-		printer took a galley of type and scrambled it to make a type
-		specimen book. It has survived not only five centuries, but
-		also the leap into electronic typesetting, remaining
-		essentially unchanged. It was popularised in the 1960s with
-		the release of Letraset sheets containing Lorem Ipsum
-		passages, and more recently with desktop publishing software
-		like Aldus PageMaker including versions of Lorem Ipsum. Lorem
-		Ipsum is simply dummy text of the printing and typesetting
-		industry. Lorem Ipsum has been the industry's standard dummy
-		text ever since the 1500s, when an unknown printer took a
-		galley of type
-	</p>
+	<div>
+		<ul class="block">
+			<li>
+				Mettre en lumière vos activités et aspirations en vous
+				faisant participer activement à nos événements,
+			</li>
+			<li>
+				Vous rapprocher des étudiants ingénieurs de
+				l’Université de Technologie de Troyes et donc
+				améliorer la compréhension de vos attentes pour une
+				meilleure réponse à vos besoins.
+			</li>
+		</ul>
+		<br />
+		<p class="block">
+			Les étudiants UTTiens sont pleins de ressources et
+			dynamiques, et seront ainsi heureux de découvrir votre
+			entreprise.
+		</p>
+	</div>
 
 	<button class="fill-blue-btn"> Devenir Partenaire ! </button>
 </section>
@@ -596,7 +600,20 @@
 			}
 		}
 
-		p {
+		ul {
+			color: $white;
+			@include body1-light;
+			text-align: justify;
+
+			&.block {
+				@include min-tablet {
+					@include px(5vw);
+				}
+			}
+		}
+
+		p,
+		ul {
 			@include container-width;
 			@include min-tablet {
 				@include px($sp-800 !important);

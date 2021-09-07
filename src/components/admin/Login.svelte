@@ -11,8 +11,8 @@
 	import { goto } from "$app/navigation";
 	import { media } from "$stores/media";
 
-	let email: string = "matheo.pierini1@gmail.com";
-	let pass: string = "80WgvtS&>vx";
+	let email: string;
+	let pass: string;
 
 	let maxWidth: number = 400;
 	$: maxWidth = $media === "2xl" ? 500 : 400;
