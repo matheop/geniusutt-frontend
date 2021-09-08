@@ -55,14 +55,19 @@
 		updateArrays();
 	}
 
-	const removeUser = (i) => {
-		users = users.filter((user) => user._id !== users[i]._id);
+	const removeUser = (e) => {
+		const uid = e.detail.id;
+		users = users.filter((user) => {
+			return user._id !== uid;
+		});
 	};
 
 	const updateList = (e) => {
 		if (e.detail.user) users = [...users, e.detail.user];
 		isModalDisplayed = false;
 	};
+
+	$: console.log("adminUsers:", adminUsers);
 </script>
 
 <Seo title="Admin | Utilisateurs" url="TODO" image="TODO" />
@@ -85,17 +90,17 @@
 			<p>Chargement...</p>
 		{:then}
 			<h4>Administrateurs</h4>
-			{#each adminUsers as user, i}
+			{#each adminUsers as user}
 				<Banner
 					type="users"
-					on:delete={() => removeUser(i)}
+					on:delete={(e) => removeUser(e)}
 					data={user} />
 			{/each}
 			<h4>Modérateurs</h4>
-			{#each modoUsers as user, i}
+			{#each modoUsers as user}
 				<Banner
 					type="users"
-					on:delete={() => removeUser(i)}
+					on:delete={(e) => removeUser(e)}
 					data={user} />
 			{/each}
 		{:catch err}

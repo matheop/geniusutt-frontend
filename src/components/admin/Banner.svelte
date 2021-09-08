@@ -74,7 +74,7 @@
 						"success"
 					)
 				);
-				dispatch("delete");
+				dispatch("delete", { id: data._id });
 			} else {
 				notifications.add(
 					new Alert(
@@ -137,7 +137,7 @@
 	};
 </script>
 
-<article class:contacted={data.contacted}>
+<article on:click class:contacted={data.contacted}>
 	<div class="col-1">
 		{type === "contacts"
 			? data.lastname + " " + data.firstname

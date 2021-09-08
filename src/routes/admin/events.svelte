@@ -67,10 +67,9 @@
 
 	let isModalDisplayed: boolean = false;
 
-	const removeEvent = (i) => {
-		events = events.filter(
-			(event) => event._id !== events[i]._id
-		);
+	const removeEvent = (e) => {
+		const eid = e.detail.id;
+		events = events.filter((event) => event._id !== eid);
 	};
 	const updateList = (e) => {
 		if (e.detail.event) events = [...events, e.detail.event];
@@ -98,17 +97,17 @@
 			<p>Chargement...</p>
 		{:then}
 			<h4>A venir</h4>
-			{#each upcomingEvents as event, i}
+			{#each upcomingEvents as event}
 				<Banner
 					type="events"
-					on:delete={() => removeEvent(i)}
+					on:delete={(e) => removeEvent(e)}
 					data={event} />
 			{/each}
 			<h4>Passés</h4>
-			{#each pastEvents as event, i}
+			{#each pastEvents as event}
 				<Banner
 					type="events"
-					on:delete={() => removeEvent(i)}
+					on:delete={(e) => removeEvent(e)}
 					data={event} />
 			{/each}
 		{:catch err}

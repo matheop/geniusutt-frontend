@@ -60,10 +60,9 @@
 		);
 	}
 
-	const remove = (i) => {
-		contacts = contacts.filter(
-			(contact) => contact._id !== contacts[i]._id
-		);
+	const remove = (e) => {
+		const cid = e.detail.id;
+		contacts = contacts.filter((contact) => contact._id !== cid);
 	};
 </script>
 
@@ -77,20 +76,20 @@
 		{:then}
 			<h4>Personnes non recontactées</h4>
 			{#if notContactedForms.length}
-				{#each notContactedForms as contact, i}
+				{#each notContactedForms as contact}
 					<Banner
 						type="contacts"
-						on:delete={() => remove(i)}
+						on:delete={(e) => remove(e)}
 						data={contact} />
 				{/each}
 			{:else}
 				<p>Aucun contact en attente.</p>
 			{/if}
 			<h4>Personnes recontactées</h4>
-			{#each contactedForms as contact, i}
+			{#each contactedForms as contact}
 				<Banner
 					type="contacts"
-					on:delete={() => remove(i)}
+					on:delete={(e) => remove(e)}
 					data={contact} />
 			{/each}
 		{:catch err}
