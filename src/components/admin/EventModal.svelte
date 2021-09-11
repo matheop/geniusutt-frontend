@@ -337,14 +337,6 @@
 		margin-bottom: $sp-400;
 		position: relative;
 	}
-	.img-preview {
-		display: flex;
-		margin: 0 auto $sp-400;
-		border-radius: $br-500;
-		width: 50%;
-		height: 50%;
-		object-fit: cover;
-	}
 
 	.tag {
 		cursor: pointer;

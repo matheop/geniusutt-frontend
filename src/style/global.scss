@@ -328,6 +328,15 @@ img.cover {
 	// add width & height
 }
 
+.img-preview {
+	display: flex;
+	margin: 0 auto $sp-400;
+	border-radius: $br-500;
+	width: 50%;
+	height: 50%;
+	object-fit: cover;
+}
+
 svg {
 	&.white {
 		path {
