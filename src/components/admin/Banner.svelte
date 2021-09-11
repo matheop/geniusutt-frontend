@@ -97,6 +97,7 @@
 	const update = (e) => {
 		if (e.detail.user) data = e.detail.user;
 		if (e.detail.event) data = e.detail.event;
+		dispatch("update", { event: data });
 		isModalDisplayed = false;
 	};
 

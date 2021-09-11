@@ -21,8 +21,8 @@
 				session.token = null;
 				session.user = null;
 				return {
-					// status: res.status,
-					// error: new Error(JSON.stringify(result)),
+					status: res.status,
+					error: new Error(result),
 				};
 			}
 		} catch (error) {
@@ -66,8 +66,6 @@
 		if (e.detail.user) users = [...users, e.detail.user];
 		isModalDisplayed = false;
 	};
-
-	$: console.log("adminUsers:", adminUsers);
 </script>
 
 <Seo title="Admin | Utilisateurs" url="TODO" image="TODO" />

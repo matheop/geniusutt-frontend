@@ -77,6 +77,20 @@
 			);
 			return;
 		}
+		if (
+			!event.eventUrl.match(
+				/^(https:\/\/www\.facebook\.com\/events|\s*$)/g
+			)
+		) {
+			notifications.add(
+				new Alert(
+					"Mauvais URL Facebook",
+					"error",
+					"L'URL devrait ressembler à <strong>'https://www.facebook.com/events'</strong>"
+				)
+			);
+			return;
+		}
 		if (!event.date.match(dateValidator)) {
 			notifications.add(
 				new Alert(

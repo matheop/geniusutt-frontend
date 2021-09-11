@@ -1,6 +1,6 @@
 <script context="module">
 	import { API_URL } from "env";
-	import moment from "moment";
+	import moment, { deprecationHandler } from "moment";
 	moment().format();
 
 	export async function load({ fetch }) {
@@ -50,13 +50,33 @@
 	let upcomingEvents: Event[];
 	let pastEvents: Event[];
 
-	events = events.sort(
-		(a, b) =>
-			moment(b.date, "DD/MM/YYYY") -
-			moment(a.date, "DD/MM/YYYY")
-	);
+	const sortEvents = (): void => {
+		events = events.sort(
+			(a, b) =>
+				moment(b.date, "DD/MM/YYYY") -
+				moment(a.date, "DD/MM/YYYY")
+		);
+	};
+
+	sortEvents();
+
+	const assignUpcomingPpt = (events) => {
+		for (const e of events) {
+			let dateAsMoment = moment(e.date, "DD/MM/YYYY");
+			if (dateAsMoment.isBefore(Date.now())) {
+				e.upcoming = false;
+			} else {
+				e.upcoming = true;
+			}
+		}
+		return events;
+	};
 
 	$: if (events) {
+		events = events.map((e) => ({ ...e, upcoming: false }));
+		sortEvents();
+		events = assignUpcomingPpt(events);
+
 		upcomingEvents = events.filter(
 			(event) => event.upcoming === true
 		);
@@ -72,8 +92,18 @@
 		events = events.filter((event) => event._id !== eid);
 	};
 	const updateList = (e) => {
+		console.log("e.detail:", e.detail);
 		if (e.detail.event) events = [...events, e.detail.event];
+		console.log("events:", events);
 		isModalDisplayed = false;
+	};
+
+	const updateEvent = (e) => {
+		const event: Event = e.detail.event;
+		console.log("event:", event);
+		events = events.map((e: Event) =>
+			e._id === event._id ? (e = event) : e
+		);
 	};
 </script>
 
@@ -100,6 +130,7 @@
 			{#each upcomingEvents as event}
 				<Banner
 					type="events"
+					on:update={(e) => updateEvent(e)}
 					on:delete={(e) => removeEvent(e)}
 					data={event} />
 			{/each}
@@ -107,6 +138,7 @@
 			{#each pastEvents as event}
 				<Banner
 					type="events"
+					on:update={(e) => updateEvent(e)}
 					on:delete={(e) => removeEvent(e)}
 					data={event} />
 			{/each}
