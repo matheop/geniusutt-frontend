@@ -291,7 +291,7 @@
 		{/each}
 	</Sweeper>
 
-	<a href="/equipe" class="no-deco">
+	<a href="/equipe" class="no-deco" rel="noopener">
 		<button class="outline-yellow-btn">En savoir +</button>
 	</a>
 </section>
@@ -329,6 +329,7 @@
 		<a
 			href="https://geniusglobal.fr/"
 			target="_blank"
+			rel="noopener"
 			class="no-deco">
 			<button class="fill-blue-btn">
 				Découvrir Genius Global

@@ -76,7 +76,8 @@
 			}
 		}
 		&.yellow {
-			--color: #{$sec-700};
+			// --color: #{$sec-700};
+			--color: #e8c205;
 			--box-shadow: #{$ds-500}, inset 0px 6px 0px #{$sec-700};
 
 			&:hover {

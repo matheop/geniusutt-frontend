@@ -1,5 +1,5 @@
 <script>
-	import Calendar from "$svg/events/calendar.svelte";
+	import Calendar from "$svg/admin/Calendar.svelte";
 	import Clock from "$svg/events/Clock.svelte";
 	import MapPointer from "$svg/events/MapPointer.svelte";
 	import type { SvelteComponent } from "svelte";
