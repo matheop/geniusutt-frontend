@@ -1,0 +1,23 @@
+{
+	"git.ignoreLimitWarning": true,
+	"editor.detectIndentation": false,
+	"workbench.colorCustomizations": {
+        "titleBar.activeBackground": "#181818",
+        "activityBar.background": "#01122c",
+        "activityBar.border": "#7E7E7E",
+        "editor.background": "#000",
+        "editorWidget.background": "#181818",
+        "editorWidget.foreground": "#EAEAEA",
+        "editorWidget.border": "#2A2A2A",
+        "terminal.background": "#000",
+        "terminal.ansiBrightGreen": "#4BFB68",
+        "terminal.ansiCyan": "#4D69FB",
+        "sideBar.background": "#000",
+        "sideBar.border": "#7E7E7E",
+        "editorGroup.border": "#7E7E7E",
+        "button.background": "#4D69FB",
+        "activityBar.inactiveForeground": "#F8F8F8",
+        "activityBar.foreground": "#FAD107",
+        "activityBar.activeBorder": "#FAD107"
+    }
+}

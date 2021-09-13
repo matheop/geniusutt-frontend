@@ -1,0 +1,163 @@
+// Smartphones
+$screen-xs: 480px;
+
+// Smartphones && LR Tablets
+$screen-sm: 767px;
+
+// Tablets && Ipads
+$screen-md: 1024px;
+
+// Laptops && Desktops (+ Ipads Pro)
+$screen-lg: 1280px;
+
+// Large Desktops
+$screen-xl: 1800px;
+
+/* ---- 1 TAILLE A LA FOIS ---- */
+
+// ---- Smartphones && LR Tablets
+@mixin screen-sm {
+	@media (min-width: #{$screen-xs+1}) and (max-width: #{$screen-sm}) {
+		@content;
+	}
+}
+// ---- Tablets && Ipads
+@mixin screen-md {
+	@media (min-width: #{$screen-sm+1}) and (max-width: #{$screen-md}) {
+		@content;
+	}
+}
+// ---- Laptops && Desktops (+ Ipads Pro)
+@mixin screen-lg {
+	@media (min-width: #{$screen-md+1}) and (max-width: #{$screen-lg}) {
+		@content;
+	}
+}
+// ---- Large Desktops
+@mixin screen-xl {
+	@media (min-width: #{$screen-xl+1}) {
+		@content;
+	}
+}
+
+/* ---- TAILLE INFERIEURE A... ---- */
+
+// ---- Smartphones
+@mixin screen-max-xs {
+	@media (max-width: #{$screen-xs}) {
+		@content;
+	}
+}
+// ---- Smartphones && LR Tablets
+@mixin screen-max-sm {
+	@media (max-width: #{$screen-sm}) {
+		@content;
+	}
+}
+// ---- Tablets && Ipads
+@mixin screen-max-md {
+	@media (max-width: #{$screen-md}) {
+		@content;
+	}
+}
+// ---- Laptops && Desktops (+ Ipads Pro)
+@mixin screen-max-lg {
+	@media (max-width: #{$screen-lg}) {
+		@content;
+	}
+}
+
+/* ---- TAILLE SUPERIEUR A... ---- */
+
+// ---- Smartphones
+@mixin screen-min-xs {
+	@media (min-width: #{$screen-xs}) {
+		@content;
+	}
+}
+// ---- Smartphones && LR Tablets
+@mixin screen-min-sm {
+	@media (min-width: #{$screen-sm}) {
+		@content;
+	}
+}
+// ---- Tablets && Ipads
+@mixin screen-min-md {
+	@media (min-width: #{$screen-md}) {
+		@content;
+	}
+}
+// ---- Laptops && Desktops (+ Ipads Pro)
+@mixin screen-min-lg {
+	@media (min-width: #{$screen-lg}) {
+		@content;
+	}
+}
+// ---- Laptops && Desktops (+ Ipads Pro)
+@mixin screen-min-xl {
+	@media (min-width: #{$screen-xl}) {
+		@content;
+	}
+}
+
+/* -----------------
+	CUSTOM
+----------------- */
+
+@mixin screenMin($screen) {
+	@media (min-width: $screen + "px") {
+		@content;
+	}
+}
+
+@mixin screenMax($screen) {
+	@media (max-width: $screen + "px") {
+		@content;
+	}
+}
+
+@mixin screenMinMax($screenMin, $screenMax) {
+	@media (min-width: $screenMin + "px") and (max-width: $screenMax + "px") {
+		@content;
+	}
+}
+
+/* -----------------
+	ALIASES
+----------------- */
+
+@mixin phone {
+	@include screen-max-sm {
+		@content;
+	}
+}
+
+@mixin min-tablet {
+	@include screen-min-sm {
+		@content;
+	}
+}
+
+@mixin tablet {
+	@include screen-md {
+		@content;
+	}
+}
+
+@mixin max-tablet {
+	@include screen-max-md {
+		@content;
+	}
+}
+
+@mixin desktop {
+	@include screen-min-md {
+		@content;
+	}
+}
+
+@mixin xl-desktop {
+	@include screen-min-xl {
+		@content;
+	}
+}

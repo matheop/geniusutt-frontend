@@ -1,0 +1,91 @@
+@import "typo";
+@import "media";
+@import "mixins";
+
+// Nombre d'or
+$phi: 1.618;
+
+$maxWidth: 76vw;
+
+// espacement de base
+$sp-50: 0.25rem;
+$sp-100: 0.5rem;
+$sp-200: 1rem;
+$sp-300: 1.5rem;
+$sp-400: 2rem;
+$sp-500: 3rem;
+$sp-600: 4rem;
+$sp-700: 5rem;
+$sp-800: 6rem;
+$sp-900: 8rem;
+$sp-1000: 10rem;
+
+// relative 100% - Nombre d'or
+$percent: 100%;
+
+// border-radius
+$circle: 100rem;
+$br-900: 36px;
+$br-700: 24px;
+$br-500: 12px;
+$br-300: 6px;
+
+$border: 1px;
+
+$ds-700: 0px 0px 16px 4px rgba(18, 18, 18, 0.1);
+$ds-500: 0px 0px 10px 2px rgba(18, 18, 18, 0.1);
+$ds-300: 0px 0px 6px 2px rgba(18, 18, 18, 0.1);
+
+$transition: all 0.4s ease;
+
+// hauteur du header
+$headerHeight: 6rem;
+$BOnavWidth: 6rem;
+
+/* Nuancier */
+$prim-900: #01122c;
+$prim-700: #2847c3;
+$prim-500: #4b68da;
+$prim-300: #7087e2;
+
+$sec-700: #fad107;
+$sec-500: #fbde4b;
+$sec-300: #fce572;
+
+$black: #121212;
+$grey-700: #7e7e7e;
+$grey-500: #c5c5c5;
+$grey-400: #f0f0f0;
+$grey-300: #f8f8f8;
+$white: #fff;
+
+/* Couleurs des notifications du thème */
+$success: #14ac6d;
+$warning: $sec-700;
+$danger-500: #ed626d;
+$danger-700: #e83947;
+$info: $prim-700;
+
+// Transparence pour Hexa
+/*
+ * 95% — F2
+ * 90% — E6
+ * 85% — D9
+ * 80% — CC
+ * 75% — BF
+ * 70% — B3
+ * 65% — A6
+ * 60% — 99
+ * 55% — 8C
+ * 50% — 80
+ * 45% — 73
+ * 40% — 66
+ * 35% — 59
+ * 30% — 4D
+ * 25% — 40
+ * 20% — 33
+ * 15% — 26
+ * 10% — 1A
+ * 5% — 0D
+ * 0% — 00
+ * */

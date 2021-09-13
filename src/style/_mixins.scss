@@ -1,0 +1,222 @@
+/* -----------------
+	GENERAL
+----------------- */
+
+/* ---- MARGIN && PADDING ---- */
+@mixin mx($ml, $mr: false) {
+	margin-left: $ml;
+	@if ($mr) {
+		margin-right: $mr;
+	} @else {
+		margin-right: $ml;
+	}
+}
+
+@mixin my($mt, $mb: false) {
+	margin-top: $mt;
+	@if ($mb) {
+		margin-bottom: $mb;
+	} @else {
+		margin-bottom: $mt;
+	}
+}
+
+@mixin px($pl, $pr: false) {
+	padding-left: $pl;
+	@if ($pr) {
+		padding-right: $pr;
+	} @else {
+		padding-right: $pl;
+	}
+}
+
+@mixin py($pt, $pb: false) {
+	padding-top: $pt;
+	@if ($pb) {
+		padding-bottom: $pb;
+	} @else {
+		padding-bottom: $pt;
+	}
+}
+
+/* ---- FLEXBOX ---- */
+@mixin flex {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@mixin flex-x {
+	display: flex;
+	justify-content: center;
+}
+
+@mixin flex-y {
+	display: flex;
+	align-items: center;
+}
+
+/* ---- BOUTONS ---- */
+
+// Button w/ icon
+@mixin icon-btn($width, $ml: 0, $mr: 0) {
+	@include flex-y;
+	i {
+		margin: auto $mr auto $ml;
+		width: $width;
+		display: flex;
+	}
+}
+
+// Button (fill or outline)
+@mixin btn($bgcolor, $txt, $rad: $br-500, $bordercolor: $bgcolor) {
+	border-radius: $rad;
+	background: $bgcolor;
+	border: 1px solid $bordercolor;
+	color: $txt;
+	transition: all 0.3s;
+} // border arrondie si radius > btn width {}
+
+/* ---- link ---- */
+@mixin link($color: $white) {
+	text-decoration: none;
+	border: none;
+	background-color: transparent;
+	color: $color;
+	&:hover {
+		cursor: pointer;
+		text-decoration: underline;
+		border: none;
+		background-color: transparent;
+		-webkit-box-shadow: none;
+		-moz-box-shadow: none;
+		box-shadow: none;
+	}
+}
+
+/* underlining */
+@mixin underlining($color: $prim-500) {
+	content: "";
+	width: 50%;
+	height: 1px;
+	position: absolute;
+	left: 0;
+	transform: translateX(50%);
+	bottom: -0.5rem;
+	border-bottom: 2px solid $color;
+}
+
+/* -----------------
+	UI KIT
+----------------- */
+
+/* ---- Global sizing ---- */
+@mixin container-width {
+	@include px($sp-400);
+	max-width: 100vw;
+
+	@include tablet {
+		@include px($sp-500);
+	}
+
+	@include desktop {
+		max-width: 76vw;
+		margin: auto;
+	}
+
+	@include screen-xl {
+		max-width: $screen-md;
+		@include mx(auto);
+	}
+}
+
+/* ---- Grids ---- */
+@mixin grid-12($gap: $sp-400) {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-gap: $gap;
+}
+
+/* ---- Spacing ---- */
+@mixin pdy-container {
+	@include py($spacing-700);
+}
+
+/* ---- Box-shadows ---- */
+@mixin shadow($str) {
+	@include box-shadow($str);
+}
+@mixin ds-700 {
+	@include box-shadow(0px 0px 16px 4px rgba(18, 18, 18, 0.1));
+}
+@mixin ds-500 {
+	@include box-shadow(0px 0px 10px 2px rgba(18, 18, 18, 0.1));
+}
+@mixin ds-300 {
+	@include box-shadow(0px 0px 6px 2px rgba(18, 18, 18, 0.05));
+}
+@mixin is($color: $prim-500) {
+	@include box-shadow(inset 0px 6px 0px $color);
+}
+
+/* ---- Border-radius ---- */
+@mixin circle {
+	border-radius: $circle;
+}
+@mixin br-900 {
+	border-radius: $br-900;
+}
+@mixin br-700 {
+	border-radius: $br-700;
+}
+@mixin br-500 {
+	border-radius: $br-500;
+}
+@mixin br-300 {
+	border-radius: $br-300;
+}
+
+@mixin border($color) {
+	border: $border $color solid;
+}
+
+/* -----------------
+	Cross-plateform
+----------------- */
+
+@mixin transform($str) {
+	-webkit-transform: #{$str};
+	transform: #{$str};
+}
+
+@mixin transition($str) {
+	-webkit-transition: #{$str};
+	-moz-transition: #{$str};
+	-ms-transition: #{$str};
+	transition: #{$str};
+}
+
+@mixin box-shadow($str) {
+	-webkit-box-shadow: $str;
+	-moz-box-shadow: $str;
+	box-shadow: $str;
+}
+
+@mixin backface-visibility($value: hidden) {
+	-webkit-backface-visibility: $value; /* Safari */
+	backface-visibility: $value;
+}
+
+/* Animation */
+@mixin animation($str) {
+	-webkit-animation: #{$str};
+	animation: #{$str};
+}
+@mixin anim($anim) {
+	@keyframes #{$anim} {
+		@content;
+	}
+	@-webkit-keyframes #{$anim} {
+		@content;
+	}
+}

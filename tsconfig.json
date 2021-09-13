@@ -23,8 +23,22 @@
 		"allowJs": true,
 		"checkJs": true,
 		"paths": {
-			"$lib/*": ["src/lib/*"]
+			"$app/*": [
+				".svelte/dev/runtime/app/*",
+				".svelte/build/runtime/app/*"
+			],
+			"$uikit/*": ["src/components/uikit/*"],
+			"$svg/*": ["src/components/svg/*"],
+			"$components/*": ["src/components/*"],
+			"$stores/*": ["src/stores/*"],
+			"$helpers/*": ["src/helpers/*"],
+			"env": ["./src/env.ts"]
 		}
 	},
-	"include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.svelte"]
+	"include": [
+		"src/**/*.d.ts",
+		"src/**/*.js",
+		"src/**/*.ts",
+		"src/**/*.svelte"
+	]
 }

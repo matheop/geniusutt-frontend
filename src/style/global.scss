@@ -1,0 +1,459 @@
+@import "theme";
+@import "reset";
+@import "fonts";
+
+:root {
+	font-size: calc(50% + 0.4vw);
+	@include screen-md {
+		font-size: calc(50% + 0.5vw);
+	}
+	@include phone {
+		font-size: calc(80% + 0.5vw);
+	}
+	@include screen-xl {
+		font-size: calc(80% + 0.3vw);
+	}
+}
+
+*:fullscreen,
+*:-webkit-full-screen,
+*:-moz-full-screen {
+	background-color: $white;
+}
+::backdrop {
+	background-color: $white;
+}
+
+body {
+	font-family: "Poppins Light", sans-serif;
+	min-height: -webkit-fill-available;
+
+	&.no-scroll {
+		height: 100vh;
+		overflow-y: hidden;
+	}
+}
+
+/* -----------------
+	GLOBAL
+----------------- */
+
+.global-container {
+	@include container-width;
+}
+
+.section-pdg {
+	--pdg: #{$sp-700};
+	@include py(var(--pdg));
+
+	@include phone {
+		--pdg: #{$sp-500};
+	}
+}
+
+.pb-700-inner > * {
+	--pb: #{$sp-700};
+
+	@include phone {
+		--pb: #{$sp-500};
+	}
+	&:not(:last-child) {
+		padding-bottom: var(--pb);
+	}
+}
+
+.pb-500-inner > * {
+	--pb: #{$sp-500};
+
+	@include phone {
+		--pb: #{$sp-400};
+	}
+	&:not(:last-child) {
+		padding-bottom: var(--pb);
+	}
+}
+
+.pb-700 {
+	--pb: #{$sp-700};
+
+	@include phone {
+		--pb: #{$sp-500};
+	}
+	padding-bottom: var(--pb);
+}
+
+.pb-500 {
+	--pb: #{$sp-500};
+
+	@include phone {
+		--pb: #{$sp-400};
+	}
+	padding-bottom: var(--pb);
+}
+
+// Titles & Bodies
+
+h1 {
+	color: $white;
+	@include t1;
+
+	@include phone {
+		@include fs5;
+	}
+}
+h2 {
+	@include t2;
+}
+h3 {
+	@include t3;
+}
+h4 {
+	@include t4-sb;
+}
+
+h5 {
+	@include caption;
+
+	&.light {
+		@include caption-light;
+	}
+}
+
+p {
+	@include body1-light;
+	text-align: justify;
+
+	&.block {
+		@include min-tablet {
+			@include px(5vw);
+		}
+	}
+}
+
+h6 {
+	@include body2-sb;
+}
+
+/* -----------------
+	INPUTS & FORM RELATED
+----------------- */
+
+input,
+textarea,
+.text-message,
+select,
+.select-input {
+	position: relative;
+	width: 100%;
+	padding: $sp-200 $sp-300;
+	color: $black;
+	background-color: $white;
+	@include caption-light;
+	@include br-300;
+	@include ds-300;
+	@include border($white);
+	@include transition("0.3s border ease, 0.3s box-shadow ease");
+
+	&::placeholder {
+		color: $grey-500;
+	}
+	&:focus {
+		@include ds-500;
+		@include transition(0.3s box-shadow ease);
+	}
+	&.error {
+		@include border($danger-500);
+		@include transition(0.3s border ease);
+	}
+	&.valid {
+		@include border($success);
+		@include transition(0.3s border ease);
+	}
+
+	.input-error {
+		position: absolute;
+		color: $danger-500;
+		margin-top: $sp-100;
+		padding-right: $sp-300;
+		@include body2;
+	}
+}
+
+textarea {
+	resize: vertical;
+}
+
+/* -----------------
+	BUTTONS & LINKS & LABELS
+----------------- */
+
+button {
+	position: relative;
+	padding: $sp-200 $sp-300;
+	@include caption;
+	cursor: pointer;
+	display: block;
+	text-decoration: none;
+	@include transition($transition);
+
+	// LINK
+	&.link {
+		@include link($white);
+		padding: 0;
+	}
+
+	// BLUE BTN
+	&.fill-blue-btn {
+		@include btn($prim-500, $white, $br-500);
+
+		&:hover,
+		&.focus,
+		&.active {
+			@include btn($prim-700, $white, $br-500);
+			@include transition($transition);
+			transform: translateY(-#{$sp-50});
+		}
+	}
+	&.outline-blue-btn {
+		@include btn(transparent, $prim-500, $br-500, $prim-500);
+
+		&:hover,
+		&.focus,
+		&.active {
+			@include btn($prim-500, $white, $br-500);
+		}
+	}
+
+	// YELLOW BTN
+	&.fill-yellow-btn {
+		@include btn($sec-500, $white, $br-500);
+
+		&:hover,
+		&.focus,
+		&.active {
+			@include btn($sec-700, $white, $br-500);
+		}
+	}
+	&.outline-yellow-btn {
+		@include btn(transparent, $sec-500, $br-500, $sec-500);
+
+		&:hover,
+		&.focus,
+		&.active {
+			@include btn($sec-500, $white, $br-500);
+		}
+	}
+
+	// RED BTN
+	&.fill-danger {
+		@include btn($danger-500, $white, $br-500);
+
+		&:hover,
+		&.focus,
+		&.active {
+			@include btn($danger-700, $white, $br-500);
+		}
+	}
+	&.outline-danger {
+		@include btn(transparent, $danger-500, $br-500, $danger-500);
+
+		&:hover,
+		&.focus,
+		&.active {
+			@include btn($danger-500, $white, $br-500);
+		}
+	}
+}
+
+.tag {
+	@include circle;
+	@include ds-300;
+	padding: $sp-100;
+	@include body2;
+
+	&:hover {
+		@include ds-500;
+	}
+}
+
+a {
+	position: relative;
+	color: $white;
+
+	&:hover {
+		text-decoration: underline;
+	}
+
+	&.header-link,
+	&.yellow-link,
+	&.no-deco {
+		text-decoration: none;
+	}
+
+	&.header-link {
+		&:after {
+			@include underlining;
+			opacity: 0;
+			@include transition(opacity 0.4s);
+		}
+		&:hover,
+		&.active {
+			&:after {
+				opacity: 1;
+				@include transition(opacity 0.4s);
+			}
+		}
+	}
+
+	&.yellow-link {
+		&:hover {
+			color: $sec-500;
+		}
+	}
+}
+
+/* -----------------
+	IMAGES & SVG
+----------------- */
+
+img.cover {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.img-cover {
+	overflow: hidden;
+	@include circle;
+	// add width & height
+}
+
+.img-preview {
+	display: flex;
+	margin: 0 auto $sp-400;
+	border-radius: $br-500;
+	width: 50%;
+	height: 50%;
+	object-fit: cover;
+}
+
+svg {
+	&.white {
+		path {
+			fill: $white;
+		}
+	}
+
+	&.black {
+		path {
+			fill: $black;
+		}
+	}
+	&.yellow {
+		path {
+			fill: $sec-500;
+		}
+	}
+}
+
+/* -----------------
+	POP-IN RELATED
+----------------- */
+
+.popin-cross {
+	position: absolute;
+	top: $sp-300;
+	right: $sp-300;
+	width: 1.5rem;
+	height: 1.5rem;
+	cursor: pointer;
+}
+
+/* -----------------
+	INDEX PAGE
+----------------- */
+.headline-section {
+	#tsparticles {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+	}
+}
+.profile-card {
+	margin: auto;
+	padding: 0;
+
+	&:first-child {
+		grid-column: 2 / 4;
+		@include tablet {
+			grid-column: 1 / 4;
+		}
+	}
+	&:nth-child(2) {
+		grid-column: 4 / -4;
+		grid-row: 1 / 5;
+	}
+	&:nth-child(3) {
+		grid-column: -4 / -2;
+		@include tablet {
+			grid-column: -4 / -1;
+		}
+	}
+	&:nth-child(4) {
+		grid-column: -5 / -3;
+		margin-left: 0;
+	}
+	&:nth-child(5) {
+		grid-column: 3 / 5;
+		@include tablet {
+			grid-column: 2 / 5;
+		}
+	}
+	&:nth-child(4),
+	&:last-child {
+		grid-row: 6 / -1;
+	}
+	&:first-child,
+	&:nth-child(3) {
+		grid-row: 2 / 5;
+	}
+}
+
+/* -----------------
+	EVENTS PAGE
+----------------- */
+
+.event-card {
+	button {
+		display: block;
+
+		&.video {
+			color: $black;
+			text-decoration: underline;
+		}
+	}
+}
+
+/* -----------------
+	ADMIN
+----------------- */
+.admin-page {
+	padding: $sp-700 $sp-1000;
+
+	.adding {
+		& > button {
+			@include my($sp-500);
+			@include icon-btn(1rem, $sp-200);
+		}
+	}
+
+	h3 {
+		margin-bottom: $sp-400;
+	}
+
+	.banners {
+		& > * {
+			margin-bottom: $sp-300;
+		}
+	}
+}
