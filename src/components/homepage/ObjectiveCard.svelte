@@ -14,7 +14,10 @@
 		{title}
 	</h4>
 	<p>{@html desc}</p>
-	<a href={link} target={target_blank ? "_blank" : ""}>
+	<a
+		href={link}
+		rel="noopener"
+		target={target_blank ? "_blank" : ""}>
 		Plus d'infos >
 	</a>
 </div>

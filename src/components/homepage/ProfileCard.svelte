@@ -19,20 +19,21 @@
 					src={`${API_URL}/${imgUrl}`}
 					alt={name} />
 			</div>
-			<h5 class="light">
+			<p class="light">
 				{name}
-			</h5>
+			</p>
 			<p>
 				{position}
 			</p>
 		</div>
 		<!-- BACK -->
 		<div class="flip-back">
-			<h5 class="light">{name}</h5>
+			<p class="light">{name}</p>
 			<h6>{@html desc}</h6>
 			<a
 				href={linkedin}
 				target="_blank"
+				rel="noopener"
 				aria-label="LinkedIn de {name}">
 				<i>
 					<LinkedIn color={"black"} />
@@ -58,9 +59,13 @@
 			}
 		}
 
-		h5 {
+		.light {
 			text-transform: uppercase;
 			position: relative;
+			@include caption;
+			text-align: center;
+
+			@include caption-light;
 		}
 
 		&:hover .flip-card {
@@ -94,9 +99,9 @@
 					margin-bottom: $sp-200;
 				}
 
-				h5 {
+				.light {
 					margin-bottom: $sp-100;
-					@include backface-visibility; // bc h5 also exists in .flip-back
+					@include backface-visibility; // bc .light also exists in .flip-back
 				}
 
 				p {
@@ -109,7 +114,7 @@
 				color: $black;
 				transform: rotateY(180deg);
 
-				h5:after {
+				.light:after {
 					@include underlining($black);
 				}
 

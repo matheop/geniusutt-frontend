@@ -95,8 +95,10 @@
 			<i class="logo"><GeniusUtt /></i>
 			<p>
 				©{currentYear} par
-				<a href="https://poly-math.dev" target="_blank"
-					><span>Polymath</span></a>
+				<a
+					href="https://poly-math.dev"
+					rel="noopener"
+					target="_blank"><span>Polymath</span></a>
 			</p>
 		</div>
 	</div>
