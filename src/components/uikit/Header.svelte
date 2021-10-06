@@ -13,7 +13,7 @@
 <header>
 	<div class="global-container">
 		<div class="logo">
-			<a aria-label="Accueil" href="/">
+			<a aria-label="Accueil" rel="external noopener" href="/">
 				<i on:click={() => (openMenu = false)}>
 					<GeniusUtt />
 				</i>

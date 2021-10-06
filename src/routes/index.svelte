@@ -1,5 +1,5 @@
 <script context="module">
-	import { API_URL } from "env";
+	import { API_URL, SITE_URL } from "env";
 
 	export async function load({ fetch }) {
 		try {
@@ -44,7 +44,8 @@
 	import Star1 from "$svg/stars/Star1.svelte";
 	import type { SvelteComponent } from "svelte";
 	import type { BoardMember } from "$helpers/interfaces/boardmembers";
-	import { isPhone, isTablet, media } from "$stores/media";
+	import { media } from "$stores/media";
+	import { form } from "$stores/contact-form";
 	import GeniusUtt from "$svg/logos/GeniusUTT.svelte";
 
 	export let boardmembers: BoardMember[];
@@ -291,7 +292,7 @@
 		{/each}
 	</Sweeper>
 
-	<a href="/equipe" class="no-deco" rel="noopener">
+	<a href="/equipe" class="no-deco" rel="external noopener">
 		<button class="outline-yellow-btn">En savoir +</button>
 	</a>
 </section>
@@ -388,7 +389,9 @@
 		</p>
 	</div>
 
-	<button class="fill-blue-btn"> Devenir Partenaire ! </button>
+	<button class="fill-blue-btn" on:click={form.set}>
+		Devenir Partenaire !
+	</button>
 </section>
 
 <style lang="scss">

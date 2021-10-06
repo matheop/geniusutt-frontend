@@ -232,8 +232,9 @@
 			<div class="col">
 				<p class="label">
 					Horaire(s) [
-					<a href="/admin/help#event-validation"
-						>voir Aide</a>
+					<a
+						href="/admin/help#event-validation"
+						rel="external">voir Aide</a>
 					] :
 				</p>
 				<div class="input">
@@ -260,7 +261,8 @@
 
 		<p class="label">
 			Image* [
-			<a href="/admin/help#event-validation">voir Aide</a>
+			<a href="/admin/help#event-validation" rel="external"
+				>voir Aide</a>
 			] :
 		</p>
 		<div class="input">
