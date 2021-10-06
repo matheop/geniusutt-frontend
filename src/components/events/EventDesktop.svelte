@@ -30,7 +30,7 @@
 		</div>
 
 		<div class="footer">
-			{#if event.upcoming}
+			{#if event.upcoming && event.eventUrl}
 				<a
 					href={event.eventUrl}
 					target="_blank"
@@ -40,15 +40,17 @@
 					</button>
 				</a>
 			{/if}
-			<a
-				href={event.eventUrl}
-				target="_blank"
-				rel="external"
-				class="no-deco">
-				<button class="outline-blue-btn">
-					En savoir +
-				</button>
-			</a>
+			{#if event.eventUrl}
+				<a
+					href={event.eventUrl}
+					target="_blank"
+					rel="external"
+					class="no-deco">
+					<button class="outline-blue-btn">
+						En savoir +
+					</button>
+				</a>
+			{/if}
 		</div>
 	</div>
 </article>
