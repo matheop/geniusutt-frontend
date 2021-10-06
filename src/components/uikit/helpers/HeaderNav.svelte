@@ -9,6 +9,7 @@
 <a
 	href="/equipe"
 	on:click
+	rel="external"
 	class:active={path === "/equipe"}
 	class="header-link">
 	EQUIPE
@@ -20,7 +21,7 @@
 	class="header-link">
 	COACHING
 </a>
-<a class="no-deco" rel="noopener" href="/evenements" on:click>
+<a class="no-deco" rel="external" href="/evenements" on:click>
 	<button class="outline-yellow-btn">Events</button>
 </a>
 <button class="fill-blue-btn contact" on:click on:click={form.set}>

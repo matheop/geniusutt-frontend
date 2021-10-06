@@ -40,7 +40,11 @@
 					</button>
 				</a>
 			{/if}
-			<a href={event.eventUrl} target="_blank" class="no-deco">
+			<a
+				href={event.eventUrl}
+				target="_blank"
+				rel="external"
+				class="no-deco">
 				<button class="outline-blue-btn">
 					En savoir +
 				</button>
