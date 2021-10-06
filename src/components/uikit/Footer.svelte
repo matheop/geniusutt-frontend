@@ -55,9 +55,19 @@
 	<div class="global-container">
 		<div class="content">
 			<nav>
-				<a class="yellow-link" href="/equipe"> Équipe </a>
-				<a class="yellow-link" href="/coaching"> Coaching </a>
-				<a class="yellow-link" href="/evenements">
+				<a class="yellow-link" rel="external" href="/equipe">
+					Équipe
+				</a>
+				<a
+					class="yellow-link"
+					rel="external"
+					href="/coaching">
+					Coaching
+				</a>
+				<a
+					class="yellow-link"
+					rel="external"
+					href="/evenements">
 					Nos événements
 				</a>
 			</nav>
