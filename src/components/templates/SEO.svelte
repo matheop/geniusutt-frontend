@@ -5,7 +5,7 @@
 	export let description =
 		"Genius UTT vous propose des conférences, des formations et un accompagnement personnalisé pour vous aider à développer votre projet entrepreneurial.";
 	export let url = "TODO";
-	export let image = "TODO";
+	export let image = "/favicon-genius.png";
 	export let imageType = null;
 	export let type = "website";
 	export let locale = "fr_FR";

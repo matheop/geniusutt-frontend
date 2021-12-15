@@ -202,7 +202,7 @@
 	];
 </script>
 
-<Seo title="Genius UTT | Accueil" url="TODO" image="TODO" />
+<Seo title="Genius UTT | Accueil" url="https://geniusutt.fr" />
 
 {#if ["md", "lg", "xl"].includes($media)}
 	<section class="welcome">

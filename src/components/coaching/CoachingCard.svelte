@@ -56,6 +56,10 @@
 			}
 		}
 
+		p {
+			text-align: left;
+		}
+
 		button {
 			margin: auto;
 
