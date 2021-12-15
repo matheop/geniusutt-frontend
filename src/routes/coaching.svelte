@@ -58,9 +58,9 @@
 	const events: CoachingCard[] = [
 		{
 			title: "Coaching EGEE",
-			desc: `Fréquence : 4-5 fois /semestre
-			\nType : Coaching personnalisé
-			\nConcept : d’anciens entrepreneurs aident individuellement les porteurs de projet selon leurs problématiques. Un Coach est assigné à un projet pour 1 semestre à minima et permet un meilleur accompagnement.`,
+			desc: `<strong>Fréquence</strong> : 4x/semestre<br/>
+			<strong>Type</strong> : Séance coaching personnalisée<br/>
+			<strong>Concept</strong> : EGEE, ce sont d’anciens dirigeants d’entreprises qui souhaitent mettre leur expérience et connaissances à disposition des étudiants ! Ils sont là pour échanger avec les étudiants individuellement et de façon informelle, leur donner des conseils et les orienter vers les bons interlocuteurs, tout ça bénévolement.`,
 			descSide: "right",
 			color: "blue",
 			displayBtn: false,
@@ -68,36 +68,34 @@
 		},
 		{
 			title: "MINDStart",
-			desc: `Fréquence : 4-5 fois /semestre
-			\nType : Coaching personnalisé
-			\nConcept : d’anciens entrepreneurs aident individuellement les porteurs de projet selon leurs problématiques. Un Coach est assigné à un projet pour 1 semestre à minima et permet un meilleur accompagnement.`,
+			desc: `<strong>Fréquence</strong> : 1x/semestre<br/>
+			<strong>Type</strong> : Commission de financement<br/>
+			<strong>Concept</strong> : C’est la commission de financement des projets UTTiens proposée par la Fondation UTT avec le soutien de la Caisse d’Épargne Grand Est Europe ! Elle permet aux étudiants de venir pitcher leur idée de start-up ainsi que l’avancée du projet afin d’obtenir un financement si le projet est retenu par le jury.`,
 			descSide: "left",
 			color: "yellow",
 			displayBtn: false,
-			videoUrl: "https://www.youtube.com/embed/tgbNymZ7vqY",
+			videoUrl: "https://youtube.com/embed/mbamHkj83ug",
 		},
 	];
 
 	const projects: CoachingCard[] = [
 		{
-			title: "BigBird",
-			desc: `Fréquence : 4-5 fois /semestre
-			\nType : Coaching personnalisé
-			\nConcept : d’anciens entrepreneurs aident individuellement les porteurs de projet selon leurs problématiques. Un Coach est assigné à un projet pour 1 semestre à minima et permet un meilleur accompagnement.`,
+			title: "Coyali",
+			desc: `<strong>Par</strong> : Maxime Tajan<br/>
+			<strong>Projet</strong> : Une solution de simplification des smartphones grâce à une interface simplifiée qui permettra aux aînés de rester connectés en utilisant que les fonctionnalités utiles à leurs besoins et adaptées à leurs usages.<br><br>Accompagné par coaching 😉`,
 			descSide: "right",
 			color: "blue",
-			displayBtn: true,
-			videoUrl: "https://www.youtube.com/embed/tgbNymZ7vqY",
+			displayBtn: false, // true
+			videoUrl: "https://youtube.com/embed/mbamHkj83ug",
 		},
 		{
-			title: "Ellipse",
-			desc: `Fréquence : 4-5 fois /semestre
-			\nType : Coaching personnalisé
-			\nConcept : d’anciens entrepreneurs aident individuellement les porteurs de projet selon leurs problématiques. Un Coach est assigné à un projet pour 1 semestre à minima et permet un meilleur accompagnement.`,
+			title: "LlamaBus",
+			desc: `<strong>Par</strong> : Zarela Mariscal & Marc-Antoine Thimm<br/>
+			<strong>Projet</strong> : Une solution numérique pour la vente de tickets de bus pour les compagnies péruviennes.<br><br>Accompagné par coaching 😉`,
 			descSide: "left",
 			color: "yellow",
-			displayBtn: true,
-			videoUrl: "https://www.youtube.com/embed/tgbNymZ7vqY",
+			displayBtn: false, // true
+			videoUrl: "https://www.youtube.com/embed/laqIGYY0hrE",
 		},
 	];
 
@@ -172,7 +170,9 @@
 	};
 </script>
 
-<Seo title="Genius UTT | Coaching" url="TODO" image="TODO" />
+<Seo
+	title="Genius UTT | Coaching"
+	url="https://geniusutt.fr/coaching" />
 
 <section class="rocket section-pdg">
 	<div class="global-container content pb-500-inner">
@@ -208,7 +208,7 @@
 		{/each}
 	</div>
 </section>
-
+<!-- TEMP
 <section
 	class="coaching-events global-container pb-700-inner section-pdg">
 	<h2 class="pb-700">
@@ -235,7 +235,7 @@
 		</div>
 	{/each}
 </section>
-
+-->
 <section class="projects global-container pb-700-inner pb-500">
 	<h2 class="pb-700">
 		{#if $isPhone}

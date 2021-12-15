@@ -35,12 +35,12 @@
 	import BoardMemberInfo from "$components/team/BoardMemberInfo.svelte";
 	import Seo from "$components/templates/SEO.svelte";
 	import { isPhone } from "$stores/media";
-	import type { BoardMember } from "$helpers/boardmembers";
+	import type { BoardMember } from "$helpers/interfaces/boardmembers";
 
 	export let boardmembers: BoardMember[];
 </script>
 
-<Seo title="Genius UTT | Bureau" url="TODO" image="TODO" />
+<Seo title="Genius UTT | Bureau" url="https://geniusutt.fr/equipe" />
 
 <main class="global-container section-pdg">
 	<section>

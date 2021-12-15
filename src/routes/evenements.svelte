@@ -62,7 +62,9 @@
 	);
 </script>
 
-<Seo title="Genius UTT | Événements" url="TODO" image="TODO" />
+<Seo
+	title="Genius UTT | Événements"
+	url="https://geniusutt.fr/evenements" />
 
 <main class="global-container section-pdg">
 	<h1>Nos événements</h1>
