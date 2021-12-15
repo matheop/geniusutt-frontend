@@ -27,6 +27,16 @@ const config = {
 		target: "#svelte",
 		vite: {
 			server: { https: true },
+			ssr: {
+				noExternal: [
+					"style-value-types",
+					"popmotion",
+					"framesync",
+				],
+			},
+			optimizeDeps: {
+				include: ["fastq"],
+			},
 			build: {
 				minify: "terser",
 				// target: "es2015",
