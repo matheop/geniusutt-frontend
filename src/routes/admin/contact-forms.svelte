@@ -66,7 +66,9 @@
 	};
 </script>
 
-<Seo title="Admin | Contacts" url="TODO" image="TODO" />
+<Seo
+	title="Admin | Contacts"
+	url="https://www.geniusutt.fr/admin/contact-forms" />
 
 <section class="admin-page">
 	<h2>Contacts</h2>

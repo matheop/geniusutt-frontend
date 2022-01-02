@@ -6,6 +6,7 @@
 	import { logout } from "$helpers/auth";
 	import { API_URL } from "env";
 	import { session } from "$app/stores";
+	import Seo from "$components/templates/SEO.svelte";
 
 	let isModalDisplayed: boolean = false;
 
@@ -67,6 +68,10 @@
 		}
 	};
 </script>
+
+<Seo
+	title="Admin | Profil"
+	url="https://www.geniusutt.fr/admin/profile" />
 
 <section class="admin-page">
 	<h2>Mon profil</h2>

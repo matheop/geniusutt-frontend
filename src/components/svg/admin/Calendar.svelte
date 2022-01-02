@@ -1,5 +1,5 @@
 <script>
-	export let color: string = "#fff";
+	export let color: string = "#000";
 </script>
 
 <svg

@@ -107,7 +107,9 @@
 	};
 </script>
 
-<Seo title="Admin | Events" url="TODO" image="TODO" />
+<Seo
+	title="Admin | Events"
+	url="https://www.geniusutt.fr/admin/events" />
 
 <section class="admin-page">
 	<article class="adding">
