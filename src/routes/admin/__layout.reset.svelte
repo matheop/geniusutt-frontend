@@ -1,7 +1,7 @@
 <script context="module">
-	export async function load({ page, session }) {
+	export async function load({ url, session }) {
 		if (
-			/^\/admin\/(.*)/.test(page.path) &&
+			/^\/admin\/(.*)/.test(url.path) &&
 			!session.token &&
 			!session.user
 		) {
@@ -11,7 +11,7 @@
 	}
 </script>
 
-<script>
+<script lang="ts">
 	import { session } from "$app/stores";
 
 	import Login from "$components/admin/Login.svelte";

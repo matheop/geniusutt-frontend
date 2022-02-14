@@ -31,7 +31,7 @@
 	}
 </script>
 
-<script>
+<script lang="ts">
 	import MetricBox from "$components/homepage/MetricBox.svelte";
 	import ObjectiveCard from "$components/homepage/ObjectiveCard.svelte";
 	import ProfileCard from "$components/homepage/ProfileCard.svelte";

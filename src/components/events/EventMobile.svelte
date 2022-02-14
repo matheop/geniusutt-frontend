@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { API_URL } from "env";
 	import PopIn from "$components/templates/PopIn.svelte";
 	import type { Event } from "$helpers/interfaces/events";

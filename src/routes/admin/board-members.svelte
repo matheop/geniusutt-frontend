@@ -31,7 +31,7 @@
 	}
 </script>
 
-<script>
+<script lang="ts">
 	import { slide } from "svelte/transition";
 	import type { BoardMember } from "$helpers/interfaces/boardmembers";
 	import UserAdd from "$svg/admin/UserAdd.svelte";

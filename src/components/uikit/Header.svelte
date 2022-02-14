@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { slide } from "svelte/transition";
 	import GeniusUtt from "$svg/logos/GeniusUTT.svelte";
 	import { isPhone } from "$stores/media";

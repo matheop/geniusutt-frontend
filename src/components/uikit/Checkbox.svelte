@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import Checked from "$svg/admin/Checked.svelte";
 
 	/* Svelte */

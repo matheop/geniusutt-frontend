@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { session } from "$app/stores";
 	import { createEventDispatcher } from "svelte";
 	import type { BoardMember } from "$helpers/interfaces/boardmembers";

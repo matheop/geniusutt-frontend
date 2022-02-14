@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import Seo from "$components/templates/SEO.svelte";
 </script>
 

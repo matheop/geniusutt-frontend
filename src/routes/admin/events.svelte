@@ -38,7 +38,7 @@
 	}
 </script>
 
-<script>
+<script lang="ts">
 	import Banner from "$components/admin/Banner.svelte";
 	import type { Event } from "$helpers/interfaces/events";
 	import EventModal from "$components/admin/EventModal.svelte";

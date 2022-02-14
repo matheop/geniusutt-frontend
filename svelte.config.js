@@ -9,7 +9,6 @@ const config = {
 	preprocess: sveltePreprocess({
 		preserve: ["ld+json"],
 		defaults: {
-			script: "typescript",
 			style: "scss",
 		},
 		scss: {

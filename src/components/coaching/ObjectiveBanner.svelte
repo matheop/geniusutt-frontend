@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { isPhone } from "$stores/media";
 
 	export let title: string;

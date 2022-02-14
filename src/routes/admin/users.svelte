@@ -31,7 +31,7 @@
 	}
 </script>
 
-<script>
+<script lang="ts">
 	import Banner from "$components/admin/Banner.svelte";
 	import UserModal from "$components/admin/UserModal.svelte";
 	import type { User } from "$helpers/interfaces/user";

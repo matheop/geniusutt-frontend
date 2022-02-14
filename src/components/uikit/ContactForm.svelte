@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { form } from "$stores/contact-form";
 	import PopIn from "$components/templates/PopIn.svelte";
 	import { API_URL } from "env";

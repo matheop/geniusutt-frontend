@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	export let metric: string;
 	export let label: string;
 	export let color: "blue" | "yellow" = "blue";

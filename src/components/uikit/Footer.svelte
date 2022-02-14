@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import GeniusUtt from "$svg/logos/GeniusUTT.svelte";
 	import Facebook from "$svg/networks/Facebook.svelte";
 	import Instagram from "$svg/networks/Instagram.svelte";

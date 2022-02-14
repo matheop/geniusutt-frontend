@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	export let color: "black" | "yellow" | "white" = "white";
 </script>
 

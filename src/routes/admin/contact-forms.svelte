@@ -34,7 +34,7 @@
 	}
 </script>
 
-<script>
+<script lang="ts">
 	import Banner from "$components/admin/Banner.svelte";
 	import type { ContactForm } from "$helpers/interfaces/contact-forms";
 	import Seo from "$components/templates/SEO.svelte";
