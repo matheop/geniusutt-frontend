@@ -92,15 +92,12 @@
 		events = events.filter((event) => event._id !== eid);
 	};
 	const updateList = (e) => {
-		console.log("e.detail:", e.detail);
 		if (e.detail.event) events = [...events, e.detail.event];
-		console.log("events:", events);
 		isModalDisplayed = false;
 	};
 
 	const updateEvent = (e) => {
 		const event: Event = e.detail.event;
-		console.log("event:", event);
 		events = events.map((e: Event) =>
 			e._id === event._id ? (e = event) : e
 		);
