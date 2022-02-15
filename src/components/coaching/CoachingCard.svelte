@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import VideoPopIn from "$components/events/utils/VideoPopIn.svelte";
 
 	import { isPhone } from "$stores/media";

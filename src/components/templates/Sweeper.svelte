@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { onMount } from "svelte";
 
 	export let contentWidth: string;
@@ -33,10 +33,13 @@
 			@include phone {
 				margin: 0 calc(50vw - (var(--content-width) / 2)); // 13.5 === ProfileCard's width
 			}
-			&:last-child {
-				padding-right: calc(
-					50vw - (var(--content-width) / 2)
-				);
+
+			@include phone {
+				&:last-child {
+					padding-right: calc(
+						50vw - (var(--content-width) / 2)
+					);
+				}
 			}
 		}
 	}

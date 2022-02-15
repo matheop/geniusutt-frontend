@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import type { Event } from "$helpers/interfaces/events";
 	import { API_URL } from "env";
 

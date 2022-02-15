@@ -34,7 +34,7 @@
 	}
 </script>
 
-<script>
+<script lang="ts">
 	import Banner from "$components/admin/Banner.svelte";
 	import type { ContactForm } from "$helpers/interfaces/contact-forms";
 	import Seo from "$components/templates/SEO.svelte";
@@ -66,7 +66,9 @@
 	};
 </script>
 
-<Seo title="Admin | Contacts" url="TODO" image="TODO" />
+<Seo
+	title="Admin | Contacts"
+	url="https://www.geniusutt.fr/admin/contact-forms" />
 
 <section class="admin-page">
 	<h2>Contacts</h2>

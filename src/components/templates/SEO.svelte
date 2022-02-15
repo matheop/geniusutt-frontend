@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { getImageMimeType } from "$helpers/file";
 
 	export let title = "Genius UTT | Donnez vie à votre projet !";

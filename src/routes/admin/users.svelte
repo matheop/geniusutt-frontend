@@ -31,7 +31,7 @@
 	}
 </script>
 
-<script>
+<script lang="ts">
 	import Banner from "$components/admin/Banner.svelte";
 	import UserModal from "$components/admin/UserModal.svelte";
 	import type { User } from "$helpers/interfaces/user";
@@ -68,7 +68,9 @@
 	};
 </script>
 
-<Seo title="Admin | Utilisateurs" url="TODO" image="TODO" />
+<Seo
+	title="Admin | Utilisateurs"
+	url="https://www.geniusutt.fr/admin/users" />
 
 <section class="admin-page">
 	<article class="adding">

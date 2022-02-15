@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import Calendar from "$svg/admin/Calendar.svelte";
 	import Clock from "$svg/events/Clock.svelte";
 	import MapPointer from "$svg/events/MapPointer.svelte";

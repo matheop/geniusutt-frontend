@@ -1,8 +1,8 @@
-<script>
+<script lang="ts">
 	import Seo from "$components/templates/SEO.svelte";
 </script>
 
-<Seo title="Admin | Aide" url="TODO" image="TODO" />
+<Seo title="Admin | Aide" url="https://www.geniusutt.fr/admin/help" />
 
 <!-- Désolé j'ai un peu fait cette page à l'arrache j'avoue -->
 

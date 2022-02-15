@@ -1,8 +1,10 @@
 import cookie from "cookie";
 import type { Handle, GetSession } from "@sveltejs/kit";
 
-export const handle: Handle = async ({ request, render }) => {
-	const cookies = cookie.parse(request.headers.cookie || "");
+export const handle: Handle = async ({ event, resolve }) => {
+	const cookies = cookie.parse(
+		event.request.headers.get("cookie") || ""
+	);
 
 	const token = cookies?.token;
 
@@ -10,17 +12,17 @@ export const handle: Handle = async ({ request, render }) => {
 	if (cookies.user) user = JSON.parse(cookies.user);
 
 	if (token && user) {
-		request.locals = { token, user };
+		event.locals = { token, user };
 	}
 	// payload
-	const response = await render(request);
+	const response = await resolve(event);
 
 	return response;
 };
 
-export const getSession: GetSession = async ({ locals }) => {
-	if (locals.token && locals.user) {
-		return { token: locals.token, user: locals.user };
+export const getSession: GetSession = async (event) => {
+	if (event.locals.token && event.locals.user) {
+		return { token: event.locals.token, user: event.locals.user };
 	}
 	return {};
 };

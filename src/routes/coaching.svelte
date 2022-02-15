@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import CoachingCard from "$components/coaching/CoachingCard.svelte";
 	import ObjectiveBanner from "$components/coaching/ObjectiveBanner.svelte";
 	import Seo from "$components/templates/SEO.svelte";

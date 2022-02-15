@@ -31,7 +31,7 @@
 	}
 </script>
 
-<script>
+<script lang="ts">
 	import BoardMemberInfo from "$components/team/BoardMemberInfo.svelte";
 	import Seo from "$components/templates/SEO.svelte";
 	import { isPhone } from "$stores/media";

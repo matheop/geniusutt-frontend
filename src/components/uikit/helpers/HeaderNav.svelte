@@ -1,9 +1,9 @@
-<script>
+<script lang="ts">
 	import { page } from "$app/stores";
 	import { form } from "$stores/contact-form";
 	import PaperPlane from "$svg/PaperPlane.svelte";
 
-	$: path = $page.path;
+	$: path = $page.url.pathname;
 </script>
 
 <a

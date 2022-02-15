@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	/* Svelte */
 	import { session } from "$app/stores";
 	import { createEventDispatcher } from "svelte";

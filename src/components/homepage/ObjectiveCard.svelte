@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	export let imgUrl: string;
 	export let title: string;
 	export let desc: string;

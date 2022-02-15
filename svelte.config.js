@@ -9,7 +9,6 @@ const config = {
 	preprocess: sveltePreprocess({
 		preserve: ["ld+json"],
 		defaults: {
-			script: "typescript",
 			style: "scss",
 		},
 		scss: {
@@ -23,10 +22,18 @@ const config = {
 		// specifying a different adapter
 		adapter: netlify(),
 
-		// hydrate the <div id="svelte"> element in src/app.html
-		target: "#svelte",
 		vite: {
 			server: { https: true },
+			ssr: {
+				noExternal: [
+					"style-value-types",
+					"popmotion",
+					"framesync",
+				],
+			},
+			optimizeDeps: {
+				include: ["fastq"],
+			},
 			build: {
 				minify: "terser",
 				// target: "es2015",

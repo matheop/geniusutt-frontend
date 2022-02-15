@@ -38,7 +38,7 @@
 	}
 </script>
 
-<script>
+<script lang="ts">
 	import EventDesktop from "$components/events/EventDesktop.svelte";
 	import EventMobile from "$components/events/EventMobile.svelte";
 	import Seo from "$components/templates/SEO.svelte";

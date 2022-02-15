@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import PopIn from "./PopIn.svelte";
 
 	export let title: string;

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { page } from "$app/stores";
 	import Calendar from "$svg/admin/Calendar.svelte";
 
@@ -12,7 +12,7 @@
 	import { Role } from "$helpers/enums";
 	import Information from "$svg/admin/Information.svelte";
 
-	$: path = $page.path;
+	$: path = $page.url.pathname;
 
 	let profileHovering: boolean = false;
 

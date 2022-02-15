@@ -38,7 +38,7 @@
 	}
 </script>
 
-<script>
+<script lang="ts">
 	import Banner from "$components/admin/Banner.svelte";
 	import type { Event } from "$helpers/interfaces/events";
 	import EventModal from "$components/admin/EventModal.svelte";
@@ -92,22 +92,21 @@
 		events = events.filter((event) => event._id !== eid);
 	};
 	const updateList = (e) => {
-		console.log("e.detail:", e.detail);
 		if (e.detail.event) events = [...events, e.detail.event];
-		console.log("events:", events);
 		isModalDisplayed = false;
 	};
 
 	const updateEvent = (e) => {
 		const event: Event = e.detail.event;
-		console.log("event:", event);
 		events = events.map((e: Event) =>
 			e._id === event._id ? (e = event) : e
 		);
 	};
 </script>
 
-<Seo title="Admin | Events" url="TODO" image="TODO" />
+<Seo
+	title="Admin | Events"
+	url="https://www.geniusutt.fr/admin/events" />
 
 <section class="admin-page">
 	<article class="adding">

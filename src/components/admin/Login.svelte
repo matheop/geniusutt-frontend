@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { fly } from "svelte/transition";
 	import { API_URL } from "env";
 
@@ -62,7 +62,8 @@
 				document.cookie = tokenCookie;
 				document.cookie = userCookie;
 
-				if ($page.path === "/admin") goto("/admin/profile");
+				if ($page.url.pathname === "/admin")
+					goto("/admin/profile");
 			}
 		} catch (err) {
 			console.error("err:", err);

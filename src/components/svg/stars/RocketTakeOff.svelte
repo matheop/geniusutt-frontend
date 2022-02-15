@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import Lightbeams from "./Lightbeams.svelte";
 	import Rocket from "./Rocket.svelte";
 </script>

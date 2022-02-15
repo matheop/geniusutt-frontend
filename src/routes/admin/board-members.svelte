@@ -31,7 +31,7 @@
 	}
 </script>
 
-<script>
+<script lang="ts">
 	import { slide } from "svelte/transition";
 	import type { BoardMember } from "$helpers/interfaces/boardmembers";
 	import UserAdd from "$svg/admin/UserAdd.svelte";
@@ -55,7 +55,9 @@
 	};
 </script>
 
-<Seo title="Admin | Membres du bureau" url="TODO" image="TODO" />
+<Seo
+	title="Admin | Membres du bureau"
+	url="https://www.geniusutt.fr/admin/board-members" />
 
 <section class="admin-page">
 	<article class="adding">

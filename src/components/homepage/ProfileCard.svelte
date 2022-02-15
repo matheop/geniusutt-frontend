@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { API_URL } from "env";
 	import LinkedIn from "$svg/networks/LinkedIn.svelte";
 
