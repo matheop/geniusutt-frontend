@@ -27,6 +27,7 @@
 			}
 		} catch (error) {
 			console.error("error:", error);
+			return { status: 500, error };
 		}
 	}
 </script>
